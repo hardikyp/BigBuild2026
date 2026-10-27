@@ -6,5 +6,10 @@ This project is a minimum viable web app build created as part of the Big Build 
 
 ## Team Members
 
-| Astrid Fischer | Hardik Patil | Jerry Zhai | Luke Demo | Jaewon Saw | Yingjie Wu | Nate Levine |
-| -------------- | ------------ | ---------- | --------- | ---------- | ---------- | ---------- |
+- Astrid Fischer
+- Hardik Patil
+- Jerry Zhai
+- Luke Demo
+- Jaewon Saw
+- Yingjie Wu
+- Nate Levine
