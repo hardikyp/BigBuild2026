@@ -32,6 +32,10 @@ def initialize_database(engine) -> None:
             if "include_in_report" not in columns:
                 connection.execute(text("ALTER TABLE evidence ADD COLUMN include_in_report BOOLEAN NOT NULL DEFAULT 1"))
             connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('002_evidence_report_flag')"))
+        if "003_drawing_interpretations" not in applied:
+            # create_all only adds tables that are missing.
+            Base.metadata.create_all(connection)
+            connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('003_drawing_interpretations')"))
 
 
 def database_url(path: Path) -> str:

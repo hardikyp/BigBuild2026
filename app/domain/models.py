@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import datetime, timezone
 from typing import Any
 
@@ -67,6 +68,9 @@ class Assessment(Base):
     evidence: Mapped[list["Evidence"]] = relationship(
         back_populates="assessment", cascade="all, delete-orphan"
     )
+    drawing_interpretations: Mapped[list["DrawingInterpretation"]] = relationship(
+        back_populates="assessment", cascade="all, delete-orphan", order_by="DrawingInterpretation.id"
+    )
 
 
 class AssessmentChecklist(Base):
@@ -118,6 +122,35 @@ class Evidence(Base):
     @property
     def is_image(self) -> bool:
         return (self.mime_type or "").startswith("image/")
+
+
+class DrawingInterpretation(Base):
+    """One run of reading uploaded plans and elevations into intake fields."""
+
+    __tablename__ = "drawing_interpretations"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    assessment_id: Mapped[int] = mapped_column(ForeignKey("assessments.id"), index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    model: Mapped[str] = mapped_column(String(100), default="")
+    evidence_ids: Mapped[str] = mapped_column(Text, default="[]")
+    result_json: Mapped[str] = mapped_column(Text, default="{}")
+    applied_fields: Mapped[str] = mapped_column(Text, default="[]")
+    kept_fields: Mapped[str] = mapped_column(Text, default="[]")
+
+    assessment: Mapped[Assessment] = relationship(back_populates="drawing_interpretations")
+
+    @property
+    def result(self) -> dict[str, Any]:
+        return json.loads(self.result_json or "{}")
+
+    @property
+    def applied(self) -> list[str]:
+        return json.loads(self.applied_fields or "[]")
+
+    @property
+    def kept(self) -> list[str]:
+        return json.loads(self.kept_fields or "[]")
 
 
 def model_to_dict(obj: Any, fields: list[str]) -> dict[str, Any]:
