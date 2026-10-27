@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Average shear stress calculation - MORGAN{% endblock %}
+{% block content %}
+<div class="page-heading compact">
+  <div>
+    <p class="eyebrow">GUIDED CALCULATION · ASCE 41-23 §4.4.3.3</p>
+    <h1>Average shear stress check</h1>
+    <p class="lede">{{ assessment.project_name or 'Untitled project' }} · {{ context.form.title }}</p>
+  </div>
+  <a class="button ghost" href="{{ url_for('main.review', assessment_id=assessment.id) }}">Return to checklist</a>
+</div>
+<div class="summary-warning"><b>Engineering calculation aid:</b> verify applicability, inputs, units, and conclusions against the licensed standard. Saving a result does not set the checklist response automatically.</div>
+{% if saved %}<div class="flash success">Calculation record saved to this assessment and report.</div>{% endif %}
+{% if error %}<div class="flash error">{{ error }}</div>{% endif %}
+<section class="panel calculation-panel">
+  <p class="eyebrow">CHECKLIST ITEM</p>
+  <p class="calculation-statement">{{ context.item.statement }}</p>
+  <form method="post" action="{{ url_for('main.shear_wall_calculation', assessment_id=assessment.id, item_id=context.item.item_id) }}" class="form-layout">
+    <input type="hidden" name="item_id" value="{{ context.item.item_id }}">
+    <div class="form-section panel-subsection">
+      <div class="section-heading"><div><p class="eyebrow">1 · ANALYSIS POINT</p><h2>Loading and units</h2></div></div>
+      <div class="form-grid three">
+        <label class="field"><span>Direction</span><select name="direction"><option value="X"{% if display.direction == 'X' %} selected{% endif %}>X</option><option value="Y"{% if display.direction == 'Y' %} selected{% endif %}>Y</option></select></label>
+        <label class="field"><span>Wall stress units</span><select name="units"><option value="ksf"{% if display.units == 'ksf' %} selected{% endif %}>ksf</option><option value="ksi"{% if display.units == 'ksi' %} selected{% endif %}>ksi</option></select></label>
+        <label class="field"><span>Table 4-7 building system</span><select name="building_system" required>{% for option in c_table %}<option value="{{ option }}"{% if display.building_system == option %} selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+      </div>
+    </div>
+    <div class="form-section panel-subsection">
+      <div class="section-heading"><div><p class="eyebrow">2 · STORY SHEAR Vj</p><h2>Determine C, V, k, and Vj</h2></div></div>
+      <div class="form-grid three">
+        <label class="field"><span>Number of stories</span><select name="story_band" required>{% for option in story_bands %}<option value="{{ option }}"{% if display.story_band == option %} selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+        <label class="field"><span>Spectral acceleration Sa (g)</span><input name="spectral_acceleration" type="number" min="0" step="0.0001" value="{{ display.spectral_acceleration }}" required></label>
+        <label class="field"><span>Total seismic weight W (kips)</span><input name="seismic_weight" type="number" min="0" step="0.001" value="{{ display.seismic_weight }}" required></label>
+        <label class="field"><span>Fundamental period T (sec)</span><input name="period" type="number" min="0" step="0.001" value="{{ display.period }}" required></label>
+        <label class="check-option"><input type="checkbox" name="use_six_story_simplification"{% if display.use_six_story_simplification %} checked{% endif %}><span><b>Use k = 1.0 simplification</b><small>Permitted for buildings six stories or fewer.</small></span></label>
+      </div>
+      <p class="muted calculation-help">Enter one row for each level. Height is measured from the base; blank rows are ignored.</p>
+      <div class="calculation-table"><div class="calculation-table-row calculation-table-header"><span>Level</span><span>Weight wi (kips)</span><span>Height hi (ft)</span></div>{% for row in level_rows %}<div class="calculation-table-row"><input name="level_number_{{ loop.index }}" type="number" min="1" step="1" value="{{ row.level }}" aria-label="Level {{ loop.index }}"><input name="level_weight_{{ loop.index }}" type="number" min="0" step="0.001" value="{{ row.weight }}" aria-label="Weight at level {{ loop.index }}"><input name="level_height_{{ loop.index }}" type="number" min="0" step="0.001" value="{{ row.height }}" aria-label="Height at level {{ loop.index }}"></div>{% endfor %}</div>
+      <label class="field short-field"><span>Story level j for Vj</span><input name="story_level" type="number" min="1" step="1" value="{{ display.story_level }}" required></label>
+    </div>
+    <div class="form-section panel-subsection">
+      <div class="section-heading"><div><p class="eyebrow">3 · EFFECTIVE WALL MEASURE Aw</p><h2>Determine Ms and Aw</h2></div></div>
+      <div class="form-grid three">
+        <label class="field"><span>Wall category for Table 4-8</span><select name="wall_category" required>{% for option in wall_categories %}<option value="{{ option }}"{% if display.wall_category == option %} selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+        <label class="field"><span>Performance level</span><select name="performance" required>{% for option in performance_levels %}<option value="{{ option }}"{% if display.performance == option %} selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+        <label class="field"><span>Wall area treatment</span><select name="material" required>{% for option in materials %}<option value="{{ option }}"{% if display.material == option %} selected{% endif %}>{{ option }}</option>{% endfor %}</select></label>
+      </div>
+      <p class="muted calculation-help">Enter participating walls in the selected direction. Use net dimensions accounting for openings as applicable. Thickness is in inches.</p>
+      <div class="calculation-table wall-table"><div class="calculation-table-row calculation-table-header"><span>Wall</span><span>Net length (ft)</span><span>Thickness (in)</span></div>{% for row in wall_rows %}<div class="calculation-table-row"><input name="wall_name_{{ loop.index }}" value="{{ row.name }}" placeholder="W{{ loop.index }}" aria-label="Wall {{ loop.index }}"><input name="wall_length_{{ loop.index }}" type="number" min="0" step="0.001" value="{{ row.length }}" aria-label="Net length for wall {{ loop.index }}"><input name="wall_thickness_{{ loop.index }}" type="number" min="0" step="0.001" value="{{ row.thickness }}" aria-label="Thickness for wall {{ loop.index }}"></div>{% endfor %}</div>
+    </div>
+    <div class="form-section panel-subsection">
+      <div class="section-heading"><div><p class="eyebrow">4 · ENGINEER REVIEW</p><h2>Record the determination</h2></div></div>
+      <p class="muted">The result is advisory and does not change the checklist response. Select the determination you want included in the main report.</p>
+      <div class="status-choices calculation-status"><label class="status-choice c"><input type="radio" name="engineer_determination" value="C" required><span>C</span><small>Shear stress compliant</small></label><label class="status-choice nc"><input type="radio" name="engineer_determination" value="NC" required><span>NC</span><small>Shear stress noncompliant</small></label></div>
+      <label class="field"><span>Assumptions / drawing references / notes</span><textarea name="notes" rows="4" placeholder="Record assumptions, source drawings, and engineering context...">{{ display.notes }}</textarea></label>
+    </div>
+    <div class="form-actions"><a class="button ghost" href="{{ url_for('main.review', assessment_id=assessment.id) }}">Cancel</a><button class="button primary" type="submit">Calculate and save record</button></div>
+  </form>
+</section>
+{% if records %}<section class="panel calculation-history"><div class="section-heading"><div><p class="eyebrow">SAVED RECORDS</p><h2>Calculation history</h2></div><span class="muted">{{ records|length }} record(s)</span></div>{% for record in records %}{% set calculation = record.result %}<div class="calculation-record"><div><b>{{ record.created_at.strftime('%Y-%m-%d %H:%M') if record.created_at else 'Saved' }}</b><span class="status-badge status-{{ 'C' if record.engineer_determination == 'C' else 'NC' }}">{{ record.engineer_determination }}</span></div><p><b>v<sub>avg,j</sub> = {{ '%.4f'|format(calculation.average_shear_stress) }} {{ calculation.result_units }}</b> · Vj {{ '%.3f'|format(calculation.story_shear_Vj_kips) }} kips · Ms {{ calculation.modifier_Ms }} · Aw {{ calculation.effective_wall_measure_label }}</p>{% if record.notes %}<small>{{ record.notes }}</small>{% endif %}</div>{% endfor %}</section>{% endif %}
+{% endblock %}

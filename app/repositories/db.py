@@ -36,6 +36,9 @@ def initialize_database(engine) -> None:
             # create_all only adds tables that are missing.
             Base.metadata.create_all(connection)
             connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('003_drawing_interpretations')"))
+        if "004_calculation_records" not in applied:
+            Base.metadata.create_all(connection)
+            connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('004_calculation_records')"))
 
 
 def database_url(path: Path) -> str:

@@ -14,12 +14,25 @@ from sqlalchemy import select
 from werkzeug.security import safe_join
 from werkzeug.utils import secure_filename
 
-from app.domain.models import Assessment, DrawingInterpretation, Evidence
+from app.domain.models import Assessment, CalculationRecord, DrawingInterpretation, Evidence
 from app.exports.json_export import assessment_json
 from app.exports.pdf_export import make_pdf
 from app.services.assessment import FIELD_LABELS, applicable_sections, get_catalog_form, response_for, summary, sync_checklists, update_assessment_from_form
 from app.services.drawings import DRAWING_ROLES, DrawingError, apply_interpretation, claude_interpreter, interpretation_record, read_drawing
 from app.services.photos import PHOTO_ACCEPT, photo_mime_type, thumbnail_path
+from app.services.calculations import calculation_to_dict, checklist_item_context, calculations_for_item
+from app.services.shear_wall_calculation import (
+    C_TABLE,
+    MATERIALS,
+    PERFORMANCE_LEVELS,
+    SHEAR_WALL_CALCULATION_TYPE,
+    STORY_BANDS,
+    WALL_CATEGORIES,
+    CalculationInputError,
+    calculate_average_shear_stress,
+    defaults_for_assessment,
+    is_shear_stress_item,
+)
 
 
 bp = Blueprint("main", __name__)
@@ -43,7 +56,12 @@ def status_label(status: str) -> str:
 
 @bp.app_context_processor
 def inject_helpers():
-    return {"status_label": status_label, "level_label": {"very_low": "Very Low", "low": "Low", "moderate": "Moderate", "high": "High"}.get, "getattr": getattr}
+    return {
+        "status_label": status_label,
+        "level_label": {"very_low": "Very Low", "low": "Low", "moderate": "Moderate", "high": "High"}.get,
+        "getattr": getattr,
+        "is_shear_stress_item": is_shear_stress_item,
+    }
 
 
 @bp.app_errorhandler(413)
@@ -222,6 +240,7 @@ def review_form(assessment_id: int, form_index: int, section_index: int):
             form_index=form_index, section_index=section_index, form_count=len(checklists),
             section_count=len(sections), responses=responses, progress=progress,
             evidence_by_item=evidence_by_item, photo_accept=PHOTO_ACCEPT,
+            shear_items=[item for item in section.items if is_shear_stress_item(item)],
             is_last_page=bool(sequence) and (form_index, section_index) == sequence[-1],
         )
 
@@ -255,6 +274,109 @@ def summary_view(assessment_id: int):
             return "Assessment not found", 404
         data = summary(catalog(), assessment)
         return render_template("summary.html", assessment=assessment, data=data)
+
+
+def calculation_inputs_from_form(form) -> dict:
+    levels = [
+        {
+            "level": form.get(f"level_number_{index}", ""),
+            "weight": form.get(f"level_weight_{index}", ""),
+            "height": form.get(f"level_height_{index}", ""),
+        }
+        for index in range(1, 9)
+    ]
+    walls = [
+        {
+            "name": form.get(f"wall_name_{index}", ""),
+            "length": form.get(f"wall_length_{index}", ""),
+            "thickness": form.get(f"wall_thickness_{index}", ""),
+        }
+        for index in range(1, 9)
+    ]
+    return {
+        "direction": form.get("direction", "X"),
+        "units": form.get("units", "ksf"),
+        "building_system": form.get("building_system", ""),
+        "story_band": form.get("story_band", ""),
+        "spectral_acceleration": form.get("spectral_acceleration", ""),
+        "seismic_weight": form.get("seismic_weight", ""),
+        "period": form.get("period", ""),
+        "use_six_story_simplification": form.get("use_six_story_simplification") == "on",
+        "levels": levels,
+        "story_level": form.get("story_level", ""),
+        "wall_category": form.get("wall_category", ""),
+        "performance": form.get("performance", ""),
+        "material": form.get("material", ""),
+        "walls": walls,
+        "notes": form.get("notes", ""),
+    }
+
+
+@bp.route("/assessments/<int:assessment_id>/calculations/shear-wall", methods=["GET", "POST"])
+def shear_wall_calculation(assessment_id: int):
+    """Open the guided §4.4.3.3 calculator in a separate browser window."""
+
+    with db_session() as session:
+        assessment = get_assessment(session, assessment_id)
+        if assessment is None:
+            return "Assessment not found", 404
+        item_id = request.form.get("item_id", "") if request.method == "POST" else request.args.get("item_id", "")
+        context = checklist_item_context(session, assessment, catalog(), item_id)
+        if context is None or not is_shear_stress_item(context["item"]):
+            abort(404)
+
+        defaults = defaults_for_assessment(assessment)
+        if request.method == "POST":
+            inputs = calculation_inputs_from_form(request.form)
+            display = {key: request.form.get(key, "") for key in (
+                "direction", "units", "building_system", "story_band", "spectral_acceleration",
+                "seismic_weight", "period", "story_level", "wall_category", "performance", "material", "notes",
+            )}
+            display["use_six_story_simplification"] = request.form.get("use_six_story_simplification") == "on"
+            result = None
+            error = None
+            if request.form.get("engineer_determination") not in {"C", "NC"}:
+                error = "Choose Compliant or Noncompliant for this calculation record."
+            else:
+                try:
+                    result = calculate_average_shear_stress(inputs)
+                except CalculationInputError as calculation_error:
+                    error = str(calculation_error)
+            if result is not None and error is None:
+                session.add(CalculationRecord(
+                    assessment=assessment,
+                    item_id=item_id,
+                    calculation_type=SHEAR_WALL_CALCULATION_TYPE,
+                    source_reference=result["source_reference"],
+                    inputs_json=json.dumps(inputs),
+                    result_json=json.dumps(result),
+                    engineer_determination=request.form["engineer_determination"],
+                    notes=str(inputs.get("notes", "")),
+                ))
+                session.commit()
+                return redirect(url_for("main.shear_wall_calculation", assessment_id=assessment_id, item_id=item_id, saved="1"))
+            level_rows = [
+                {"level": request.form.get(f"level_number_{index}", ""), "weight": request.form.get(f"level_weight_{index}", ""), "height": request.form.get(f"level_height_{index}", "")}
+                for index in range(1, 9)
+            ]
+            wall_rows = [
+                {"name": request.form.get(f"wall_name_{index}", ""), "length": request.form.get(f"wall_length_{index}", ""), "thickness": request.form.get(f"wall_thickness_{index}", "")}
+                for index in range(1, 9)
+            ]
+        else:
+            display = defaults
+            error = None
+            result = None
+            level_rows = [{"level": "1", "weight": "", "height": ""}, {"level": "2", "weight": "", "height": ""}] + [{"level": "", "weight": "", "height": ""} for _ in range(6)]
+            wall_rows = [{"name": "W1", "length": "", "thickness": ""}] + [{"name": "", "length": "", "thickness": ""} for _ in range(7)]
+        records = calculations_for_item(session, assessment.id, item_id)
+        return render_template(
+            "calculation.html", assessment=assessment, context=context, defaults=defaults, display=display,
+            level_rows=level_rows, wall_rows=wall_rows, result=result, error=error,
+            records=records, c_table=C_TABLE, story_bands=STORY_BANDS, wall_categories=WALL_CATEGORIES,
+            performance_levels=PERFORMANCE_LEVELS, materials=MATERIALS,
+            saved=request.args.get("saved") == "1",
+        )
 
 
 @bp.post("/assessments/<int:assessment_id>/notes")

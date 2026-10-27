@@ -4,6 +4,7 @@ import json
 from typing import Any
 
 from app.services.assessment import applicable_sections, get_catalog_form, summary
+from app.services.calculations import calculation_to_dict
 
 
 def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
@@ -93,4 +94,5 @@ def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
             }
             for record in assessment.drawing_interpretations
         ],
+        "calculations": [calculation_to_dict(record) for record in assessment.calculations],
     }

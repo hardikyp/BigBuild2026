@@ -83,6 +83,9 @@ def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> byte
     story.append(PageBreak())
     rollup = summary(catalog, assessment)
     counters = rollup["counters"]
+    calculations_by_item: dict[str, list] = {}
+    for calculation in assessment.calculations:
+        calculations_by_item.setdefault(calculation.item_id, []).append(calculation)
     story.append(Paragraph("Assessment summary", styles["SectionTitle"]))
     summary_rows = [["Total", "Reviewed", "Compliant", "Noncompliant", "Unknown", "N/A", "Incomplete"], [str(counters["total"]), str(counters["reviewed"]), str(counters["C"]), str(counters["NC"]), str(counters["U"]), str(counters["N/A"]), str(counters["incomplete"])]]
     story.append(Table(summary_rows, colWidths=[0.95 * inch] * 7, style=TableStyle([
@@ -99,6 +102,29 @@ def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> byte
     if assessment.reviewer_notes:
         story.append(Paragraph("Reviewer notes", styles["SectionTitle"]))
         story.append(Paragraph(pdf_text(assessment.reviewer_notes), styles["BodyText"]))
+    if assessment.calculations:
+        story.append(Paragraph("Guided calculation records", styles["SectionTitle"]))
+        for calculation in assessment.calculations:
+            result = calculation.result
+            determination = "Compliant" if calculation.engineer_determination == "C" else "Noncompliant" if calculation.engineer_determination == "NC" else "Not recorded"
+            calculation_rows = [
+                ["Checklist item", pdf_text(calculation.item_id)],
+                ["Source", pdf_text(calculation.source_reference)],
+                ["Engineer determination", pdf_text(determination)],
+                ["Average shear stress", pdf_text(f"{result.get('average_shear_stress', 0):,.4f} {result.get('result_units', '')}")],
+                ["Story shear Vj", pdf_text(f"{result.get('story_shear_Vj_kips', 0):,.3f} kips")],
+                ["Ms / Aw", pdf_text(f"{result.get('modifier_Ms', '')} / {result.get('effective_wall_measure_label', '')}")],
+            ]
+            story.append(Table(calculation_rows, colWidths=[1.7 * inch, 5.05 * inch], style=TableStyle([
+                ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#b6c7cd")),
+                ("BACKGROUND", (0, 0), (0, -1), colors.HexColor("#eef5f6")),
+                ("FONTNAME", (0, 0), (0, -1), "Helvetica-Bold"),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("FONTSIZE", (0, 0), (-1, -1), 8.5),
+            ])))
+            if calculation.notes:
+                story.append(Paragraph(pdf_text(f"Notes: {calculation.notes}"), styles["Small"]))
+            story.append(Spacer(1, 0.1 * inch))
     for form in sorted({row["form"]["form_id"]: row["form"] for row in rollup["rows"]}.values(), key=lambda item: item["form_id"]):
         story.append(PageBreak())
         story.append(Paragraph(pdf_text(form["title"]), styles["SectionTitle"]))
@@ -113,6 +139,12 @@ def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> byte
             body = f"<b>{pdf_text(status)} | {pdf_text(row['item']['statement'])}</b><br/>Tier 2: {pdf_text(row['item']['tier2_reference']) or '-'} &nbsp; Commentary: {pdf_text(row['item']['commentary_reference']) or '-'}"
             if response and response.comment:
                 body += f"<br/><b>Comment:</b> {pdf_text(response.comment)}"
+            if calculations_by_item.get(row["item"]["item_id"]):
+                for calculation in calculations_by_item[row["item"]["item_id"]]:
+                    result = calculation.result
+                    determination = calculation.engineer_determination or "-"
+                    stress_value = f"{result.get('average_shear_stress', 0):,.4f} {result.get('result_units', '')}"
+                    body += f"<br/><b>Guided shear calculation:</b> {pdf_text(determination)}; v_avg,j = {pdf_text(stress_value)}"
             if row["evidence"]:
                 body += "<br/><b>Evidence:</b> " + ", ".join(pdf_text(e.original_name) for e in row["evidence"])
             story.append(Paragraph(body, styles["Item"]))

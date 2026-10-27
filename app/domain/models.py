@@ -71,6 +71,9 @@ class Assessment(Base):
     drawing_interpretations: Mapped[list["DrawingInterpretation"]] = relationship(
         back_populates="assessment", cascade="all, delete-orphan", order_by="DrawingInterpretation.id"
     )
+    calculations: Mapped[list["CalculationRecord"]] = relationship(
+        back_populates="assessment", cascade="all, delete-orphan", order_by="CalculationRecord.created_at"
+    )
 
 
 class AssessmentChecklist(Base):
@@ -151,6 +154,33 @@ class DrawingInterpretation(Base):
     @property
     def kept(self) -> list[str]:
         return json.loads(self.kept_fields or "[]")
+
+
+class CalculationRecord(Base):
+    """An engineer-entered calculation supporting a checklist finding."""
+
+    __tablename__ = "calculation_records"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    assessment_id: Mapped[int] = mapped_column(ForeignKey("assessments.id"), index=True)
+    item_id: Mapped[str] = mapped_column(String(160), index=True)
+    calculation_type: Mapped[str] = mapped_column(String(100))
+    source_reference: Mapped[str] = mapped_column(Text, default="")
+    inputs_json: Mapped[str] = mapped_column(Text, default="{}")
+    result_json: Mapped[str] = mapped_column(Text, default="{}")
+    engineer_determination: Mapped[str] = mapped_column(String(10), default="")
+    notes: Mapped[str] = mapped_column(Text, default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    assessment: Mapped[Assessment] = relationship(back_populates="calculations")
+
+    @property
+    def inputs(self) -> dict[str, Any]:
+        return json.loads(self.inputs_json or "{}")
+
+    @property
+    def result(self) -> dict[str, Any]:
+        return json.loads(self.result_json or "{}")
 
 
 def model_to_dict(obj: Any, fields: list[str]) -> dict[str, Any]:
