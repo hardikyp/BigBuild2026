@@ -1,8 +1,6 @@
 """Site-photo interpretation for MORGAN (field capture, workstream 5).
 
-Python port of src/field-capture (prompt.ts and server/handler.ts) so the
-Streamlit app can call Claude directly. Keep SYSTEM_PROMPT, OUTPUT_SCHEMA and
-build_user_prompt in sync with src/field-capture/prompt.ts.
+Pure Python, so the Streamlit app can call Claude directly without Node.js.
 
 Advisory only: the suggested status is shown to the engineer, who decides.
 """
@@ -91,7 +89,7 @@ OUTPUT_SCHEMA = {
 
 
 class InterpretError(Exception):
-    """Raised when a photo can't be interpreted. `code` matches the TS module's error codes."""
+    """Raised when a photo can't be interpreted. `code` is a short machine-readable error code."""
 
     def __init__(self, message, code):
         super().__init__(message)
@@ -100,7 +98,7 @@ class InterpretError(Exception):
 
 def prepare_photo(data: bytes) -> bytes:
     """Applies EXIF orientation, resizes to MAX_EDGE_PX on the long edge, and
-    re-encodes as JPEG without metadata. Mirrors preparePhoto() in capture.ts."""
+    re-encodes as JPEG without metadata."""
     try:
         img = Image.open(io.BytesIO(data))
         img = ImageOps.exif_transpose(img)
