@@ -2,9 +2,13 @@
 
 ## Run
 ```bash
-python -m pip install streamlit pandas
+python -m pip install streamlit pandas anthropic pillow pytest
+export ANTHROPIC_API_KEY=sk-ant-...   # PowerShell: $env:ANTHROPIC_API_KEY="sk-ant-..."
 streamlit run asce41_tier1_app.py
+python -m pytest                      # field_capture tests
 ```
+
+Without `ANTHROPIC_API_KEY`, the app still runs and keeps photos, but photo interpretation is off. Set `ANTHROPIC_MODEL` to override the default model (`claude-sonnet-5-5`).
 
 ## What the prototype does
 - Captures project metadata, building type, seismicity, and performance objective.
@@ -12,6 +16,10 @@ streamlit run asce41_tier1_app.py
 - Records C / NC / N/A / Unknown plus basis, evidence, and follow-up.
 - Highlights unresolved items and exports CSV and JSON.
 - Accepts a verified checklist CSV so the licensed standard content is separated from application code.
+- Site photos per checklist item (camera or upload). Claude interprets each photo in the context of the building and item, and suggests an **advisory** status the engineer can apply with "Use this status". Photos export as a ZIP, and interpretations go into the CSV and JSON exports.
+
+## Field capture (`field_capture.py`)
+Python port of `src/field-capture` (the TypeScript module). It resizes photos to 1568 px JPEG, applies EXIF orientation and strips metadata, then asks Claude for a structured interpretation via a forced tool call. Keep `SYSTEM_PROMPT`, `OUTPUT_SCHEMA` and `build_user_prompt` in sync with `src/field-capture/prompt.ts`.
 
 ## Production backlog
 1. Populate and independently QA every Chapter 17 table against the licensed ASCE 41-17 PDF.

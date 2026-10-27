@@ -1,7 +1,8 @@
-import io, json, uuid
+import io, json, os, uuid, zipfile
 from datetime import datetime
 import pandas as pd
 import streamlit as st
+import field_capture as fc
 
 st.set_page_config(page_title='MORGAN | ASCE 41 Tier 1 Navigator', page_icon='🏗️', layout='wide')
 
@@ -25,12 +26,62 @@ STARTER = [
  {'id':'BC-03','checklist':'Basic Configuration','building_types':'ALL','performance':'CP,LS','seismicity':'Low,Moderate,High','section':'Building System - General','topic':'Mezzanines','statement':'Verify interior mezzanine levels are independently braced or properly anchored to the lateral-force-resisting system.','tier2_ref':'5.4.1.3','commentary_ref':'A.2.1.3'},
 ]
 COLS=['id','checklist','building_types','performance','seismicity','section','topic','statement','tier2_ref','commentary_ref']
+STATUS_LABELS={'C':'Compliant','NC':'Noncompliant','N/A':'Not applicable','U':'Unknown'}
 
 def init():
     st.session_state.setdefault('responses', {})
     st.session_state.setdefault('checklist', pd.DataFrame(STARTER)[COLS])
     st.session_state.setdefault('project_id', str(uuid.uuid4())[:8])
+    st.session_state.setdefault('photos', {})  # item id -> {name, takenAt, jpeg, location, note, interpretation}
 init()
+
+# Site photo + AI interpretation (field capture). Advisory only: the engineer applies a status explicitly.
+def use_status(key, status): st.session_state['s_'+key]=STATUS_LABELS[status]
+def add_to_basis(key, text):
+    cur=st.session_state.get('b_'+key,'')
+    st.session_state['b_'+key]=(cur+'\n\n' if cur else '')+text
+
+def photo_panel(r):
+    key=r.id
+    saved=st.session_state.photos.get(key)
+    with st.expander('Site photo' + (' ✓' if saved else ''), expanded=False):
+        # Camera only on request: collapsed expanders still render, and camera_input asks for permission on render.
+        shot=st.camera_input('Take photo',key='cam_'+key) if st.toggle('Use camera',key='camon_'+key) else None
+        picked=st.file_uploader('…or upload a photo',type=['jpg','jpeg','png','webp'],key='up_'+key)
+        loc=st.text_input('Location in building (e.g. Level 2, grid C/4)',key='loc_'+key)
+        note=st.text_input('Note for the interpretation (optional)',key='note_'+key)
+        src=shot or picked
+        if src and st.button('Interpret photo',key='go_'+key,type='primary'):
+            try:
+                jpeg=fc.prepare_photo(src.getvalue())
+                ctx={'building_type':btype,'performance_level':perf,'seismicity':seismicity,'location_in_building':loc,'user_note':note,
+                     'checklist_item':{'id':r.id,'title':r.topic,'text':r.statement}}
+                # Keep the photo even if interpretation fails.
+                saved=st.session_state.photos[key]={'name':f'{key}_{datetime.now():%Y%m%d-%H%M%S}.jpg','takenAt':datetime.now().isoformat(),
+                                                   'jpeg':jpeg,'location':loc,'note':note,'interpretation':None}
+                with st.spinner('Interpreting photo…'): saved['interpretation']=fc.interpret_photo(jpeg,ctx)
+            except fc.InterpretError as e:
+                st.error(f'Could not interpret photo ({e.code}): {e}')
+        if not saved: return
+        st.image(saved['jpeg'],caption=saved['name'],width='stretch')
+        res=saved['interpretation']
+        if not res: return
+        st.markdown(f"**Summary:** {res['summary']}")
+        if res['suggestedStatus']:
+            label=STATUS_LABELS[res['suggestedStatus']]
+            st.info(f"**Suggested status: {label}** (advisory)" + (f"\n\n{res['statusRationale']}" if res['statusRationale'] else ''))
+            st.button(f'Use this status ({label})',key='use_'+key,on_click=use_status,args=(key,res['suggestedStatus']))
+        if res['observations']:
+            st.markdown('**Observations**\n'+'\n'.join(f"- *{o.get('severity','info')}*: {o.get('description','')}" for o in res['observations']))
+        if res['possibleDeficiencies']:
+            st.markdown('**Possible deficiencies**\n'+'\n'.join(f"- {d.get('description','')} (confidence: {d.get('confidence','low')})" for d in res['possibleDeficiencies']))
+        if res['followUp']:
+            st.markdown('**Follow-up**\n'+'\n'.join(f'- {f}' for f in res['followUp']))
+        if not res['imageQuality']['usable'] or res['imageQuality']['issues']:
+            st.warning('Image quality: '+('; '.join(res['imageQuality']['issues']) or 'not usable'))
+        field_note=f"Photo {saved['name']}: {res['summary']}"+''.join(f"\n- {o.get('description','')}" for o in res['observations'])
+        st.button('Add interpretation to basis',key='addb_'+key,on_click=add_to_basis,args=(key,field_note))
+        st.caption(f"Interpreted by {res['model']} at {res['createdAt']}. The engineer makes every determination.")
 
 st.title('MORGAN')
 st.caption('Mapped Objective Review & Guided Assessment Navigator | ASCE 41 Tier 1 workflow prototype')
@@ -55,6 +106,8 @@ with st.sidebar:
         missing=set(COLS)-set(df.columns)
         if missing: st.error('Missing columns: '+', '.join(sorted(missing)))
         else: st.session_state.checklist=df[COLS].fillna(''); st.success(f'Loaded {len(df)} statements')
+    if not os.environ.get('ANTHROPIC_API_KEY'):
+        st.caption('Photo interpretation is off: set ANTHROPIC_API_KEY before starting the app. Photos are still saved.')
 
 # Applicability engine
 df=st.session_state.checklist.copy()
@@ -98,6 +151,7 @@ with review:
                 st.markdown(f'**Tier 2:** {r.tier2_ref}')
                 st.markdown(f'**Commentary:** {r.commentary_ref}')
                 evidence=st.text_input('Evidence link / filename',old.get('evidence',''),key='e_'+key)
+            photo_panel(r)
             st.session_state.responses[key]={'status':status,'basis':basis,'action':action,'evidence':evidence}
             done += status!='Not reviewed'
     st.progress(done/max(len(rows),1),text=f'{done} of {len(rows)} reviewed in this section')
@@ -106,7 +160,9 @@ with summary:
     records=[]
     for _,r in app.iterrows():
         x=st.session_state.responses.get(r.id,{'status':'Not reviewed','basis':'','action':'','evidence':''})
-        records.append({**r.to_dict(),**x})
+        p=st.session_state.photos.get(r.id) or {}
+        interp=p.get('interpretation') or {}
+        records.append({**r.to_dict(),**x,'photo':p.get('name',''),'photo_suggested_status':interp.get('suggestedStatus') or '','photo_summary':interp.get('summary','')})
     out=pd.DataFrame(records)
     counts=out.status.value_counts() if not out.empty else pd.Series(dtype=int)
     cols=st.columns(5)
@@ -116,7 +172,13 @@ with summary:
         st.dataframe(out[out.status.isin(['Noncompliant','Unknown','Not reviewed'])][['id','section','topic','status','tier2_ref','action']],use_container_width=True,hide_index=True)
         metadata={'project':project,'address':address,'evaluator':evaluator,'edition':code_edition,'objective':objective,'seismicity':seismicity,'building_type':btype,'stories':stories,'area_ft2':area,'project_id':st.session_state.project_id,'exported':datetime.now().isoformat()}
         st.download_button('Download findings CSV',out.to_csv(index=False).encode(),'tier1_findings.csv','text/csv')
-        st.download_button('Download project JSON',json.dumps({'metadata':metadata,'responses':records},indent=2).encode(),'tier1_project.json','application/json')
+        photos={k:{f:v for f,v in p.items() if f!='jpeg'} for k,p in st.session_state.photos.items()}
+        st.download_button('Download project JSON',json.dumps({'metadata':metadata,'responses':records,'photos':photos},indent=2).encode(),'tier1_project.json','application/json')
+        if st.session_state.photos:
+            buf=io.BytesIO()
+            with zipfile.ZipFile(buf,'w') as z:
+                for p in st.session_state.photos.values(): z.writestr(p['name'],p['jpeg'])
+            st.download_button('Download site photos (ZIP)',buf.getvalue(),'tier1_photos.zip','application/zip')
 
 with data:
     st.subheader('Checklist data model')
