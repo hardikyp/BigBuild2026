@@ -75,6 +75,8 @@ def test_intake_includes_open_map_site_picker(client):
     assert b'id="site-map"' in page.data
     assert b'id="find-address"' in page.data
     assert b"leaflet@1.9.4" in page.data
+    assert b"sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" in page.data
+    assert b"sha256-p4NxAoJBhIINfQ3w3R5b1K1Q4Q5h6sX0y5v4w5l4kM=" not in page.data
     assert b"site-map.js" in page.data
 
 
