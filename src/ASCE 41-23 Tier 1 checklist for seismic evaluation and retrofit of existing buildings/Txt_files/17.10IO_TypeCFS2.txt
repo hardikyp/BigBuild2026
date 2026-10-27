@@ -1,0 +1,121 @@
+17.10IO Structural Checklist for Building Type CFS2: Cold-formed Steel Lightframe
+Bearing Wall Construction, Strap-Braced Lateral Wall System
+Table 17-21. Immediate Occupancy Structural Checklist for Building Type CFS2.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Very Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+strap-braced walls in each principal
+direction is greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U STRAP-BRACED WALLS—BRACE AXIAL
+STRESS CHECK: The axial stress in the
+diagonal straps, calculated using the
+Quick Check procedure of Section
+4.4.3.4 is less than 0.50Fy.
+5.5.4.1 A.3.3.1.2
+C NC N/A U STRAP-BRACED WALLS—CHORD STUD
+AXIAL CHECK: The axial force caused by
+overturning plus the gravity load on the
+end stud is less than the nominal
+strength of the end stud calculated in
+accordance with AISI S100.
+5.5.4.9.5 A.3.3.2.9
+C NC N/A U NARROW STRAP-BRACED WALLS:
+Narrow strap-braced walls with an
+aspect ratio greater than 2-to-1 are not
+used to resist seismic forces.
+5.5.4.9.1 A.3.3.2.5
+C NC N/A U WALLS CONNECTED THROUGH FLOORS:
+Strap-braced walls have an
+interconnection between stories to
+transfer overturning and shear forces
+through the floor.
+5.5.4.9.2 A.3.3.2.6
+C NC N/A U HILLSIDE SITE: For structures that are
+taller on at least one side by more than
+one-half story because of a sloping site,
+all strap-braced walls on the downhill
+slope have an aspect ratio less than 1-
+to-2.
+5.5.4.9.3 A.3.3.2.7
+Connections
+C NC N/A U POSTS: There is a positive connection of
+posts to the foundation. 5.7.3.3 A.5.3.3
+C NC N/A U SILLS (BASE TRACK): All sills or base
+tracks are bolted to the foundation. 5.7.3.3 A.5.3.4
+C NC N/A U GIRDER–COLUMN CONNECTION: There
+is a positive connection using plates,
+connection hardware, or straps between
+the girder and the column support.
+5.7.4.1 A.5.4.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low, Moderate, and High Seismicity (Complete the Following Items in Addition to the Items for Very Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U HOLD-DOWN ANCHORS: All strapbraced
+walls have hold-down anchors
+attached to the end studs, constructed
+in accordance with acceptable
+construction practices.
+5.5.3.6.6 A.3.3.2.8
+Diaphragms
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have expansion
+joints or vertical offsets, such as split
+levels, sawtooth, or clerestory
+configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U ROOF CHORD CONTINUITY: All chord
+elements are continuous, regardless of
+changes in roof elevation.
+5.6.1.1 A.4.1.3
+C NC N/A U PLAN IRREGULARITIES: There is tensile
+capacity to develop the strength of the
+diaphragm at reentrant corners or other
+locations of plan irregularities.
+5.6.1.4 A.4.1.7
+C NC N/A U DIAPHRAGM REINFORCEMENT AT
+OPENINGS: There is reinforcing around
+all diaphragm openings larger than 50%
+of the building width in either major
+plan dimension.
+5.6.1.5 A.4.1.8
+C NC N/A U SPANS: All diaphragms with spans
+greater than 12 ft (3.6 m) consist of
+wood structural panels.
+5.6.2 A.4.2.2
+C NC N/A U UNBLOCKED DIAPHRAGMS: All
+unblocked wood structural panel
+diaphragms have horizontal spans less
+than 30 ft (9.1 m) and aspect ratios less
+than or equal to 3-to-1.
+5.6.2 A.4.2.2
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms do
+not consist of a system other than
+wood, steel deck, concrete, or horizontal
+bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U SILL (BASE TRACK) BOLTS: Sill or base
+track bolts are spaced at 4 ft (1.2 m) or
+less, with acceptable edge and end
+distance provided for steel and
+concrete.
+5.7.3.3 A.5.3.7
+C NC N/A U STRAP-BRACE CONNECTIONS: Strap
+connections develop the yield capacity
+of the straps.
+5.5.4.4 A.3.3.1.5
+C NC N/A U STRAP-BRACE DETAILING: Strap braces
+are tight to the stud and attached to the
+intermediate studs in accordance with
+the requirements of AISI S400.
+5.5.4.9.6 A.3.3.2.10

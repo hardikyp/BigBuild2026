@@ -1,0 +1,206 @@
+17.13IO Structural Checklist for Building Types C3: Concrete Frames with Infill
+Masonry Shear Walls and C3a: Concrete Frames with Infill Masonry Shear Walls
+and Flexible Diaphragms
+Table 17-27. Immediate Occupancy Structural Checklists for Building Types C3 and C3a.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Very Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction is
+greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress
+in the reinforced masonry shear walls,
+calculated using the Quick Check
+procedure of Section 4.4.3.3 is less than
+70 lb/in.2 (0.48 MPa).
+5.5.3.1.1 A.3.2.4.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress
+in the unreinforced masonry shear walls,
+calculated using the Quick Check
+procedure of Section 4.4.3.3 is less than
+30 lb/in.2 (0.21 MPa) for clay units and 70
+lb/in.2 (0.48 MPa) for concrete units. Bays
+with openings greater than 25% of the
+wall area shall not be included in Aw of
+Equation (4-8).
+5.5.3.1.1 A.3.2.5.1
+C NC N/A U INFILL WALL CONNECTIONS: Masonry is
+in full contact with frame.
+5.5.3.5.1
+5.5.3.5.3
+A.3.2.6.1
+Connections
+C NC N/A U TRANSFER TO SHEAR WALLS:
+Diaphragms are connected for transfer
+of loads to the shear walls, and the
+connections are able to develop the
+lesser of the shear strength of the walls
+or diaphragms.
+5.7.2 A.5.2.1
+C NC N/A U CONCRETE COLUMNS: All concrete
+columns are doweled into the
+foundation with a minimum of four bars,
+and the dowels are able to develop the
+tensile capacity of reinforcement in
+columns of the seismic-force-resisting
+system.
+5.7.3.1 A.5.3.2
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity (Complete the Following Items in Addition to the Items for Very Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U DEFLECTION COMPATIBILITY: Secondary
+components have the shear capacity to
+develop the flexural strength of the
+components and are Compliant with the
+following items in Table 17-23:
+COLUMN-BAR SPLICES, BEAM-BAR
+SPLICES, COLUMN-TIE SPACING, STIRRUP
+SPACING, and STIRRUP AND TIE HOOKS.
+5.5.2.5.2 A.3.1.6.2
+C NC N/A U FLAT SLABS: Flat slabs or plates not part
+of the seismic-force-resisting system
+have continuous bottom steel through
+the column joints.
+5.5.2.5.3 A.3.1.6.3
+C NC N/A U REINFORCING AT WALL OPENINGS: All
+wall openings that interrupt rebar have
+trim reinforcing on all sides.
+5.5.3.1.5 A.3.2.4.3
+C NC N/A U PROPORTIONS: The height-to-thickness
+ratio of the unreinforced infill walls at
+each story is less than 13.
+5.5.3.1.2 A.3.2.6.2
+C NC N/A U CAVITY WALLS: The infill walls are not of
+cavity construction.
+5.5.3.5.2 A.3.2.6.3
+C NC N/A U INFILL WALLS: The infill walls are
+continuous to the soffits of the frame
+beams and to the columns to either side.
+5.5.3.5.3 A.3.2.6.4
+Diaphragms (Stiff or Flexible)
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have expansion
+joints or vertical offsets, such as split
+levels, sawtooth, or clerestory
+configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U OPENINGS AT SHEAR WALLS: Diaphragm
+openings immediately adjacent to the
+shear walls are less than 15% of the wall
+length.
+5.6.1.3 A.4.1.4
+C NC N/A U OPENINGS AT EXTERIOR MASONRY
+SHEAR WALLS: Diaphragm openings
+immediately adjacent to exterior
+masonry shear walls are not greater than
+4 ft (1.2 m) long.
+5.6.1.3 A.4.1.6
+C NC N/A U PLAN IRREGULARITIES: There is tensile
+capacity to develop the strength of the
+diaphragm at reentrant corners or other
+locations of plan irregularities.
+5.6.1.4 A.4.1.7
+C NC N/A U DIAPHRAGM REINFORCEMENT AT
+OPENINGS: There is reinforcing around
+all diaphragm openings larger than 50%
+of the building width in either major
+plan dimension.
+5.6.1.5 A.4.1.8
+Flexible Diaphragms
+C NC N/A U CROSSTIES: There are continuous
+crossties between diaphragm chords.
+5.6.1.2 A.4.1.2
+C NC N/A U STRAIGHT SHEATHING: All straightsheathed
+diaphragms have horizontal
+spans less than 12 ft (3.6 m) and aspect
+ratios less than 1-to-1 in the direction
+being considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All
+diagonally sheathed or unblocked wood
+structural panel diaphragms have
+horizontal spans less than 30 ft (9.1 m)
+and aspect ratios less than or equal to 3-
+to-1.
+5.6.2 A.4.2.2
+C NC N/A U BLOCKED DIAPHRAGMS: All blocked
+wood structural panel diaphragms have
+horizontal spans less than 90 ft (27.4 m)
+and have aspect ratios less than or equal
+to 4-to-1.
+5.6.2 A.4.2.3
+C NC N/A U CANTILEVERED WOOD DIAPHRAGMS: All
+cantilevered wood diaphragms that
+provide lateral support for concrete or
+masonry walls consist of wood structural
+panels and have a maximum cantilever
+length of 15 ft (4.6 m) if unblocked or 25
+ft (7.6 m) if blocked, and a maximum
+ratio of cantilever length to diaphragm
+width of 1:2.5 if unblocked and 1:1.5 if
+blocked. In addition, the cantilevered
+diaphragm has a back-span length equal
+to or greater than the cantilevered
+portion.
+5.6.2 A.4.2.4
+C NC N/A U NON-CONCRETE-FILLED DIAPHRAGMS:
+Bare steel deck diaphragms or steel deck
+diaphragms with fill other than
+reinforced concrete consist of horizontal
+spans of less than 40 ft (12.2 m) and have
+aspect ratios less than 4-to-1.
+5.6.3 A.4.3.1
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms do
+not consist of a system other than wood,
+steel deck, concrete, or horizontal
+bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U UPLIFT AT PILE CAPS: Pile caps have top
+reinforcement, and piles are anchored to
+the pile caps; the pile cap reinforcement
+and pile anchorage are able to develop
+the tensile capacity of the piles.
+5.7.3.5 A.5.3.8
+C NC N/A U STIFFNESS OF WALL ANCHORS: Anchors
+of concrete or masonry walls to wood
+structural elements are installed taut and
+are stiff enough to limit the relative
+movement between the wall and the
+diaphragm to no greater than 1/8 in. (3.1
+mm) before engagement of the anchors.
+5.7.1.2 A.5.1.4
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate Seismicity (Complete the Following Items in Addition to the Items for Very Low and Low Seismicity)
+Foundation System
+C NC N/A U OVERTURNING: The ratio of the least
+horizontal dimension of the seismicforce-
+resisting system at the foundation
+level to the building height
+(base/height) is greater than 0.6Sa.
+5.4.3.3 A.6.2.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U PROPORTIONS: The height-to-thickness
+ratio of the unreinforced infill walls at
+each story is less than 8.
+5.5.3.1.2 A.3.2.6.2

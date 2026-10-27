@@ -1,0 +1,135 @@
+17.6IO Structural Checklist for Building Type S3: Metal Building Frames
+Table 17-13. Immediate Occupancy Checklist for Building Type S3.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Very Low and Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U BRACE AXIAL STRESS CHECK: The
+axial stress in the diagonals,
+calculated using the Quick Check
+procedure of Section 4.4.3.4 is less
+than 0.50Fy.
+5.5.4.1 A.3.3.1.2
+C NC N/A U FLEXURAL STRESS CHECK: The
+average flexural stress in the
+moment-frame columns and beams,
+calculated using the Quick Check
+procedure of Section 4.4.3.9 is less
+than Fy.
+5.5.2.2.2 A.3.1.3.3
+Connections
+C NC N/A U TRANSFER TO STEEL FRAMES:
+Diaphragms are connected for
+transfer of seismic forces to the steel
+moment frames.
+5.7.2 A.5.2.2
+C NC N/A U STEEL COLUMNS: The columns in
+seismic-force-resisting frames are
+anchored to the building foundation
+with a minimum of two anchor rods
+and with the base plates bearing on
+concrete or a grout pad. The anchor
+rods are capable of resisting the
+overturning force using the Quick
+Check procedure of Section 4.4.3.6.
+5.7.3.1 A.5.3.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate Seismicity (Complete the Following Items in Addition to the Items for Very Low and Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U MOMENT-RESISTING CONNECTIONS:
+All moment connections are able to
+develop the elastic moment (FyS) of
+the adjoining members.
+5.5.2.2.1 A.3.1.3.4
+Diaphragms
+C NC N/A U PLAN IRREGULARITIES: There is
+tensile capacity to develop the
+strength of the diaphragm at
+reentrant corners or other locations
+of plan irregularities.
+5.6.1.4 A.4.1.7
+C NC N/A U DIAPHRAGM REINFORCEMENT AT
+OPENINGS: There is reinforcing
+around all diaphragm openings
+larger than 50% of the building
+width in either major plan
+dimension.
+5.6.1.5 A.4.1.8
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms
+do not consist of a system other
+than wood, steel deck, concrete, or
+horizontal bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U ROOF PANELS: Where considered as
+diaphragm elements for lateral
+resistance, metal, plastic, or
+cementitious roof panels are
+positively attached to the roof
+framing to resist seismic forces.
+5.7.5 A.5.5.1
+C NC N/A U WALL PANELS: Where considered as
+shear elements for lateral resistance,
+metal, fiberglass, or cementitious
+wall panels are positively attached
+to the framing and foundation to
+resist seismic forces.
+5.7.5 A.5.5.2
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U MOMENT-RESISTING CONNECTIONS:
+All moment connections are able to
+develop the strength of the
+adjoining members or panel zones.
+5.5.2.2.1 A.3.1.3.4
+C NC N/A U COMPACT MEMBERS: All frame
+elements meet compact section
+requirements in accordance with
+AISC 360, Table B4.1a.
+5.5.2.2.5 A.3.1.3.8
+C NC N/A U BEAM PENETRATIONS: All openings
+in frame-beam webs are less than
+one-quarter of the beam depth and
+are located in the center half of the
+beams.
+5.5.2.2.6 A.3.1.3.9
+C NC N/A U OUT-OF-PLANE BRACING: Beam–
+column joints are braced out of
+plane.
+5.5.2.2.8 A.3.1.3.11
+C NC N/A U BOTTOM FLANGE BRACING: The
+bottom flanges of beams are braced
+out of plane.
+5.5.2.2.9 A.3.1.3.12
+Connections
+C NC N/A U TRANSFER TO STEEL FRAMES:
+Diaphragms are connected for
+transfer of seismic forces to the steel
+moment frames, and the
+connections are able to develop the
+lesser of the strength of the frames
+or the diaphragms.
+5.7.2 A.5.2.2
+C NC N/A U STEEL COLUMNS: The columns in
+seismic-force-resisting frames are
+anchored to the building
+foundation, and the anchorage is
+able to develop the least of the
+following: the tensile capacity of the
+column, the tensile capacity of the
+lowest-level column splice (if any),
+or the uplift capacity of the
+foundation.
+5.7.3.1 A.5.3.1

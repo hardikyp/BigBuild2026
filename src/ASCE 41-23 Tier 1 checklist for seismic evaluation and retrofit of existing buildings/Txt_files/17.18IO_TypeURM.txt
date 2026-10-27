@@ -1,0 +1,185 @@
+17.18IO Structural Checklist for Building Types URM: Unreinforced Masonry
+Bearing Walls with Flexible Diaphragms and URMa: Unreinforced Masonry
+Bearing Walls with Stiff Diaphragms
+Table 17-37. Immediate Occupancy Structural Checklist for Building Types URM and URMa.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Very Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction
+is greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear
+stress in the unreinforced masonry
+shear walls, calculated using the Quick
+Check procedure of Section 4.4.3.3, is
+less than 30 lb/in.2 (0.21 MPa) for clay
+units and 70 lb/in.2 (0.48 MPa) for
+concrete units.
+5.5.3.1.1 A.3.2.5.1
+Connections
+C NC N/A U WALL ANCHORAGE: Exterior concrete
+or masonry walls that are dependent
+on the diaphragm for lateral support
+are anchored for out-of-plane forces
+at each diaphragm level with steel
+anchors, reinforcing dowels, or straps
+that are developed into the
+diaphragm. Connections have
+strength to resist the connection force
+calculated in the Quick Check
+procedure of Section 4.4.3.7.
+5.7.1.1 A.5.1.1
+C NC N/A U WOOD LEDGERS: The connection
+between the wall panels and the
+diaphragm does not induce crossgrain
+bending or tension in the wood
+ledgers or top plates fastened to the
+walls.
+5.7.1.3 A.5.1.2
+C NC N/A U TRANSFER TO SHEAR WALLS:
+Diaphragms are connected for
+transfer of seismic forces to the shear
+walls, and the connections are able to
+develop the lesser of the shear
+strength of the walls or diaphragms.
+5.7.2 A.5.2.1
+C NC N/A U GIRDER–COLUMN CONNECTION:
+There is a positive connection using
+plates, connection hardware, or straps
+between the girder and the column
+support.
+5.7.4.1 A.5.4.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low, Moderate, and High Seismicity (Complete the Following Items in Addition to the Items for Very Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U PROPORTIONS: The height-tothickness
+ratio of the shear walls at
+each story is less than the following:
+5.5.3.1.2 A.3.2.5.2
+Top story of multistory building, 9;
+First story of multistory building, 15;
+and
+All other conditions, 13.
+C NC N/A U MASONRY LAYUP: Filled collar joints of
+multiwythe masonry walls have
+negligible voids.
+5.5.3.4.1 A.3.2.5.3
+Diaphragms (Stiff or Flexible)
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have
+expansion joints or vertical offsets,
+such as split levels, sawtooth, or
+clerestory configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U ROOF CHORD CONTINUITY: All chord
+elements are continuous, regardless of
+changes in roof elevation.
+5.6.1.1 A.4.1.3
+C NC N/A U OPENINGS AT SHEAR WALLS:
+Diaphragm openings immediately
+adjacent to the shear walls are less
+than 15% of the wall length.
+5.6.1.3 A.4.1.4
+C NC N/A U OPENINGS AT EXTERIOR MASONRY
+SHEAR WALLS: Diaphragm openings
+immediately adjacent to exterior
+masonry shear walls are not greater
+than 4 ft (1.2 m) long.
+5.6.1.3 A.4.1.6
+C NC N/A U PLAN IRREGULARITIES: There is tensile
+capacity to develop the strength of
+the diaphragm at reentrant corners or
+other locations of plan irregularities.
+5.6.1.4 A.4.1.7
+C NC N/A U DIAPHRAGM REINFORCEMENT AT
+OPENINGS: There is reinforcing around
+all diaphragm openings larger than
+50% of the building width in either
+major plan dimension.
+5.6.1.5 A.4.1.8
+Flexible Diaphragms
+C NC N/A U CROSSTIES: There are continuous
+crossties between diaphragm chords
+to distribute the out-of-plane wall
+anchorage forces into the diaphragm.
+Where each out-of-plane connection
+does not have a continuous crosstie
+across the entire diaphragm, these
+connections are developed into
+subdiaphragms between crossties
+with a maximum length-to-width ratio
+of 3-to-1.
+5.6.1.2 A.4.1.2
+C NC N/A U STRAIGHT SHEATHING: All straightsheathed
+diaphragms have horizontal
+spans less than 12 ft (3.6 m) and
+aspect ratios less than 1-to-1 in the
+direction being considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All
+diagonally sheathed or unblocked
+wood structural panel diaphragms
+have horizontal spans less than 30 ft
+(9.1 m) and aspect ratios less than or
+equal to 3-to-1.
+5.6.2 A.4.2.2
+C NC N/A U BLOCKED DIAPHRAGMS: All blocked
+wood structural panel diaphragms
+have horizontal spans less than 90 ft
+(27.4 m) and have aspect ratios less
+than or equal to 4-to-1.
+5.6.2 A.4.2.3
+C NC N/A U CANTILEVERED WOOD DIAPHRAGMS:
+All cantilevered wood diaphragms
+that provide lateral support for
+concrete or masonry walls consist of
+wood structural panels and have a
+maximum cantilever length of 15 ft
+(4.6 m) if unblocked or 25 ft (7.6 m) if
+blocked, and a maximum ratio of
+cantilever length to diaphragm width
+of 1:2.5 if unblocked and 1:1.5 if
+blocked. In addition, the cantilevered
+diaphragm has a back-span length
+equal to or greater than the
+cantilevered portion.
+5.6.2 A.4.2.4
+C NC N/A U NON-CONCRETE-FILLED
+DIAPHRAGMS: Bare steel deck
+diaphragms or steel deck diaphragms
+with fill other than reinforced concrete
+consist of horizontal spans of less than
+40 ft (12.2 m) and have aspect ratios
+less than 4-to-1.
+5.6.3 A.4.3.1
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms do
+not consist of a system other than
+wood, steel deck, concrete, or
+horizontal bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U STIFFNESS OF WALL ANCHORS:
+Anchors of concrete or masonry walls
+to wood structural elements are
+installed taut and are stiff enough to
+limit the relative movement between
+the wall and the diaphragm to no
+greater than 1/8 in. (3.1 mm) before
+engagement of the anchors.
+5.7.1.2 A.5.1.4
+C NC N/A U BEAM, GIRDER, AND TRUSS SUPPORTS:
+Beams, girders, and trusses supported
+by unreinforced masonry walls or
+pilasters have independent secondary
+columns for support of vertical loads.
+5.7.4.4 A.5.4.5

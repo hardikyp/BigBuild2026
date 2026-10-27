@@ -1,0 +1,211 @@
+17.14IO Structural Checklist for Building Types PC1: Precast or Tilt-Up Concrete
+Shear Walls with Flexible Diaphragms and PC1a: Precast or Tilt-Up Concrete Shear
+Walls with Stiff Diaphragms
+Table 17-29. Immediate Occupancy Structural Checklist for Building Types PC1 and PC1a.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Very Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction is
+greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U WALL SHEAR STRESS CHECK: The shear
+stress in the precast panels, calculated
+using the Quick Check procedure of
+Section 4.4.3.3 is less than the greater of
+100 lb/in.2 (0.69 MPa) or 2 c f 
+.
+5.5.3.1.1 A.3.2.3.1
+C NC N/A U REINFORCING STEEL: The ratio of
+reinforcing steel area to gross concrete
+area is not less than 0.0012 in the vertical
+direction and 0.0020 in the horizontal
+direction. The spacing of reinforcing steel
+is equal to or less than 18 in. (457 mm).
+5.5.3.1.3 A.3.2.3.2
+Diaphragms (Stiff or Flexible)
+C NC N/A U TOPPING SLAB: Precast concrete
+diaphragm elements are interconnected
+by a continuous reinforced concrete
+topping slab with a minimum thickness of
+2 in. (50.8 mm).
+5.6.4 A.4.5.1
+Connections
+C NC N/A U WALL ANCHORAGE: Exterior concrete or
+masonry walls that are dependent on the
+diaphragm for lateral support are
+anchored for out-of-plane forces at each
+diaphragm level with steel anchors,
+reinforcing dowels, or straps that are
+developed into the diaphragm.
+Connections have strength to resist the
+connection force calculated in the Quick
+Check procedure of Section 4.4.3.7.
+5.7.1.1 A.5.1.1
+C NC N/A U WOOD LEDGERS: The connection
+between the wall panels and the
+diaphragm does not induce cross-grain
+bending or tension in the wood ledgers or
+top plates fastened to the walls.
+5.7.1.4 A.5.1.2
+C NC N/A U TRANSFER TO SHEAR WALLS: Diaphragms
+are connected for transfer of seismic
+forces to the shear walls, and the
+connections are able to develop the lesser
+of the shear strength of the walls or
+diaphragms.
+5.7.2 A.5.2.1
+C NC N/A U TOPPING SLAB TO WALLS OR FRAMES:
+Reinforced concrete topping slabs that
+interconnect the precast concrete
+diaphragm elements are doweled for
+transfer of forces into the shear wall or
+frame elements, and the dowels are able
+to develop the least of the shear strength
+of the walls, frames, or slabs.
+5.7.2 A.5.2.3
+C NC N/A U GIRDER–COLUMN CONNECTION: There is
+a positive connection using plates,
+connection hardware, or straps between
+the girder and the column support.
+5.7.4.1 A.5.4.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity (Complete the Following Items in Addition to the Items for Very Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U DEFLECTION COMPATIBILITY FOR RIGID
+DIAPHRAGMS: Secondary components
+have the shear capacity to develop the
+flexural strength of the components.
+5.5.2.5.2 A.3.1.6.2
+C NC N/A U WALL OPENINGS: The total combined
+width of openings and wall piers with
+aspect ratios greater than 2-to-1 along
+any perimeter wall line constitutes less
+than 50% of the total length of any
+perimeter wall.
+5.5.3.3.1 A.3.2.3.3
+C NC N/A U PANEL-TO-PANEL CONNECTIONS:
+Adjacent wall panels are interconnected
+to transfer overturning forces between
+panels by methods other than welded
+steel inserts.
+5.5.3.3.3 A.3.2.3.4
+C NC N/A U WALL THICKNESS: Thicknesses of bearing
+walls are not less than 1/25 the
+unsupported height or length, whichever
+is shorter, nor less than 4 in. (101.6 mm).
+5.5.3.1.2 A.3.2.3.5
+Diaphragms
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and roof
+diaphragms do not have expansion joints
+or vertical offsets, such as split levels,
+sawtooth, or clerestory configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U ROOF CHORD CONTINUITY: All chord
+elements are continuous, regardless of
+changes in roof elevation.
+5.6.1.1 A.4.1.3
+C NC N/A U CROSSTIES FOR FLEXIBLE DIAPHRAGMS:
+There are continuous crossties between
+diaphragm chords to distribute the outof-
+plane wall anchorage forces into the
+diaphragm. Where each out-of-plane
+connection does not have a continuous
+crosstie across the entire diaphragm,
+these connections are developed into
+subdiaphragms between crossties with a
+maximum length-to-width ratio of 3-to-1.
+5.6.1.2 A.4.1.2
+C NC N/A U PLAN IRREGULARITIES: There is tensile
+capacity to develop the strength of the
+diaphragm at reentrant corners or other
+locations of plan irregularities.
+5.6.1.4 A.4.1.7
+C NC N/A U DIAPHRAGM REINFORCEMENT AT
+OPENINGS: There is reinforcing around all
+diaphragm openings larger than 50% of
+the building width in either major plan
+dimension.
+5.6.1.5 A.4.1.8
+C NC N/A U STRAIGHT SHEATHING: All straightsheathed
+diaphragms have horizontal
+spans less than 12 ft (3.6 m) and aspect
+ratios less than 1-to-1 in the direction
+being considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All diagonally
+sheathed or unblocked wood structural
+panel diaphragms have horizontal spans
+less than 30 ft (9.1 m) and aspect ratios
+less than or equal to 3-to-1.
+5.6.2 A.4.2.2
+C NC N/A U BLOCKED DIAPHRAGMS: All blocked
+wood structural panel diaphragms have
+horizontal spans less than 90 ft (27.4 m)
+and have aspect ratios less than or equal
+to 4-to-1.
+5.6.2 A.4.2.3
+C NC N/A U CANTILEVERED WOOD DIAPHRAGMS: All
+cantilevered wood diaphragms that
+provide lateral support for concrete or
+masonry walls consist of wood structural
+panels and have a maximum cantilever
+length of 15 ft (4.6 m) if unblocked or 25 ft
+(7.6 m) if blocked, and a maximum ratio of
+cantilever length to diaphragm width of
+1:2.5 if unblocked and 1:1.5 if blocked. In
+addition, the cantilevered diaphragm has
+a back-span length equal to or greater
+than the cantilevered portion.
+5.6.2 A.4.2.4
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms do not
+consist of a system other than wood, steel
+deck, concrete, or horizontal bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U MINIMUM NUMBER OF WALL ANCHORS
+PER PANEL: There are at least two anchors
+connecting each precast wall panel into
+the diaphragm elements.
+5.7.1.4 A.5.1.3
+C NC N/A U PRECAST WALL PANELS: Precast wall
+panels are connected to the foundation,
+and the connections are able to develop
+the strength of the walls.
+5.7.3.4 A.5.3.6
+C NC N/A U UPLIFT AT PILE CAPS: Pile caps have top
+reinforcement, and piles are anchored to
+the pile caps; the pile cap reinforcement
+and pile anchorage are able to develop
+the tensile capacity of the piles.
+5.7.3.5 A.5.3.8
+C NC N/A U GIRDERS: Girders supported by walls or
+pilasters have at least two ties securing
+the anchor bolts unless provided with
+independent stiff wall anchors with
+strength to resist the connection force
+calculated in the Quick Check procedure
+of Section 4.4.3.7.
+5.7.4.2 A.5.4.2
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate and High Seismicity (Complete the Following Items in Addition to the Items for Very Low and Low Seismicity)
+Foundation System
+C NC N/A U OVERTURNING: The ratio of the least
+horizontal dimension of the seismic-forceresisting
+system at the foundation level to
+the building height (base/height) is
+greater than 0.6Sa.
+5.4.3.3 A.6.2.1

@@ -1,0 +1,178 @@
+17.15IO Structural Checklist for Building Type PC2: Precast Concrete Frames with
+Shear Walls
+Table 17-31. Immediate Occupancy Structural Checklist for Building Type PC2.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Very Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U CONCRETE BEARING WALLS: Floor and
+roof girders and trusses are not
+supported at the ends of concrete walls
+that are less than 10 in. (254 mm) thick.
+This statement only applies to framing
+supports located less than two times the
+wall thickness away from the wall end.
+5.5.2.5.1 A.3.1.6.1
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction is
+greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress
+in the concrete shear walls, calculated
+using the Quick Check procedure of
+Section 4.4.3.3 is less than the greater of
+100 lb/in.2 (0.69 MPa) or 2 c f 
+.
+5.5.3.1.1 A.3.2.2.1
+C NC N/A U REINFORCING STEEL: The ratio of
+reinforcing steel area to gross concrete
+area is not less than 0.0012 in the
+vertical direction and 0.0020 in the
+horizontal direction. The spacing of
+reinforcing steel is equal to or less than
+18 in. (457 mm).
+5.5.3.1.3 A.3.2.2.2
+Diaphragms
+C NC N/A U TOPPING SLAB: Precast concrete
+diaphragm elements are interconnected
+by a continuous reinforced concrete
+topping slab with a minimum thickness
+of 2 in. (50.8 mm).
+5.6.4 A.4.5.1
+Connections
+C NC N/A U TRANSFER TO SHEAR WALLS:
+Diaphragms are connected for transfer
+of seismic forces to the shear walls, and
+the connections are able to develop the
+lesser of the shear strength of the walls
+or diaphragms.
+5.7.2 A.5.2.1
+C NC N/A U TOPPING SLAB TO WALLS OR FRAMES:
+Reinforced concrete topping slabs that
+interconnect the precast concrete
+diaphragm elements are doweled for
+transfer of forces into the shear wall or
+frame elements, and the dowels are able
+to develop the least of the shear
+strength of the walls, frames, or slabs.
+5.7.2 A.5.2.3
+C NC N/A U FOUNDATION DOWELS: Wall
+reinforcement is doweled into the
+foundation, and the dowels are able to
+develop the lesser of the strength of the
+walls or the uplift capacity of the
+foundation.
+5.7.3.4 A.5.3.5
+C NC N/A U GIRDER–COLUMN CONNECTION: There
+is a positive connection using plates,
+connection hardware, or straps between
+the girder and the column support.
+5.7.4.1 A.5.4.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity (Complete the Following Items in Addition to the Items for Very Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U PRECAST FRAMES: For buildings with
+concrete shear walls, precast concrete
+frame elements are not considered as
+primary components for resisting
+seismic forces.
+5.5.2.4
+5.5.2.5.1
+5.5.2.5.2
+A.3.1.5.2
+C NC N/A U PRECAST CONNECTIONS: For buildings
+with concrete shear walls, the
+connection between precast frame
+elements, such as chords, ties, and
+collectors in the seismic-force-resisting
+system, develops the capacity of the
+connected members.
+5.6.1.1 A.3.1.5.3
+C NC N/A U DEFLECTION COMPATIBILITY: Secondary
+components have the shear capacity to
+develop the flexural strength of the
+components.
+5.5.2.5.2 A.3.1.6.2
+C NC N/A U COUPLING BEAMS: Coupling beams
+have the capacity in shear to develop
+the uplift capacity of the adjacent wall
+or to develop the flexural capacity of the
+coupling beam, whichever is less. This
+statement only applies to coupling
+beams with span-to-depth ratios
+exceeding 2-to-1.
+5.5.3.2.1 A.3.2.2.
+C NC N/A U OVERTURNING: All shear walls have
+aspect ratios less than 4-to-1. Wall piers
+need not be considered.
+5.5.3.1.4 A.3.2.2.4
+C NC N/A U CONFINEMENT REINFORCING: For shear
+walls with aspect ratios greater than 2-
+to-1, the boundary elements are
+confined with spirals or ties with
+spacing less than 8db.
+5.5.3.2.2 A.3.2.2.5
+C NC N/A U WALL REINFORCING AT OPENINGS:
+There is added trim reinforcement
+around all wall openings with a
+dimension greater than three times the
+thickness of the wall.
+5.5.3.1.5 A.3.2.2.6
+C NC N/A U WALL THICKNESS: Thickness of bearing
+walls is not less than 1/25 the
+unsupported height or length,
+whichever is shorter, nor less than 4 in.
+(101.6 mm).
+5.5.3.1.2 A.3.2.3.5
+Diaphragms
+C NC N/A U OPENINGS AT SHEAR WALLS:
+Diaphragm openings immediately
+adjacent to the shear walls are less than
+15% of the wall length.
+5.6.1.3 A.4.1.4
+C NC N/A U PLAN IRREGULARITIES: There is tensile
+capacity to develop the strength of the
+diaphragm at reentrant corners or other
+locations of plan irregularities.
+5.6.1.4 A.4.1.7
+C NC N/A U DIAPHRAGM REINFORCEMENT AT
+OPENINGS: There is reinforcing around
+all diaphragm openings larger than 50%
+of the building width in either major
+plan dimension.
+5.6.1.5 A.4.1.8
+Connections
+C NC N/A U UPLIFT AT PILE CAPS: Pile caps have top
+reinforcement, and piles are anchored to
+the pile caps; the pile cap reinforcement
+and pile anchorage are able to develop
+the tensile capacity of the piles.
+5.7.3.5 A.5.3.8
+C NC N/A U CORBEL BEARING: If the frame girders
+bear on column corbels, the length of
+bearing is greater than 3 in. (76 mm).
+5.7.4.3 A.5.4.3
+C NC N/A U CORBEL CONNECTIONS: The frame
+girders are not connected to corbels
+with welded elements.
+5.7.4.3 A.5.4.4
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate and High Seismicity (Complete the Following Items in Addition to the Items for Very Low and Low Seismicity)
+Foundation System
+C NC N/A U OVERTURNING: The ratio of the least
+horizontal dimension of the seismicforce-
+resisting system at the foundation
+level to the building height
+(base/height) is greater than 0.6Sa.
+5.4.3.3 A.6.2.1
