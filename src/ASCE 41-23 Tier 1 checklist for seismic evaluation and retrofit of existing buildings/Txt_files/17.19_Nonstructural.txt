@@ -1,0 +1,565 @@
+17.19CP Nonstructural Checklist
+Table 17-38. Nonstructural Checklist.
+Status Evaluation Statementa,b
+Tier 2
+Reference
+Commentary
+Reference Comments
+Life Safety Systems
+C NC N/A U HR—not required; LS—LMH; PR—LMH. FIRE
+SUPPRESSION PIPING: Fire suppression piping is
+anchored and braced in accordance with NFPA-13.
+13.7.4 A.7.13.1
+C NC N/A U HR—not required; LS—LMH; PR—LMH. FLEXIBLE
+COUPLINGS: Fire suppression piping has flexible
+couplings in accordance with NFPA-13.
+13.7.4 A.7.13.2
+C NC N/A U HR—not required; LS—LMH; PR—LMH.
+EMERGENCY POWER: Equipment used to power or
+control Life Safety systems is anchored or braced.
+13.7.7 A.7.12.1
+C NC N/A U HR—not required; LS—LMH; PR—LMH. STAIR
+AND SMOKE DUCTS: Stair pressurization and
+smoke control ducts are braced and have flexible
+connections at seismic joints.
+13.7.6 A.7.14.1
+C NC N/A U HR—not required; LS—MH; PR—MH. SPRINKLER
+CEILING CLEARANCE: Penetrations through
+panelized ceilings for fire suppression devices
+provide clearances in accordance with NFPA-13.
+13.7.4 A.7.13.3
+C NC N/A U HR—not required; LS—not required; PR—LMH.
+EMERGENCY LIGHTING: Emergency and egress
+lighting equipment is anchored or braced.
+13.7.9 A.7.3.1
+Hazardous Materials
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. HAZARDOUS
+MATERIAL EQUIPMENT: Equipment mounted on
+vibration isolators and containing hazardous
+material is equipped with restraints or snubbers.
+13.7.1 A.7.12.2
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. HAZARDOUS
+MATERIAL STORAGE: Breakable containers that
+hold hazardous material, including gas cylinders,
+are restrained by latched doors, shelf lips, wires, or
+other methods.
+13.8.3 A.7.15.1
+C NC N/A U HR—MH; LS—MH; PR—MH. HAZARDOUS
+MATERIAL DISTRIBUTION: Piping or ductwork
+conveying hazardous materials is braced or
+otherwise protected from damage that would
+allow hazardous material release.
+13.7.3
+13.7.5
+13.7.6
+A7.13.4
+A.7.14.2
+C NC N/A U HR—MH; LS—MH; PR—MH. SHUTOFF VALVES:
+Piping containing hazardous material, including
+natural gas, has shutoff valves or other devices to
+limit spills or leaks.
+13.7.3
+13.7.5
+A.7.15.3
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. FLEXIBLE
+COUPLINGS: Hazardous material ductwork and
+piping, including natural gas piping, have flexible
+couplings.
+C NC N/A U HR—MH; LS—MH; PR—MH. PIPING OR DUCTS
+CROSSING SEISMIC JOINTS: Piping or ductwork
+carrying hazardous material that either crosses
+seismic joints or isolation planes or is connected to
+independent structures has couplings or other
+details to accommodate the relative seismic
+displacements.
+13.7.3
+13.7.5
+13.7.6
+A.7.13.6
+Partitions
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. UNREINFORCED
+MASONRY: Unreinforced masonry or hollow-clay
+tile partitions are braced at a spacing of at most 10
+ft (3 m) in Low or Moderate Seismicity, or at most 6
+ft (1.8 m) in High Seismicity.
+13.6.2 A.7.1.1
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. HEAVY
+PARTITIONS SUPPORTED BY CEILINGS: The tops of
+masonry or hollow-clay tile partitions are not
+laterally supported by an integrated ceiling system.
+13.6.2 A.7.2.1
+C NC N/A U HR—not required; LS—MH; PR—MH. DRIFT:
+Rigid cementitious partitions are detailed to
+accommodate the following drift ratios: in steel
+moment frame, concrete moment frame, and wood
+frame buildings, 0.02; in other buildings, 0.005.
+13.6.2 A.7.1.2
+C NC N/A U HR—not required; LS—not required; PR—MH.
+LIGHT PARTITIONS SUPPORTED BY CEILINGS: The
+tops of gypsum board partitions are not laterally
+supported by an integrated ceiling system.
+13.6.2 A.7.2.1
+C NC N/A U HR—not required; LS—not required; PR—MH.
+STRUCTURAL SEPARATIONS: Partitions that cross
+structural separations have seismic or control
+joints.
+13.6.2 A.7.1.3
+C NC N/A U HR—not required; LS—not required; PR—MH.
+TOPS: The tops of ceiling-high framed or panelized
+partitions have lateral bracing to the structure at a
+spacing equal to or less than 6 ft (1.8 m).
+13.6.2 A.7.1.4
+Ceilings
+C NC N/A U HR—H; LS—MH; PR—LMH. SUSPENDED LATH
+AND PLASTER: Suspended lath and plaster ceilings
+have attachments that resist seismic forces for
+every 12 ft2 (1.1 m2) of area.
+13.6.4 A.7.2.3
+C NC N/A U HR—not required; LS—MH; PR—LMH.
+SUSPENDED GYPSUM BOARD: Suspended gypsum
+board ceilings have attachments that resist seismic
+forces for every 12 ft2 (1.1 m2) of area.
+13.6.4 A.7.2.3
+C NC N/A U HR—not required; LS—not required; PR—MH.
+INTEGRATED CEILINGS: Integrated suspended
+ceilings with continuous areas greater than 144 ft2
+(13.4 m2) and ceilings of smaller areas that are not
+surrounded by restraining partitions are laterally
+restrained at a spacing no greater than 12 ft (3.6 m)
+with members attached to the structure above.
+Each restraint location has a minimum of four
+diagonal wires and compression struts, or diagonal
+members capable of resisting compression.
+C NC N/A U HR—not required; LS—not required; PR—MH.
+EDGE CLEARANCE: The free edges of integrated
+suspended ceilings with continuous areas greater
+than 144 ft2 (13.4 m2) have clearances from the
+enclosing wall or partition of at least the following:
+in Moderate Seismicity, 1/2 in. (13 mm); in High
+Seismicity, 3/4 in. (19 mm).
+13.6.4 A.7.2.4
+C NC N/A U HR—not required; LS—not required; PR—MH.
+CONTINUITY ACROSS STRUCTURE JOINTS: The
+ceiling system does not cross any seismic joint and is
+not attached to multiple independent structures.
+13.6.4 A.7.2.5
+C NC N/A U HR—not required; LS—not required; PR—H.
+EDGE SUPPORT: The free edges of integrated
+suspended ceilings with continuous areas greater
+than 144 ft2 (13.4 m2) are supported by closure
+angles or channels not less than 2 in. (50.8 mm)
+wide.
+13.6.4 A.7.2.6
+C NC N/A U HR—not required; LS—not required; PR—H.
+SEISMIC JOINTS: Acoustical tile or lay-in panel
+ceilings have seismic separation joints such that
+each continuous portion of the ceiling is no more
+than 2,500 ft2 (232.3 m2) and has a ratio of long-toshort
+dimension no more than 4-to-1.
+13.6.4 A.7.2.7
+Light Fixtures
+C NC N/A U HR—not required; LS—MH; PR—MH.
+INDEPENDENT SUPPORT: Light fixtures that weigh
+more per square foot (square meter) than the ceiling
+they penetrate are supported independent of the
+grid ceiling suspension system by a minimum of two
+wires at diagonally opposite corners of each fixture.
+13.6.4
+13.7.9
+A.7.3.2
+C NC N/A U HR—not required; LS—not required; PR—H.
+PENDANT SUPPORTS: Light fixtures on pendant
+supports are attached at a spacing equal to or less
+than 6 ft (1.8 m). Unbraced suspended fixtures are
+free to allow a 360-degree range of motion at an
+angle not less than 45 degrees from horizontal
+without contacting adjacent components.
+Alternatively, if fixures are rigidly supported and/or
+braced, they are free to move with the structure to
+which they are attached without damaging
+adjoining components. Additionally, the connection
+to the structure is capable of accommodating the
+movement without failure.
+13.7.9 A.7.3.3
+C NC N/A U HR—not required; LS—not required; PR—H. LENS
+COVERS: Lens covers on light fixtures are attached
+with safety devices.
+13.7.9 A.7.3.4
+Cladding and Glazing
+C NC N/A U HR—MH; LS—MH; PR—MH. CLADDING ANCHORS:
+Cladding components weighing more than 10 lb/ft2
+(0.48 kN/m2) are mechanically anchored to the
+structure at a spacing equal to or less than the
+following: for Life Safety in Moderate Seismicity, 6 ft
+(1.8 m); for Life Safety in High Seismicity and for
+Position Retention in any seismicity, 4 ft (1.2 m).
+C NC N/A U HR—not required; LS—MH; PR—MH. CLADDING
+ISOLATION: For steel or concrete moment-frame
+buildings, panel connections are detailed to
+accommodate a story drift ratio by the use of rods
+attached to framing with oversize holes or slotted
+holes of at least the following: for Life Safety in
+Moderate Seismicity, 0.01; for Life Safety in High
+Seismicity and for Position Retention in any
+seismicity, 0.02, and the rods have a length-todiameter
+ratio of 4.0 or less.
+13.6.1 A.7.4.2
+C NC N/A U HR—MH; LS—MH; PR—MH. MULTISTORY PANELS:
+For multistory panels attached at more than one
+floor level, panel connections are detailed to
+accommodate a story drift ratio by the use of rods
+attached to framing with oversize holes or slotted
+holes of at least the following: for Life Safety in
+Moderate Seismicity, 0.01; for Life Safety in High
+Seismicity and for Position Retention in any
+seismicity, 0.02, and the rods have a length-todiameter
+ratio of 4.0 or less.
+13.6.1 A.7.4.3
+C NC N/A U HR—not required; LS—MH; PR—MH. THREADED
+RODS: Threaded rods for panel connections detailed
+to accommodate drift by bending of the rod have a
+length-to-diameter ratio greater than 0.06 times the
+story height in inches (millimeters) for Life Safety in
+Moderate Seismicity and 0.12 times the story height
+in inches (millimeters) for Life Safety in High
+Seismicity and Position Retention in any seismicity.
+13.6.1 A.7.4.8
+C NC N/A U HR—MH; LS—MH; PR—MH. PANEL CONNECTIONS:
+Cladding panels are anchored out of plane with a
+minimum number of connections for each wall
+panel, as follows: for Life Safety in Moderate
+Seismicity, 2 connections; for Life Safety in High
+Seismicity and for Position Retention in any
+seismicity, 4 connections.
+13.6.1.4 A.7.4.4
+C NC N/A U HR—MH; LS—MH; PR—MH. BEARING
+CONNECTIONS: Where bearing connections are
+used, there is a minimum of two bearing
+connections for each cladding panel.
+13.6.1.4 A.7.4.5
+C NC N/A U HR—MH; LS—MH; PR—MH. INSERTS: Where
+concrete cladding components use inserts, the
+inserts have positive anchorage or are anchored to
+reinforcing steel.
+13.6.1.4 A.7.4.6
+C NC N/A U HR—not required; LS—MH; PR—MH. OVERHEAD
+GLAZING: Glazing panes of any size in curtain walls
+and individual interior or exterior panes more than
+16 ft2 (1.5 m2) in area are laminated annealed or
+laminated heat-strengthened glass and are detailed
+to remain in the frame when cracked.
+Masonry Veneer
+C NC N/A U HR—not required; LS—LMH; PR—LMH. TIES:
+Masonry veneer is connected to the backup with
+corrosion-resistant ties. There is a minimum of one
+tie for every 2-2/3 ft2 (0.25 m2), and the ties have
+spacing no greater than the following: for Life Safety
+in Low or Moderate Seismicity, 36 in. (914 mm); for
+Life Safety in High Seismicity and for Position
+Retention in any seismicity, 24 in. (610 mm).
+13.6.1.2 A.7.5.1
+C NC N/A U HR—not required; LS—LMH; PR—LMH. SHELF
+ANGLES: Masonry veneer is supported by shelf
+angles or other elements at each floor above the
+ground floor.
+13.6.1.2 A.7.5.2
+C NC N/A U HR—not required; LS—LMH; PR—LMH.
+WEAKENED PLANES: Masonry veneer is anchored to
+the backup adjacent to weakened planes, such as at
+the locations of flashing.
+13.6.1.2 A.7.5.3
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. UNREINFORCED
+MASONRY BACKUP: There is no unreinforced
+masonry backup.
+13.6.1.1
+13.6.1.2
+A.7.7.2
+C NC N/A U HR—not required; LS—MH; PR—MH. STUD
+TRACKS: For veneer with cold-formed steel stud
+backup, stud tracks are fastened to the structure at a
+spacing equal to or less than 24 in. (610 mm) on
+center.
+13.6.1.1
+13.6.1.2
+A.7.6.1
+C NC N/A U HR—not required; LS—MH; PR—MH. ANCHORAGE:
+For veneer with concrete block or masonry backup,
+the backup is positively anchored to the structure at
+a horizontal spacing equal to or less than 4 ft (1.2 m)
+along the floors and roof.
+13.6.1.1
+13.6.1.2
+A.7.7.1
+C NC N/A U HR—not required; LS—not required; PR—MH.
+WEEP HOLES: In veneer anchored to stud walls, the
+veneer has functioning weep holes and base flashing.
+13.6.1.2 A.7.5.4
+C NC N/A U HR—not required; LS—not required; PR—MH.
+OPENINGS: For veneer with cold-formed-steel stud
+backup, steel studs frame window and door
+openings.
+13.6.1.1
+13.6.1.2
+A.7.6.2
+Parapets, Cornices, Penthouses, and Appendages
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. URM PARAPETS OR
+CORNICES: Laterally unsupported unreinforced
+masonry parapets or cornices have height-tothickness
+ratios no greater than the following: for Life
+Safety in Low or Moderate Seismicity, 2.5; for Life
+Safety in High Seismicity and for Position Retention in
+any seismicity, 1.5.
+13.6.5 A.7.8.1
+C NC N/A U HR—not required; LS—LMH; PR—LMH. CANOPIES:
+Canopies at building exits are anchored to the
+structure at a spacing no greater than the following:
+for Life Safety in Low or Moderate Seismicity, 10 ft (3
+m); for Life Safety in High Seismicity and for Position
+Retention in any seismicity, 6 ft (1.8 m).
+C NC N/A U HR—H; LS—MH; PR—LMH. CONCRETE PARAPETS:
+Concrete parapets with height-to-thickness ratios
+greater than 2.5 have vertical reinforcement.
+13.6.5 A.7.8.3
+C NC N/A U HR—MH; LS—MH; PR—LMH. APPENDAGES:
+Cornices, parapets, signs, and other ornamentation
+or appendages that extend above the highest point
+of anchorage to the structure or cantilever from
+components are reinforced and anchored to the
+structural system at a spacing equal to or less than 6
+ft (1.8 m). This evaluation statement item does not
+apply to parapets or cornices covered by other
+evaluation statements.
+13.6.6 A.7.8.4
+C NC N/A U HR—MH; LS—MH; PR—LMH. PENTHOUSES:
+Penthouses are not used for regular occupancy and
+are constructed as an extension of the building
+frame or have a lateral-force-resisting system in
+each direction consistent with structural systems
+listed in Table 12.2-1 or Table 15.4-1 of ASCE 7.
+13.6.7 A.7.8.5
+C NC N/A U HR—MH; LS—MH; PR—LMH. TILE ROOFS: For
+roofs with slopes greater than or equal to 3 vertical
+to 12 horizontal, roof tiles weighing more than 4
+lb/ft2 (0.05 kN/m2) are individually secured to the
+roof framing or roof deck with wires, fasteners, or
+adhesive.
+13.6.8 A.7.8.6
+Masonry Chimneys
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. URM CHIMNEYS:
+Unreinforced masonry chimneys extend above the
+roof surface no more than the following: for Life
+Safety in Low or Moderate Seismicity, three times
+the least dimension of the chimney; for Life Safety
+in High Seismicity and for Position Retention in any
+seismicity, two times the least dimension of the
+chimney.
+13.6.9 A.7.9.1
+C NC N/A U HR—LMH; LS—LMH; PR—LMH. ANCHORAGE:
+Masonry chimneys are anchored at each floor level,
+at the topmost ceiling level, and at the roof.
+13.6.9 A.7.9.2
+Stairs
+C NC N/A U HR—not required; LS—LMH; PR—LMH. STAIR
+ENCLOSURES: Hollow-clay tile or unreinforced
+masonry walls around stair enclosures are
+restrained out of plane and have height-tothickness
+ratios not greater than the following: for
+Life Safety in Low or Moderate Seismicity, 15-to-1;
+for Life Safety in High Seismicity and for Position
+Retention in any seismicity, 12-to-1.
+13.6.2
+13.6.10
+A.7.10.1
+C NC N/A U HR—not required; LS—LMH; PR—LMH. STAIR
+DETAILS: The connection between the stairs and the
+structure does not rely on post-installed anchors in
+concrete or masonry, and the stair details are
+capable of accommodating the drift calculated
+using the Quick Check procedure of Section 4.4.3.1,
+for moment-frame structures or 1/2 in. (12.7 mm) for
+all other structures without including any lateral
+stiffness contribution from the stairs.
+Contents and Furnishings
+C NC N/A U HR—LMH; LS—MH; PR—MH. INDUSTRIAL STORAGE
+RACKS: Industrial storage racks or pallet racks more
+than 12 ft (3.6 m) high meet the requirements of
+ANSI/RMI MH 16.1 as modified by ASCE 7, Chapter 15.
+13.8.1 A.7.11.1
+C NC N/A U HR—not required; LS—H; PR—MH. TALL NARROW
+CONTENTS: Contents more than 6 ft (1.8 m) high with
+a height-to-depth or height-to-width ratio greater
+than 3-to-1 are anchored to the structure or to each
+other.
+13.8.2 A.7.11.2
+C NC N/A U HR—not required; LS—H; PR—H. FALL-PRONE
+CONTENTS: Equipment, stored items, or other
+contents weighing more than 20 lb (9.1 kg) whose
+center of mass is more than 4 ft (1.2 m) above the
+adjacent floor level are braced or otherwise
+restrained.
+13.8.2 A.7.11.3
+C NC N/A U HR—not required; LS—not required; PR—MH.
+ACCESS FLOORS: Access floors more than 9 in. (229
+mm) high are braced.
+13.6.12 A.7.11.4
+C NC N/A U HR—not required; LS—not required; PR—MH.
+EQUIPMENT ON ACCESS FLOORS: Equipment and
+other contents supported by access floor systems are
+anchored or braced to the structure independent of
+the access floor.
+13.7.7
+13.6.12
+A.7.11.5
+C NC N/A U HR—not required; LS—not required; PR—H.
+SUSPENDED CONTENTS: Items suspended without
+lateral bracing are free to swing from or move with
+the structure from which they are suspended without
+damaging themselves or adjoining components.
+13.8.2 A.7.11.6
+Mechanical and Electrical Equipment
+C NC N/A U HR—not required; LS—H; PR—H. FALL-PRONE
+EQUIPMENT: Equipment weighing more than 20 lb
+(9.1 kg) whose center of mass is more than 4 ft (1.2 m)
+above the adjacent floor level, and which is not in-line
+equipment, is braced.
+13.7.1
+13.7.7
+A.7.12.4
+C NC N/A U HR—not required; LS—H; PR—H. IN-LINE
+EQUIPMENT: Equipment installed in line with a duct
+or piping system, with an operating weight more
+than 75 lb (34.0 kg), is supported and laterally braced
+independent of the duct or piping system.
+13.7.1 A.7.12.5
+C NC N/A U HR—not required; LS—H; PR—MH. TALL NARROW
+EQUIPMENT: Equipment more than 6 ft (1.8 m) high
+with a height-to-depth or height-to-width ratio
+greater than 3-to-1 is anchored to the floor slab or
+adjacent structural walls.
+13.7.1
+13.7.7
+A.7.12.6
+C NC N/A U HR—not required; LS—not required; PR—MH.
+MECHANICAL DOORS: Mechanically operated doors
+are detailed to operate at a story drift ratio of 0.01.
+13.6.11 A.7.12.7
+C NC N/A U HR—not required; LS—not required; PR—H.
+SUSPENDED EQUIPMENT: Equipment suspended
+without lateral bracing is free to swing from or move
+with the structure from which it is suspended
+without damaging itself or adjoining components.
+C NC N/A U HR—not required; LS—not required; PR—H.
+VIBRATION ISOLATORS: Equipment mounted on
+vibration isolators is equipped with horizontal
+restraints or snubbers and with vertical restraints to
+resist overturning.
+13.7.1 A.7.12.9
+C NC N/A U HR—not required; LS—not required; PR—H.
+HEAVY EQUIPMENT: Floor-supported or platformsupported
+equipment weighing more than 400 lb
+(181.4 kg) is anchored to the structure.
+13.7.1
+13.7.7
+A.7.12.10
+C NC N/A U HR—not required; LS—not required; PR—H.
+ELECTRICAL EQUIPMENT: Electrical equipment is
+laterally braced to the structure.
+13.7.7 A.7.12.11
+C NC N/A U HR—not required; LS—not required; PR—H.
+CONDUIT COUPLINGS: Conduit greater than 2.5 in.
+(64 mm) trade size that is attached to panels,
+cabinets, or other equipment and is subject to relative
+seismic displacement has flexible couplings or
+connections.
+13.7.8 A.7.12.12
+Piping
+C NC N/A U HR—not required; LS—not required; PR—H.
+FLEXIBLE COUPLINGS: Fluid and gas piping has
+flexible couplings.
+13.7.3
+13.7.5
+A.7.13.2
+C NC N/A U HR—not required; LS—not required; PR—H. FLUID
+AND GAS PIPING: Fluid and gas piping is anchored
+and braced to the structure to limit spills or leaks.
+13.7.3
+13.7.5
+A.7.13.4
+C NC N/A U HR—not required; LS—not required; PR—H. CCLAMPS:
+One-sided C-clamps that support piping
+larger than 2.5 in. (64 mm) in diameter are restrained.
+13.7.3
+13.7.5
+A.7.13.5
+C NC N/A U HR—not required; LS—not required; PR—H.
+PIPING CROSSING SEISMIC JOINTS: Piping that crosses
+seismic joints or isolation planes or is connected to
+independent structures has couplings or other details
+to accommodate the relative seismic displacements.
+13.7.3
+13.7.5
+A.7.13.6
+Ducts
+C NC N/A U HR—not required; LS—not required; PR—H. DUCT
+BRACING: Rectangular ductwork larger than 6 ft2 (0.56
+m2) in cross-sectional area and round ducts larger
+than 28 in. (711 mm) in diameter are braced. The
+maximum spacing of transverse bracing does not
+exceed 30 ft (9.1 m). The maximum spacing of
+longitudinal bracing does not exceed 60 ft (18.3 m).
+13.7.6 A.7.14.2
+C NC N/A U HR—not required; LS—not required; PR—H. DUCT
+SUPPORT: Ducts are not supported by piping or
+electrical conduit.
+13.7.6 A.7.14.3
+C NC N/A U HR—not required; LS—not required; PR—H. DUCTS
+CROSSING SEISMIC JOINTS: Ducts that cross seismic
+joints or isolation planes or are connected to
+independent structures have couplings or other
+details to accommodate the relative seismic
+displacements.
+Elevators
+C NC N/A U HR—not required; LS—H; PR—H. RETAINER
+GUARDS: Sheaves and drums have cable retainer
+guards.
+13.7.11 A.7.16.1
+C NC N/A U HR—not required; LS—H; PR—H. RETAINER
+PLATE: A retainer plate is present at the top and
+bottom of both car and counterweight.
+13.7.11 A.7.16.2
+C NC N/A U HR—not required; LS—not required; PR—H.
+ELEVATOR EQUIPMENT: Equipment, piping, and
+other components that are part of the elevator
+system are anchored.
+13.7.11 A.7.16.3
+C NC N/A U HR—not required; LS—not required; PR—H.
+SEISMIC SWITCH: Elevators capable of operating at
+speeds of 150 ft/min (0.30 m/min) or faster are
+equipped with seismic switches that meet the
+requirements of ASME A17.1 (ASME 2000a) or have
+trigger levels set to 20% of the acceleration of
+gravity at the base of the structure and 50% of the
+acceleration of gravity in other locations.
+13.7.11 A.7.16.4
+C NC N/A U HR—not required; LS—not required; PR—H.
+SHAFT WALLS: Elevator shaft walls are anchored
+and reinforced to prevent toppling into the shaft
+during strong shaking.
+13.7.11 A.7.16.5
+C NC N/A U HR—not required; LS—not required; PR—H.
+COUNTERWEIGHT RAILS: All counterweight rails
+and divider beams are sized in accordance with
+ASME A17.1.
+13.7.11 A.7.16.6
+C NC N/A U HR—not required; LS—not required; PR—H.
+BRACKETS: The brackets that tie the car rails and
+the counterweight rail to the structure are sized in
+accordance with ASME A17.1.
+13.7.11 A.7.16.7
+C NC N/A U HR—not required; LS—not required; PR—H.
+SPREADER BRACKET: Spreader brackets are not
+used to resist seismic forces.
+13.7.11 A.7.16.8
+C NC N/A U HR—not required; LS—not required; PR—H. GOSLOW
+ELEVATORS: The building has a go-slow
+elevator system.

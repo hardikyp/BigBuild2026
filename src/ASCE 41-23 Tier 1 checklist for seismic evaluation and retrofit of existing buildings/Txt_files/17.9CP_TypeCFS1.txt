@@ -1,0 +1,112 @@
+17.9CP Structural Checklist for Building Type CFS1: Cold-formed Steel Lightframe
+Bearing Wall Construction, Shear Wall Lateral System
+Table 17-18. Collapse Prevention Structural Checklist for Building Type CFS1.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low and Moderate Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction is
+greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress
+in the shear walls, calculated using the
+Quick Check procedure of Section
+4.4.3.3 is less than the following values:
+5.5.3.1.1 A.3.2.8.1
+Wood structural panel sheathing 1,000
+lb/ft (14.6 kN/m),
+Steel sheet sheathing 700 lb/ft (10.2
+kN/m), and
+All other conditions 100 lb/ft (1.5
+kN/m).
+C NC N/A U STUCCO (EXTERIOR PLASTER) SHEAR
+WALLS: Multistory buildings do not rely
+on exterior stucco walls as the primary
+seismic-force-resisting system.
+5.5.3.7.1 A.3.2.8.2
+C NC N/A U GYPSUM WALLBOARD OR PLASTER
+SHEAR WALLS: Interior plaster or
+gypsum wallboard is not used for shear
+walls on buildings more than one story
+high with the exception of the
+uppermost level of a multistory
+building.
+5.5.3.7.1 A.3.2.8.3
+C NC N/A U NARROW SHEAR WALLS: Narrow shear
+walls with an aspect ratio greater than
+2-to-1 are not used to resist seismic
+forces.
+5.5.3.7.1 A.3.2.8.4
+C NC N/A U WALLS CONNECTED THROUGH FLOORS:
+Shear walls have an interconnection
+between stories to transfer overturning
+and shear forces through the floor.
+5.5.3.7.2 A.3.2.8.5
+C NC N/A U HILLSIDE SITE: For structures that are
+taller on at least one side by more than
+one-half story because of a sloping site,
+all shear walls on the downhill slope
+have an aspect ratio less than 1-to-1.
+C NC N/A U OPENINGS: Walls with openings greater
+than 80% of the length are braced with
+wood structural panel or steel sheet
+shear walls with aspect ratios of not
+more than 1.5-to-1 or are supported by
+adjacent construction through positive
+ties capable of transferring the seismic
+forces.
+5.5.3.7.5 A.3.2.8.8
+Connections
+C NC N/A U POSTS: There is a positive connection of
+posts to the foundation.
+5.7.3.3 A.5.3.3
+C NC N/A U SILLS (BASE TRACK): All sills or base
+tracks are bolted to the foundation.
+5.7.3.3 A.5.3.4
+C NC N/A U GIRDER–COLUMN CONNECTION: There
+is a positive connection using plates,
+connection hardware, or straps
+between the girder and the column
+support.
+5.7.4.1 A.5.4.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Connections
+C NC N/A U SILL (BASE TRACK) BOLTS: Bolts are
+spaced at 6 ft (1.8 m) or less with
+acceptable edge and end distance
+provided for steel and concrete.
+5.7.3.3 A.5.3.7
+Diaphragms
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have expansion
+joints or vertical offsets, such as split
+levels, sawtooth, or clerestory
+configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U ROOF CHORD CONTINUITY: All chord
+elements are continuous, regardless of
+changes in roof elevation.
+5.6.1.1 A.4.1.3
+C NC N/A U SPANS: All diaphragms with spans
+greater than 24 ft (7.3 m) consist of
+wood structural panels.
+5.6.2 A.4.2.2
+C NC N/A U UNBLOCKED DIAPHRAGMS: All
+unblocked wood structural panel
+diaphragms have horizontal spans less
+than 40 ft (12.2 m) and have aspect
+ratios less than or equal to 4-to-1.
+5.6.2 A.4.2.2
+C NC N/A U OTHER DIAPHRAGMS: The diaphragms
+do not consist of a system other than
+wood, steel deck, concrete, or
+horizontal bracing.

@@ -1,0 +1,69 @@
+17.6CP Structural Checklist for Building Type S3: Metal Building Frames
+Table 17-12. Collapse Prevention Structural Checklist for Building Type S3.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low and Moderate Seismicity
+Seismic-Force-Resisting System
+C NC N/A U BRACE AXIAL STRESS CHECK:
+The axial stress in the diagonals,
+calculated using the Quick
+Check procedure of Section
+4.4.3.4 is less than 0.50Fy.
+5.5.4.1 A.3.3.1.2
+Connections
+C NC N/A U TRANSFER TO STEEL FRAMES:
+Diaphragms are connected for
+transfer of seismic forces to the
+steel moment frames.
+5.7.2 A.5.2.2
+C NC N/A U STEEL COLUMNS: The columns
+in seismic-force-resisting frames
+are anchored to the building
+foundation with a minimum of
+two anchor rods and with the
+base plates bearing on concrete
+or a grout pad.
+5.7.3.1 A.5.3.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U MOMENT-RESISTING
+CONNECTIONS: All moment
+connections are able to develop
+the elastic moment (FyS) of the
+adjoining members.
+5.5.2.2.1 A.3.1.3.4
+C NC N/A U COMPACT MEMBERS: All frame
+elements meet compact section
+requirements in accordance
+with AISC 360, Table B4.1a.
+5.5.2.2.5 A.3.1.3.8
+Diaphragms
+C NC N/A U OTHER DIAPHRAGMS:
+Diaphragms do not consist of a
+system other than wood, steel
+deck, concrete, or horizontal
+bracing.
+Connections
+C NC N/A U ROOF PANELS: Where
+considered as diaphragm
+elements for lateral resistance,
+metal, plastic, or cementitious
+roof panels are positively
+attached to the roof framing to
+resist seismic forces.
+5.7.5 A.5.5.1
+C NC N/A U WALL PANELS: Where
+considered as shear elements
+for lateral resistance, metal,
+fiberglass, or cementitious wall
+panels are positively attached to
+the framing and foundation to
+resist seismic forces.

@@ -1,0 +1,150 @@
+17.12CP Structural Checklist for Building Types C2: Concrete Shear Walls with Stiff
+Diaphragms and C2a: Concrete Shear Walls with Flexible Diaphragms
+Table 17-24. Collapse Prevention Structural Checklist for Building Types C2 and C2a.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low and Moderate Seismicity
+Seismic-Force-Resisting System
+C NC N/A U CONCRETE BEARING WALLS: Floor and
+roof girders and trusses are not supported
+at the ends of concrete walls that are less
+than 10 in. (254 mm) thick. This statement
+only applies to framing supports located
+less than two times the wall thickness
+away from the wall end.
+5.5.2.5.1 A.3.1.6.1
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction is
+greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress in
+the concrete shear walls, calculated using
+the Quick Check procedure of Section
+4.4.3.3 is less than the greater of 100
+lb/in.2 (0.69 MPa) or 2 c f  .
+5.5.3.1.1 A.3.2.2.1
+C NC N/A U REINFORCING STEEL: The ratio of
+reinforcing steel area to gross concrete
+area is not less than 0.0012 in the vertical
+direction and 0.0020 in the horizontal
+direction.
+5.5.3.1.3 A.3.2.2.2
+Connections
+C NC N/A U WALL ANCHORAGE AT FLEXIBLE
+DIAPHRAGMS: Exterior concrete or
+masonry walls that are dependent on
+flexible diaphragms for lateral support are
+anchored for out-of-plane forces at each
+diaphragm level with steel anchors,
+reinforcing dowels, or straps that are
+developed into the diaphragm.
+Connections have strength to resist the
+connection force calculated in the Quick
+Check procedure of Section 4.4.3.7.
+5.7.1.1 A.5.1.1
+C NC N/A U TRANSFER TO SHEAR WALLS: Diaphragms
+are connected for transfer of seismic
+forces to the shear walls.
+5.7.2 A.5.2.1
+C NC N/A U FOUNDATION DOWELS: Wall
+reinforcement is doweled into the
+foundation with vertical bars equal in size
+and spacing to the vertical wall
+reinforcing directly above the foundation.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U DEFLECTION COMPATIBILITY: Secondary
+components have the shear capacity to
+develop the flexural strength of the
+components.
+5.5.2.5.2 A.3.1.6.2
+C NC N/A U FLAT SLABS: Flat slabs or plates not part
+of the seismic-force-resisting system have
+continuous bottom steel through the
+column joints.
+5.5.2.5.3 A.3.1.6.3
+C NC N/A U COUPLING BEAMS: Coupling beams have
+stirrups spaced at or less than d/2, and
+each wall or wall segment connected to
+the coupling beam is supported such that
+it can resist shear and overturning forces
+in the absence of the coupling beam. This
+statement only applies to coupling
+beams with span-to-depth ratios
+exceeding 2-to-1.
+5.5.3.2.1 A.3.2.2.3
+Diaphragms (Stiff or Flexible)
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and roof
+diaphragms do not have expansion joints
+or vertical offsets, such as split levels,
+sawtooth, or clerestory configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U ROOF CHORD CONTINUITY: All chord
+elements are continuous, regardless of
+changes in roof elevation.
+5.6.1.1 A.4.1.3
+C NC N/A U OPENINGS AT SHEAR WALLS: Diaphragm
+openings immediately adjacent to the
+shear walls are less than 25% of the wall
+length.
+5.6.1.3 A.4.1.4
+Flexible Diaphragms
+C NC N/A U CROSSTIES: There are continuous
+crossties between diaphragm chords.
+5.6.1.2 A.4.1.2
+C NC N/A U STRAIGHT SHEATHING: All straightsheathed
+diaphragms have horizontal
+spans less than 24 ft (7.3 m) and aspect
+ratios less than 2-to-1 in the direction
+being considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All diagonally
+sheathed or unblocked wood structural
+panel diaphragms have horizontal spans
+less than 40 ft (12.2 m) and aspect ratios
+less than or equal to 4-to-1.
+C NC N/A U BLOCKED DIAPHRAGMS: All blocked
+wood structural panel diaphragms have
+horizontal spans less than 120 ft (36.5 m)
+and have aspect ratios less than or equal
+to 4-to-1.
+5.6.2 A.4.2.3
+C NC N/A U CANTILEVERED WOOD DIAPHRAGMS: All
+cantilevered wood diaphragms that
+provide lateral support for concrete or
+masonry walls consist of wood structural
+panels and have a maximum cantilever
+length of 20 ft (6.1 m) if unblocked or 35
+ft (10.7 m) if blocked, and a maximum
+ratio of cantilever length to diaphragm
+width of 1:2 if unblocked and 1:1 if
+blocked. In addition, the cantilevered
+diaphragm has a back-span length equal
+to or greater than the cantilevered
+portion.
+5.6.2 A.4.2.4
+C NC N/A U NON-CONCRETE-FILLED DIAPHRAGMS:
+Bare steel deck diaphragms or steel deck
+diaphragms with fill other than reinforced
+structural concrete consist of horizontal
+spans of less than 120 ft (36.5 m) and
+have aspect ratios less than 4-to-1.
+5.6.3 A.4.3.1
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms do not
+consist of a system other than wood,
+steel deck, concrete, or horizontal
+bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U UPLIFT AT PILE CAPS: Pile caps have top
+reinforcement, and piles are anchored to
+the pile caps.

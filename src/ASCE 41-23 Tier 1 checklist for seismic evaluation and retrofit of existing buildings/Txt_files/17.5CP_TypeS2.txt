@@ -1,0 +1,136 @@
+17.5CP Structural Checklist for Building Types S2: Steel Braced Frames with Stiff
+Diaphragms and S2a: Steel Braced Frames with Flexible Diaphragms
+Table 17-10. Collapse Prevention Structural Checklist for Building Types S2 and S2a.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of
+lines of braced frames in each
+principal direction is greater than
+or equal to 2.
+5.5.1.1 A.3.3.1.1
+C NC N/A U COLUMN AXIAL STRESS CHECK:
+The axial stress caused by gravity
+loads in columns subjected to
+overturning forces is less than
+0.10Fy. Alternatively, the axial
+stress caused by overturning
+forces alone, calculated using the
+Quick Check procedure of Section
+4.4.3.6 is less than 0.30Fy.
+5.5.2.1.3 A.3.1.3.2
+C NC N/A U BRACE AXIAL STRESS CHECK: The
+axial stress in the diagonals,
+calculated using the Quick Check
+procedure of Section 4.4.3.4 is less
+than 0.50Fy.
+5.5.4.1 A.3.3.1.2
+Connections
+C NC N/A U TRANSFER TO STEEL FRAMES:
+Diaphragms are connected for
+transfer of seismic forces to the
+steel frames.
+5.7.2 A.5.2.2
+C NC N/A U STEEL COLUMNS: The columns in
+seismic-force-resisting frames are
+anchored to the building
+foundation with a minimum of
+two anchor rods and with the base
+plates bearing on concrete or a
+grout pad.
+5.7.3.1 A.5.3.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate Seismicity (Complete the Following Items in Addition to the Items for Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of
+braced bays in each line is greater
+than 2.
+5.5.1.1 A.3.3.1.1
+C NC N/A U CONNECTION STRENGTH: All the
+brace connections develop the
+buckling capacity of the diagonals.
+C NC N/A U COMPACT MEMBERS: All brace
+elements meet compact section
+requirements in accordance with
+AISC 360, Table B4.1a.
+5.5.4.3 A.3.3.1.7
+C NC N/A U K-BRACING: The bracing system
+does not include K-braced bays.
+5.5.4.6 A.3.3.2.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U COLUMN SPLICES: All column
+splice details located in braced
+frames develop 50% of the tensile
+strength of the column.
+5.5.4.2 A.3.3.1.3
+C NC N/A U SLENDERNESS OF DIAGONALS: All
+diagonal elements required to
+carry compression have Kl/r ratios
+less than 200.
+5.5.4.3 A.3.3.1.4
+C NC N/A U CONNECTION STRENGTH: All the
+brace connections develop the
+yield capacity of the diagonals.
+5.5.4.4 A.3.3.1.5
+C NC N/A U COMPACT MEMBERS: All brace
+elements meet section
+requirements in accordance with
+AISC 341, Table D1.1a, for
+moderately ductile members.
+5.5.4.3 A.3.3.1.7
+C NC N/A U CHEVRON BRACING: Beams in
+chevron, or V-braced, bays are
+capable of resisting the vertical
+load resulting from the
+simultaneous yielding and
+buckling of the brace pairs.
+5.5.4.6 A.3.3.2.3
+C NC N/A U CONCENTRICALLY BRACED FRAME
+JOINTS: All the diagonal braces
+frame into the beam–column
+joints concentrically.
+5.5.4.8 A.3.3.2.4
+Diaphragms (Stiff or Flexible)
+C NC N/A U OPENINGS AT FRAMES:
+Diaphragm openings immediately
+adjacent to the braced frames
+extend less than 25% of the frame
+length.
+5.6.1.3 A.4.1.5
+Flexible Diaphragms
+C NC N/A U CROSSTIES: There are continuous
+crossties between diaphragm
+chords.
+C NC N/A U STRAIGHT SHEATHING: All
+straight-sheathed diaphragms
+have horizontal spans less than 24
+ft (7.3 m) and aspect ratios less
+than 2-to-1 in the direction being
+considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All
+diagonally sheathed or unblocked
+wood structural panel diaphragms
+have horizontal spans less than 40
+ft (12.2 m) and aspect ratios less
+than or equal to 4-to-1.
+5.6.2 A.4.2.2
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms
+do not consist of a system other
+than wood, steel deck, concrete,
+or horizontal bracing.

@@ -1,0 +1,30 @@
+17.1.1CP Very Low Seismicity Checklist
+Table 17-1. Very Low Seismicity Checklist.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Structural Components
+C NC N/A U LOAD PATH: The structure
+contains a complete, well-defined
+load path, including structural
+elements and connections, that
+serves to transfer the inertial
+forces associated with the mass of
+all elements of the building to the
+foundation.
+5.4.1.1 A.2.1.1
+C NC N/A U WALL ANCHORAGE: Exterior
+concrete or masonry walls that
+are dependent on the diaphragm
+for lateral support are anchored
+for out-of-plane forces at each
+diaphragm level with steel
+anchors, reinforcing dowels, or
+straps that are developed into the
+diaphragm. Connections have
+adequate strength to resist the
+connection force calculated in the
+Quick Check procedure of Section
+4.4.3.7.

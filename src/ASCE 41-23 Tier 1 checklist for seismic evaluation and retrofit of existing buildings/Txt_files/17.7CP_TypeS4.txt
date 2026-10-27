@@ -1,0 +1,196 @@
+17.7CP Structural Checklist for Building Type S4: Dual Systems with Backup Steel
+Moment Frames and Stiff Diaphragms
+Table 17-14. Collapse Prevention Structural Checklist for Building Type S4.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+braced frames or shear walls in each
+principal direction is greater than or
+equal to 2.
+5.5.1.1 A.3.2.1.1
+A.3.3.1.1
+C NC N/A U DRIFT CHECK: The drift ratio of the steel
+moment frames acting alone, calculated
+using the Quick Check procedure of
+Section 4.4.3.1 using 25% of Vc, is less
+than 0.025.
+5.5.2.1.2 A.3.1.3.1
+C NC N/A U COLUMN AXIAL STRESS CHECK: The
+axial stress caused by gravity loads in
+frame columns subjected to
+overturning forces is less than 0.10Fy.
+Alternatively, the axial stress caused by
+overturning forces alone, calculated
+using the Quick Check procedure of
+Section 4.4.3.6 is less than 0.30Fy.
+5.5.2.1.3 A.3.1.3.2
+C NC N/A U BRACE AXIAL STRESS CHECK: The axial
+stress in the diagonal braces, calculated
+using the Quick Check procedure of
+Section 4.4.3.4 and neglecting the steel
+moment frame is less than 0.50Fy.
+5.5.4.1 A.3.3.1.2
+C NC N/A U CONCRETE BEARING WALLS: Floor and
+roof girders and trusses are not
+supported at the ends of concrete walls
+that are less than 10 in. (254 mm) thick.
+This statement only applies to framing
+supports located less than two times
+the wall thickness away from the wall
+end.
+5.5.2.5.1 A.3.1.6.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress
+in the concrete shear walls, calculated
+using the Quick Check procedure of
+Section 4.4.3.3, and neglecting the steel
+moment frame, is less than the greater
+of 100 lb/in.2 (0.69 MPa) or 2 c f  .
+5.5.3.1.1 A.3.2.2.1
+C NC N/A U REINFORCING STEEL: The ratio of
+reinforcing steel area to gross concrete
+area is not less than 0.0012 in the
+vertical direction and 0.0020 in the
+horizontal direction.
+Connections
+C NC N/A U STEEL COLUMNS: The columns in
+seismic-force-resisting frames are
+anchored to the building foundation
+with a minimum of two anchor rods and
+with the base plates bearing on
+concrete or a grout pad.
+5.7.3.1 A.5.3.1
+C NC N/A U TRANSFER TO SHEAR WALLS:
+Diaphragms are connected for transfer
+of seismic forces to the shear walls.
+5.7.2 A.5.2.1
+C NC N/A U TRANSFER TO STEEL FRAMES:
+Diaphragms are connected for transfer
+of seismic forces to the steel frames.
+5.7.2 A.5.2.2
+C NC N/A U FOUNDATION DOWELS: Wall
+reinforcement is doweled into the
+foundation.
+5.7.3.4 A.5.3.5
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate Seismicity (Complete the Following Items in Addition to the Items for Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: For braced frames, the
+number of braced bays in each line is
+greater than 2.
+5.5.1.1 A.3.3.1.1
+C NC N/A U MOMENT-RESISTING CONNECTIONS: All
+moment connections are able to
+develop the strength of the adjoining
+members based on the specified
+minimum yield stress of the steel.
+5.5.2.2.1 A.3.1.3.4
+C NC N/A U COMPACT MEMBERS: All moment frame
+and brace elements meet section
+requirements in accordance with AISC
+360, Table B4.1a.
+5.5.2.2.5 A.3.1.3.8
+C NC N/A U CONNECTION STRENGTH: All the brace
+connections develop the buckling
+capacity of the diagonals.
+5.5.4.4 A.3.3.1.5
+C NC N/A U K-BRACING: The bracing system does
+not include K-braced bays.
+5.5.4.6 A.3.3.2.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U MOMENT-RESISTING CONNECTIONS: All
+moment connections are able to
+develop the strength of the adjoining
+members or panel zones based on
+110% of the expected yield stress of the
+steel per AISC 341, Section A3.2.
+C NC N/A U COLUMN SPLICES: At all column splice
+details located in moment frames, the
+web and flanges of I-shaped members,
+or all walls of tube/box members are
+connected to each other with the partial
+penetration welds with effective throat
+of at least 85% of the smaller member
+thickness or with plates that have been
+bolted or welded to the columns
+capable of developing AgFye of the
+thinner flange, web or tube/box wall.
+5.5.2.2.4 A.3.1.3.6
+C NC N/A U STRONG COLUMN—WEAK BEAM: The
+percentage of strong column–weak
+beam joints in each story of each line of
+moment frames is greater than 50%.
+5.5.2.1.5 A.3.1.3.7
+C NC N/A U COMPACT MEMBERS: All moment-frame
+and brace elements meet section
+requirements in accordance with AISC
+341, Table D1.1a, for moderately ductile
+members.
+5.5.2.2.5
+5.5.4.3
+A.3.1.3.8
+C NC N/A U COLUMN SPLICES: All column splice
+details located in braced frames
+develop 50% of the tensile strength of
+the column.
+5.5.4.2 A.3.3.1.3
+C NC N/A U SLENDERNESS OF DIAGONALS: All
+diagonal elements required to carry
+compression have Kl/r ratios less than
+200.
+5.5.4.3 A.3.3.1.4
+C NC N/A U CONNECTION STRENGTH: All the brace
+connections develop the yield capacity
+of the diagonals.
+5.5.4.4 A.3.3.1.5
+C NC N/A U CHEVRON BRACING: Beams in chevron,
+or V-braced, bays are capable of
+resisting the vertical load resulting from
+the simultaneous yielding and buckling
+of the brace pairs.
+5.5.4.6 A.3.3.2.3
+C NC N/A U CONCENTRICALLY BRACED FRAME
+JOINTS: All the diagonal braces frame
+into the beam–column joints
+concentrically.
+5.5.4.8 A.3.3.2.4
+C NC N/A U COUPLING BEAMS: Coupling beams
+have stirrups spaced at or less than d/2,
+and each wall or wall segment
+connected to the coupling beam is
+supported such that it can resist shear
+and overturning forces in the absence
+of the coupling beam. This statement
+only applies to coupling beams with
+span-to-depth ratios exceeding 2-to-1.
+Flexible Diaphragms
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have expansion
+joints or vertical offsets, such as split
+levels, sawtooth, or clerestory
+configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U OPENINGS AT SHEAR WALLS:
+Diaphragm openings immediately
+adjacent to the shear walls are less than
+15% of the wall length.
+5.6.1.3 A.4.1.4
+C NC N/A U OPENINGS AT FRAMES: Diaphragm
+openings immediately adjacent to the
+braced frames or moment frames
+extend less than 25% of the frame
+length.

@@ -1,0 +1,120 @@
+17.16CP Structural Checklist for Building Type PC2a: Precast Concrete Frames
+without Shear Walls
+Table 17-32. Collapse Prevention Structural Checklist for Building Type PC2a.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low and Moderate Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+moment frames in each principal
+direction is greater than or equal to 2.
+The number of bays of moment
+frames in each line is greater than or
+equal to 2.
+5.5.1.1 A.3.1.1.1
+C NC N/A U COLUMN SHEAR STRESS CHECK: The
+shear stress in the concrete columns,
+calculated using the Quick Check
+procedure of Section 4.4.3.2 is less
+than the greater of 100 lb/in.2 (0.69
+MPa) or 2 c f 
+.
+5.5.2.1.4 A.3.1.4.1
+C NC N/A U COLUMN AXIAL STRESS CHECK: The
+axial stress caused by gravity loads in
+columns subjected to overturning
+forces is less than 0.10 c f 
+.
+Alternatively, the axial stress caused
+by overturning forces alone,
+calculated using the Quick Check
+procedure of Section 4.4.3.6 is less
+than 0.30 c f 
+.
+5.5.2.1.3 A.3.1.4.2
+C NC N/A U PRECAST CONNECTION CHECK: The
+precast connections at frame joints
+have the capacity to resist the shear
+and moment demands calculated
+using the Quick Check procedure of
+Section 4.4.3.5.
+5.5.2.4 A.3.1.5.1
+Diaphragms
+C NC N/A U TOPPING SLAB: Precast concrete
+diaphragm elements are
+interconnected by a continuous
+reinforced concrete topping slab with
+a minimum thickness of 2 in. (50.8
+mm).
+C NC N/A U TOPPING SLAB TO WALLS OR FRAMES:
+Reinforced concrete topping slabs that
+interconnect the precast concrete
+diaphragm elements are doweled for
+transfer of forces into the shear wall or
+frame elements, and the dowels are
+able to develop the least of the shear
+strength of the walls, frames, or slabs.
+5.7.2 A.5.2.3
+C NC N/A U GIRDER–COLUMN CONNECTION: There
+is a positive connection using plates,
+connection hardware, or straps
+between the girder and the column
+support.
+5.7.4.1 A.5.4.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U PRESTRESSED FRAME ELEMENTS: The
+seismic-force-resisting frames do not
+include any prestressed or
+posttensioned elements where the
+average prestress exceeds the lesser of
+700 lb/in.2 (4.83 MPa) or / 6 c f 
+at
+potential hinge locations. The average
+prestress is calculated in accordance
+with the Quick Check procedure of
+Section 4.4.3.8.
+5.5.2.3.2 A.3.1.4.4
+C NC N/A U CAPTIVE COLUMNS: There are no
+columns at a level with height-to-depth
+ratios less than 50% of the nominal
+height-to-depth ratio of the typical
+columns at that level.
+5.5.2.3.3 A.3.1.4.5
+C NC N/A U JOINT REINFORCING: Beam–column
+joints have ties spaced at or less than
+8db.
+5.5.2.3.8 A.3.1.4.13
+C NC N/A U DEFLECTION COMPATIBILITY:
+Secondary components have the shear
+capacity to develop the flexural
+strength of the components.
+5.5.2.5.2 A.3.1.6.2
+Connections
+C NC N/A U UPLIFT AT PILE CAPS: Pile caps have top
+reinforcement, and piles are anchored
+to the pile caps.
+C NC N/A U GIRDERS: Girders supported by walls
+or pilasters have at least two ties
+securing the anchor bolts unless
+provided with independent stiff wall
+anchors with strength to resist the
+connection force calculated in the
+Quick Check procedure of Section
+4.4.3.7.
+5.7.4.2 A.5.4.2
+C NC N/A U CORBEL BEARING: If the frame girders
+bear on column corbels, the length of
+bearing is greater than 3 in. (76 mm).
+5.7.4.3 A.5.4.3
+C NC N/A U CORBEL CONNECTIONS: The frame
+girders are not connected to corbels
+with welded elements.

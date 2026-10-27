@@ -1,0 +1,180 @@
+17.17CP Structural Checklist for Building Types RM1: Reinforced Masonry Bearing
+Walls with Flexible Diaphragms and RM2: Reinforced Masonry Bearing Walls with
+Stiff Diaphragms
+Table 17-34. Collapse Prevention Structural Checklist for Building Types RM1 and RM2.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low and Moderate Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+shear walls in each principal direction is
+greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear stress
+in the reinforced masonry shear walls,
+calculated using the Quick Check
+procedure of Section 4.4.3.3 is less than
+70 lb/in.2 (0.48 MPa).
+5.5.3.1.1 A.3.2.4.1
+C NC N/A U REINFORCING STEEL: The total vertical
+and horizontal reinforcing steel ratio in
+reinforced masonry walls is greater than
+0.002 of the wall with the minimum of
+0.0007 in either of the two directions;
+the spacing of reinforcing steel is less
+than 48 in. (1.2 m), and all vertical bars
+extend to the top of the walls.
+5.5.3.1.3 A.3.2.4.2
+Stiff Diaphragms
+C NC N/A U TOPPING SLAB: Precast concrete
+diaphragm elements are
+interconnected by a continuous
+reinforced concrete topping slab.
+5.6.4 A.4.5.1
+Connections
+C NC N/A U WALL ANCHORAGE: Exterior concrete
+or masonry walls that are dependent on
+the diaphragm for lateral support are
+anchored for out-of-plane forces at
+each diaphragm level with steel
+anchors, reinforcing dowels, or straps
+that are developed into the diaphragm.
+Connections have strength to resist the
+connection force calculated in the
+Quick Check procedure of Section
+4.4.3.7.
+5.7.1.1 A.5.1.1
+C NC N/A U WOOD LEDGERS: The connection
+between the wall panels and the
+diaphragm does not induce cross-grain
+bending or tension in the wood ledgers
+or top plates fastened to the walls.
+C NC N/A U TRANSFER TO SHEAR WALLS:
+Diaphragms are connected for transfer
+of seismic forces to the shear walls.
+5.7.2 A.5.2.1
+C NC N/A U TOPPING SLAB TO WALLS OR FRAMES:
+Reinforced concrete topping slabs that
+interconnect the precast concrete
+diaphragm elements are doweled for
+transfer of forces into the shear wall or
+frame elements.
+5.7.2 A.5.2.3
+C NC N/A U FOUNDATION DOWELS: Wall
+reinforcement is doweled into the
+foundation.
+5.7.3.4 A.5.3.5
+C NC N/A U GIRDER–COLUMN CONNECTION: There
+is a positive connection using plates,
+connection hardware, or straps
+between the girder and the column
+support.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Stiff Diaphragms
+C NC N/A U OPENINGS AT SHEAR WALLS:
+Diaphragm openings immediately
+adjacent to the shear walls are less than
+25% of the wall length.
+5.6.1.3 A.4.1.4
+C NC N/A U OPENINGS AT EXTERIOR MASONRY
+SHEAR WALLS: Diaphragm openings
+immediately adjacent to exterior
+masonry shear walls are not greater
+than 8 ft (2.4 m) long.
+5.6.1.3 A.4.1.6
+Flexible Diaphragms
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have expansion
+joints or vertical offsets, such as split
+levels, sawtooth, or clerestory
+configurations.
+5.6.1.1 A.4.1.1
+C NC N/A U ROOF CHORD CONTINUITY: All chord
+elements are continuous, regardless of
+changes in roof elevation.
+C NC N/A U CROSSTIES: There are continuous
+crossties between diaphragm chords to
+distribute the out-of-plane wall
+anchorage forces into the diaphragm.
+Where each out-of-plane connection
+does not have a continuous crosstie
+across the entire diaphragm, these
+connections are developed into
+subdiaphragms between crossties with
+a maximum length-to-width ratio of 3-
+to-1.
+5.6.1.2 A.4.1.2
+C NC N/A U OPENINGS AT SHEAR WALLS:
+Diaphragm openings immediately
+adjacent to the shear walls are less than
+25% of the wall length.
+5.6.1.3 A.4.1.4
+C NC N/A U OPENINGS AT EXTERIOR MASONRY
+SHEAR WALLS: Diaphragm openings
+immediately adjacent to exterior
+masonry shear walls are not greater
+than 8 ft (2.4 m) long.
+5.6.1.3 A.4.1.6
+C NC N/A U STRAIGHT SHEATHING: All straightsheathed
+diaphragms have horizontal
+spans less than 24 ft (7.3 m) and aspect
+ratios less than 2-to-1 in the direction
+being considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All
+diagonally sheathed or unblocked
+wood structural panel diaphragms have
+horizontal spans less than 40 ft (12.2 m)
+and aspect ratios less than or equal to
+4-to-1.
+5.6.2 A.4.2.2
+C NC N/A U BLOCKED DIAPHRAGMS: All blocked
+wood structural panel diaphragms have
+horizontal spans less than 120 ft (36.5
+m) and have aspect ratios less than or
+equal to 4-to-1.
+5.6.2 A.4.2.3
+C NC N/A U CANTILEVERED WOOD DIAPHRAGMS:
+All cantilevered wood diaphragms that
+provide lateral support for concrete or
+masonry walls consist of wood
+structural panels and have a maximum
+cantilever length of 20 ft (6.1 m) if
+unblocked or 35 ft (10.7 m) if blocked,
+and a maximum ratio of cantilever
+length to diaphragm width of 1:2 if
+unblocked and 1:1 if blocked. In
+addition, the cantilevered diaphragm
+has a back-span length equal to or
+greater than the cantilevered portion.
+C NC N/A U NON-CONCRETE-FILLED DIAPHRAGMS:
+Bare steel deck diaphragms or steel
+deck diaphragms with fill other than
+reinforced structural concrete consist of
+horizontal spans of less than 120 ft (36.5
+m) and have aspect ratios less than 4-
+to-1.
+5.6.3 A.4.3.1
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms do
+not consist of a system other than
+wood, steel deck, concrete, or
+horizontal bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U STIFFNESS OF WALL ANCHORS: Anchors
+of concrete or masonry walls to wood
+structural elements are installed taut
+and are stiff enough to limit the relative
+movement between the wall and the
+diaphragm to no greater than 1/8 in.
+(3.1 mm) before engagement of the
+anchors.

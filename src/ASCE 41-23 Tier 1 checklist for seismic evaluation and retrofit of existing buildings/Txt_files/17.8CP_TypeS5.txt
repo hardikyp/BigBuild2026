@@ -1,0 +1,138 @@
+17.8CP Structural Checklist for Building Types S5: Steel Frames with Infill Masonry
+Shear Walls and Stiff Diaphragms and S5a: Steel Frames with Infill Masonry Shear
+Walls and Flexible Diaphragms
+Table 17-16. Collapse Prevention Structural Checklist for Building Types S5 and S5a.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines
+of shear walls in each principal
+direction is greater than or equal to 2.
+5.5.1.1 A.3.2.1.1
+C NC N/A U SHEAR STRESS CHECK: The shear
+stress in the reinforced masonry
+shear walls, calculated using the
+Quick Check procedure of Section
+4.4.3.3 is less than 70 lb/in.2 (0.48
+MPa)
+5.5.3.1.1 A.3.2.4.1
+C NC N/A U SHEAR STRESS CHECK: The shear
+stress in the unreinforced masonry
+shear walls, calculated using the
+Quick Check procedure of Section
+4.4.3.3 is less than 30 lb/in.2 (0.21
+MPa) for clay units and 70 lb/in.2
+(0.48 MPa) for concrete units. Bays
+with openings greater than 25% of
+the wall area shall not be included in
+Aw of Equation (4-8).
+5.5.3.1.1 A.3.2.5.1
+C NC N/A U INFILL WALL CONNECTIONS:
+Masonry is in full contact with frame.
+5.5.3.5.1
+5.5.3.5.3
+A.3.2.6.1
+Connections
+C NC N/A U STEEL COLUMNS: The columns in
+seismic-force-resisting frames are
+anchored to the building foundation
+with a minimum of two anchor rods
+and with the base plates bearing on
+concrete or a grout pad.
+5.7.3.1 A.5.3.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate Seismicity (Complete the Following Items in Addition to the Items for Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U INFILL WALL ECCENTRICITY: The
+centerline of the infill masonry wall is
+not offset from the centerline of the
+steel framing by more than 25% of
+the wall thickness.
+Connections
+C NC N/A U TRANSFER TO INFILL WALLS:
+Diaphragms are connected for
+transfer of loads to the infill walls.
+5.7.2 A.5.2.1
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U PROPORTIONS: The height-tothickness
+ratio of the unreinforced
+infill walls at each story is less than 9.
+5.5.3.1.2 A.3.2.6.2
+C NC N/A U CAVITY WALLS: The infill walls are not
+of cavity construction.
+5.5.3.5.2 A.3.2.6.3
+Flexible Diaphragms
+C NC N/A U CROSSTIES: There are continuous
+crossties between diaphragm chords.
+5.6.1.2 A.4.1.2
+C NC N/A U STRAIGHT SHEATHING: All straightsheathed
+diaphragms have
+horizontal spans less than 24 ft (7.3
+m) and aspect ratios less than 2-to-1
+in the direction being considered.
+5.6.2 A.4.2.1
+C NC N/A U DIAGONALLY SHEATHED AND
+UNBLOCKED DIAPHRAGMS: All
+diagonally sheathed or unblocked
+wood structural panel diaphragms
+have horizontal spans less than 40 ft
+(12.2 m) and aspect ratios less than or
+equal to 4-to-1.
+5.6.2 A.4.2.2
+C NC N/A U BLOCKED DIAPHRAGMS: All blocked
+wood structural panel diaphragms
+have horizontal spans less than 120 ft
+(36.5 m) and have aspect ratios less
+than or equal to 4-to-1.
+5.6.2 A.4.2.3
+C NC N/A U CANTILEVERED WOOD DIAPHRAGMS:
+All cantilevered wood diaphragms
+that provide lateral support for
+concrete or masonry walls consist of
+wood structural panels and have a
+maximum cantilever length of 20 ft
+(6.1 m) if unblocked or 35 ft (10.7 m)
+if blocked, and a maximum ratio of
+cantilever length to diaphragm width
+of 1:2 if unblocked and 1:1 if blocked.
+In addition, the cantilevered
+diaphragm has a back-span length
+equal to or greater than the
+cantilevered portion.
+C NC N/A U NON-CONCRETE-FILLED
+DIAPHRAGMS: Bare steel deck
+diaphragms or steel deck
+diaphragms with fill other than
+reinforced structural concrete consist
+of horizontal spans of less than 120 ft
+(36.5 m) and have aspect ratios less
+than 4-to-1.
+5.6.3 A.4.3.1
+C NC N/A U OTHER DIAPHRAGMS: Diaphragms
+do not consist of a system other than
+wood, steel deck, concrete, or
+horizontal bracing.
+5.6.5 A.4.7.1
+Connections
+C NC N/A U STIFFNESS OF WALL ANCHORS:
+Anchors of concrete or masonry walls
+to wood structural elements are
+installed taut and are stiff enough to
+limit the relative movement between
+the wall and the diaphragm to no
+greater than 1/8 in. (3.1 mm) before
+engagement of the anchors.

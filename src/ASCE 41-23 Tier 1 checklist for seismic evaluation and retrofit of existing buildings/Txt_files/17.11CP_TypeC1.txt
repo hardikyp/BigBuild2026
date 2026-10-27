@@ -1,0 +1,157 @@
+17.11CP Structural Checklist for Building Type C1: Concrete Moment Frames
+Table 17-22. Collapse Prevention Structural Checklist for Building Type C1.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Low Seismicity
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of lines of
+moment frames in each principal
+direction is greater than or equal to 2.
+5.5.1.1 A.3.1.1.1
+C NC N/A U COLUMN AXIAL STRESS CHECK: The
+axial stress caused by unfactored
+gravity loads in columns subjected to
+overturning forces because of seismic
+demands is less than 0.20 c f 
+.
+Alternatively, the axial stress caused
+by overturning forces alone,
+calculated using the Quick Check
+procedure of Section 4.4.3.6 is less
+than 0.30 c f 
+.
+5.5.2.1.3 A.3.1.4.2
+Connections
+C NC N/A U CONCRETE COLUMNS: All concrete
+columns are doweled into the
+foundation with a minimum of four
+bars.
+5.7.3.1 A.5.3.2
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+Moderate Seismicity (Complete the Following Items in Addition to the Items for Low Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U REDUNDANCY: The number of bays of
+moment frames in each line is greater
+than or equal to 2.
+5.5.1.1 A.3.1.1.1
+C NC N/A U INTERFERING WALLS: All concrete and
+masonry infill walls placed in moment
+frames are isolated from structural
+elements.
+5.5.2.1.1 A.3.1.2.1
+C NC N/A U COLUMN SHEAR STRESS CHECK: The
+shear stress in the concrete columns,
+calculated using the Quick Check
+procedure of Section 4.4.3.2 is less
+than the greater of 100 lb/in.2 (0.69
+MPa) or 2 c f 
+5.5.2.1.4 A.3.1.4.1
+C NC N/A U FLAT SLAB FRAMES: The seismicforce-
+resisting system is not a frame
+consisting of columns and a flat slab
+or plate without beams.
+Status Evaluation Statement
+Tier 2
+Reference
+Commentary
+Reference Comments
+High Seismicity (Complete the Following Items in Addition to the Items for Low and Moderate Seismicity)
+Seismic-Force-Resisting System
+C NC N/A U PRESTRESSED FRAME ELEMENTS: The
+seismic-force-resisting frames do not
+include any prestressed or
+posttensioned elements where the
+average prestress exceeds the lesser
+of 700 lb/in.2 (4.83 MPa) or / 6 c f 
+at
+potential hinge locations. The average
+prestress is calculated in accordance
+with the Quick Check procedure of
+Section 4.4.3.8.
+5.5.2.3.2 A.3.1.4.4
+C NC N/A U CAPTIVE COLUMNS: There are no
+columns at a level with height-todepth
+ratios less than 50% of the
+nominal height-to-depth ratio of the
+typical columns at that level.
+5.5.2.3.3 A.3.1.4.5
+C NC N/A U NO SHEAR FAILURES: The shear
+capacity of frame members is able to
+develop the moment capacity at the
+ends of the members.
+5.5.2.3.4 A.3.1.4.6
+C NC N/A U STRONG COLUMN—WEAK BEAM: The
+sum of the moment capacity of the
+columns is 20% greater than that of
+the beams at frame joints.
+5.5.2.1.5 A.3.1.4.7
+C NC N/A U BEAM BARS: At least two longitudinal
+top and two longitudinal bottom bars
+extend continuously throughout the
+length of each frame beam. At least
+25% of the longitudinal bars provided
+at the joints for either positive or
+negative moment are continuous
+throughout the length of the
+members.
+5.5.2.3.5 A.3.1.4.8
+C NC N/A U COLUMN-BAR SPLICES: All column-bar
+lap splice lengths are greater than
+35db and are enclosed by ties spaced
+at or less than 8db. Alternatively,
+column bars are spliced with
+mechanical couplers with a capacity
+of at least 1.25 times the nominal yield
+strength of the spliced bar.
+C NC N/A U BEAM-BAR SPLICES: The lap splices or
+mechanical couplers for longitudinal
+beam reinforcing are not located
+within lb/4 of the joints and are not
+located in the vicinity of potential
+plastic hinge locations.
+5.5.2.3.6 A.3.1.4.10
+C NC N/A U COLUMN-TIE SPACING: Frame
+columns have ties spaced at or less
+than d/4 throughout their length and
+at or less than 8db at all potential
+plastic hinge locations.
+5.5.2.3.7 A.3.1.4.11
+C NC N/A U STIRRUP SPACING: All beams have
+stirrups spaced at or less than d/2
+throughout their length. At potential
+plastic hinge locations, stirrups are
+spaced at or less than the minimum of
+8db or d/4.
+5.5.2.3.7 A.3.1.4.12
+C NC N/A U JOINT TRANSVERSE REINFORCING:
+Beam–column joints have ties spaced
+at or less than 8db.
+5.5.2.3.8 A.3.1.4.13
+C NC N/A U DEFLECTION COMPATIBILITY:
+Secondary components have the
+shear capacity to develop the flexural
+strength of the components.
+5.5.2.5.2 A.3.1.6.2
+C NC N/A U FLAT SLABS: Flat slabs or plates not
+part of the seismic-force-resisting
+system have continuous bottom steel
+through the column joints.
+5.5.2.5.3 A.3.1.6.3
+Diaphragms
+C NC N/A U DIAPHRAGM CONTINUITY: Floor and
+roof diaphragms do not have
+expansion joints or vertical offsets,
+such as split levels, sawtooth, or
+clerestory configurations.
+5.6.1.1 A.4.1.1
+Connections
+C NC N/A U UPLIFT AT PILE CAPS: Pile caps have
+top reinforcement, and piles are
+anchored to the pile caps.
