@@ -1,0 +1,17 @@
+﻿{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "field-capture-demo",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\npm.cmd",
+      "runtimeArgs": ["--prefix", "src/field-capture", "run", "demo"],
+      "port": 5173
+    },
+    {
+      "name": "morgan",
+      "runtimeExecutable": "C:\\Users\\jerry\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "runtimeArgs": ["-m", "streamlit", "run", "nate/asce41_tier1_app.py", "--server.headless", "true", "--server.port", "8501"],
+      "port": 8501
+    }
+  ]
+}
