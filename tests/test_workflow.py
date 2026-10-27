@@ -57,3 +57,13 @@ def test_resume_and_navigation(client):
     assert "/review/0/1" in next_page.headers["Location"]
     resumed = client.get(next_page.headers["Location"])
     assert resumed.status_code == 200
+
+
+def test_last_checklist_page_uses_review_summary_action(client):
+    assessment_id = create_assessment(client, performance="CP", building_type="C1", seismicity="moderate")
+    # CP/C1 has a basic form followed by the structural form; the final
+    # checklist page is the last section of the final form.
+    last_page = client.get(f"/assessments/{assessment_id}/review/1/999")
+    assert last_page.status_code == 200
+    assert b">Review Summary<" in last_page.data
+    assert b"Save and continue" not in last_page.data

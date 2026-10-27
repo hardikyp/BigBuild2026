@@ -28,5 +28,5 @@
 </div>
 <span class="muted evidence-hint">Photos and files upload when you save this section.</span>
 </details></article>{% endfor %}
-<div class="form-actions review-actions-bottom"><button class="button ghost" name="action" value="previous" type="submit">← Previous</button><button class="button ghost" name="action" value="summary" type="submit">Save and view summary</button><button class="button primary" name="action" value="next" type="submit">Save and continue →</button></div></form></section></div>
+<div class="form-actions review-actions-bottom"><button class="button ghost" name="action" value="previous" type="submit">← Previous</button>{% if is_last_page %}<button class="button primary" name="action" value="summary" type="submit">Review Summary</button>{% else %}<button class="button ghost" name="action" value="summary" type="submit">Save and view summary</button><button class="button primary" name="action" value="next" type="submit">Save and continue →</button>{% endif %}</div></form></section></div>
 {% endblock %}

@@ -15,8 +15,8 @@ from app.services.assessment import summary
 from app.services.photos import report_image
 
 
-PHOTO_MAX_WIDTH = 3.3 * inch
-PHOTO_MAX_HEIGHT = 2.6 * inch
+PHOTO_MAX_WIDTH = 7.0 * inch
+PHOTO_MAX_HEIGHT = 5.0 * inch
 NOTICE ="Decision support only. This report does not certify a building, replace licensed professional judgment, or prescribe a retrofit."
 
 
@@ -28,7 +28,13 @@ def pdf_text(value: object) -> str:
     return escape(text)
 
 
-def photo_cell(upload_root: Path | None, evidence, style) -> list:
+def photo_block(upload_root: Path | None, evidence, style) -> list:
+    """Return a full, uncropped photo block for an evidence item.
+
+    The source image is EXIF-rotated and downscaled only when needed. Its
+    aspect ratio is preserved and the full image is placed on the report page,
+    rather than using the small UI thumbnail or cropping it into a grid cell.
+    """
     caption = Paragraph(pdf_text(evidence.caption or evidence.original_name), style)
     path = upload_root / str(evidence.assessment_id) / evidence.stored_name if upload_root else None
     try:
@@ -36,21 +42,9 @@ def photo_cell(upload_root: Path | None, evidence, style) -> list:
     except (OSError, TypeError, ValueError):
         return [Paragraph(pdf_text(f"[Photo unavailable: {evidence.original_name}]"), style), caption]
     scale = min(PHOTO_MAX_WIDTH / width, PHOTO_MAX_HEIGHT / height)
-    return [Image(data, width=width * scale, height=height * scale), caption]
-
-
-def photo_table(upload_root: Path | None, photos: list, style) -> Table | None:
-    if not photos:
-        return None
-    cells = [photo_cell(upload_root, evidence, style) for evidence in photos]
-    rows = [cells[index:index + 2] for index in range(0, len(cells), 2)]
-    if len(rows[-1]) == 1:
-        rows[-1].append("")
-    return Table(rows, colWidths=[PHOTO_MAX_WIDTH + 0.2 * inch] * 2, hAlign="LEFT", style=TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
-    ]))
+    image = Image(data, width=width * scale, height=height * scale)
+    image.hAlign = "LEFT"
+    return [image, caption]
 
 
 def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> bytes:
@@ -122,10 +116,10 @@ def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> byte
             if row["evidence"]:
                 body += "<br/><b>Evidence:</b> " + ", ".join(pdf_text(e.original_name) for e in row["evidence"])
             story.append(Paragraph(body, styles["Item"]))
-            photos = photo_table(upload_root, [e for e in row["evidence"] if e.is_image and e.include_in_report], styles["Small"])
-            if photos is not None:
+            photos = [e for e in row["evidence"] if e.is_image and e.include_in_report]
+            for photo in photos:
                 story.append(Spacer(1, 0.05 * inch))
-                story.append(photos)
+                story.extend(photo_block(upload_root, photo, styles["Small"]))
             story.append(Spacer(1, 0.07 * inch))
 
     def footer(canvas, doc):

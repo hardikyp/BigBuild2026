@@ -23,3 +23,12 @@ def test_pdf_export_is_valid_pdf(client):
     assert response.mimetype == "application/pdf"
     assert response.data.startswith(b"%PDF")
     assert len(response.data) > 2000
+
+
+def test_pdf_export_is_downloadable_and_summary_link_opts_out_of_htmx(client):
+    assessment_id = create_assessment(client)
+    response = client.get(f"/assessments/{assessment_id}/export.pdf")
+    assert response.headers["Content-Disposition"] == f"attachment; filename=assessment-{assessment_id}.pdf"
+    summary = client.get(f"/assessments/{assessment_id}/summary")
+    assert f'download="assessment-{assessment_id}.pdf"'.encode() in summary.data
+    assert b'hx-boost="false"' in summary.data

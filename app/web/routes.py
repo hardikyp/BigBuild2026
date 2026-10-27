@@ -5,10 +5,11 @@ import json
 import mimetypes
 import shutil
 import uuid
+from io import BytesIO
 from pathlib import Path
 from types import SimpleNamespace
 
-from flask import Blueprint, abort, current_app, flash, jsonify, redirect, render_template, request, send_from_directory, url_for
+from flask import Blueprint, abort, current_app, flash, jsonify, redirect, render_template, request, send_file, send_from_directory, url_for
 from sqlalchemy import select
 from werkzeug.security import safe_join
 from werkzeug.utils import secure_filename
@@ -215,11 +216,13 @@ def review_form(assessment_id: int, form_index: int, section_index: int):
         for evidence in assessment.evidence:
             evidence_by_item.setdefault(evidence.item_id, []).append(evidence)
         progress = summary(catalog(), assessment)["counters"]
+        sequence = locations(checklists, catalog(), assessment)
         return render_template(
             "review.html", assessment=assessment, form=form, checklist=checklist, section=section,
             form_index=form_index, section_index=section_index, form_count=len(checklists),
             section_count=len(sections), responses=responses, progress=progress,
             evidence_by_item=evidence_by_item, photo_accept=PHOTO_ACCEPT,
+            is_last_page=bool(sequence) and (form_index, section_index) == sequence[-1],
         )
 
 
@@ -387,5 +390,9 @@ def export_pdf(assessment_id: int):
         if assessment is None:
             return "Assessment not found", 404
         payload = make_pdf(catalog(), assessment, Path(current_app.config["UPLOAD_ROOT"]))
-        from flask import Response
-        return Response(payload, mimetype="application/pdf", headers={"Content-Disposition": f"attachment; filename=assessment-{assessment.id}.pdf"})
+        return send_file(
+            BytesIO(payload),
+            mimetype="application/pdf",
+            as_attachment=True,
+            download_name=f"assessment-{assessment.id}.pdf",
+        )
