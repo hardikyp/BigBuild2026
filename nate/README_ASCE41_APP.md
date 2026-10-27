@@ -19,7 +19,7 @@ Without `ANTHROPIC_API_KEY`, the app still runs and keeps photos, but photo inte
 - Site photos per checklist item (camera or upload). Claude interprets each photo in the context of the building and item, and suggests an **advisory** status the engineer can apply with "Use this status". Photos export as a ZIP, and interpretations go into the CSV and JSON exports.
 
 ## Field capture (`field_capture.py`)
-Python port of `src/field-capture` (the TypeScript module). It resizes photos to 1568 px JPEG, applies EXIF orientation and strips metadata, then asks Claude for a structured interpretation via a forced tool call. Keep `SYSTEM_PROMPT`, `OUTPUT_SCHEMA` and `build_user_prompt` in sync with `src/field-capture/prompt.ts`.
+Pure Python, no Node.js needed. It resizes photos to 1568 px JPEG, applies EXIF orientation and strips metadata, then asks Claude for a structured interpretation via a forced tool call.
 
 ## Production backlog
 1. Populate and independently QA every Chapter 17 table against the licensed ASCE 41-17 PDF.
