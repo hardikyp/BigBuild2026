@@ -1,6 +1,5 @@
 # TODO
 
-- assessment summary: fix the input field for Reviewer notes such that the save note button is under the input text field and not adjacent
 - add a dark and light mode button in top right corner.
 - Add an opt-in photo-analysis workflow to assessment evidence:
   - Reuse the existing evidence upload and storage flow; persist each photo before requesting analysis so an analysis failure never loses the evidence.

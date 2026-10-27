@@ -85,3 +85,15 @@ def test_intake_labels_include_relevant_units(client):
     assert b"Length (ft.)" in page.data
     assert b"Story height (ft.)" in page.data
     assert b"Latitude (decimal degrees)" in page.data
+
+
+def test_summary_reviewer_notes_form_places_save_control_after_full_textarea(client):
+    assessment_id = create_assessment(client)
+    page = client.get(f"/assessments/{assessment_id}/summary")
+
+    assert page.status_code == 200
+    assert b'class="full-textarea"' in page.data
+    assert b"Save notes" in page.data
+    assert b"/notes" in page.data
+    styles = client.get("/static/styles.css")
+    assert b'.summary-grid form[action*="/notes"]{display:flex' in styles.data
