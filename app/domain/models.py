@@ -110,9 +110,14 @@ class Evidence(Base):
     mime_type: Mapped[str] = mapped_column(String(120), default="application/octet-stream")
     caption: Mapped[str] = mapped_column(Text, default="")
     sha256: Mapped[str] = mapped_column(String(64), default="")
+    include_in_report: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
     assessment: Mapped[Assessment] = relationship(back_populates="evidence")
+
+    @property
+    def is_image(self) -> bool:
+        return (self.mime_type or "").startswith("image/")
 
 
 def model_to_dict(obj: Any, fields: list[str]) -> dict[str, Any]:

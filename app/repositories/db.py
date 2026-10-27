@@ -25,6 +25,13 @@ def initialize_database(engine) -> None:
         if "001_initial" not in applied:
             Base.metadata.create_all(connection)
             connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('001_initial')"))
+        if "002_evidence_report_flag" not in applied:
+            # Databases created after this column was added already have it
+            # from create_all; older databases need it added in place.
+            columns = {row[1] for row in connection.execute(text("PRAGMA table_info(evidence)"))}
+            if "include_in_report" not in columns:
+                connection.execute(text("ALTER TABLE evidence ADD COLUMN include_in_report BOOLEAN NOT NULL DEFAULT 1"))
+            connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('002_evidence_report_flag')"))
 
 
 def database_url(path: Path) -> str:

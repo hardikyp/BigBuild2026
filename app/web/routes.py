@@ -15,6 +15,7 @@ from app.domain.models import Assessment, Evidence
 from app.exports.json_export import assessment_json
 from app.exports.pdf_export import make_pdf
 from app.services.assessment import applicable_sections, get_catalog_form, response_for, summary, sync_checklists, update_assessment_from_form
+from app.services.photos import PHOTO_ACCEPT, photo_mime_type
 
 
 bp = Blueprint("main", __name__)
@@ -39,6 +40,12 @@ def status_label(status: str) -> str:
 @bp.app_context_processor
 def inject_helpers():
     return {"status_label": status_label, "level_label": {"very_low": "Very Low", "low": "Low", "moderate": "Moderate", "high": "High"}.get, "getattr": getattr}
+
+
+@bp.app_errorhandler(413)
+def upload_too_large(error):
+    flash("Upload too large. Nothing in that save was stored; try fewer photos at a time.", "error")
+    return redirect(request.referrer or url_for("main.assessments"))
 
 
 @bp.get("/")
@@ -108,18 +115,28 @@ def review_form(assessment_id: int, form_index: int, section_index: int):
         section_index = max(0, min(section_index, len(sections) - 1))
         section = SimpleNamespace(**sections[section_index])
         if request.method == "POST":
+            rejected = []
             for item in section.items:
-                response = response_for(session, checklist, item["item_id"])
-                response.status = request.form.get(f"status_{item['item_id']}", "")
-                response.comment = request.form.get(f"comment_{item['item_id']}", "").strip()
-                response.reviewer_note = request.form.get(f"reviewer_{item['item_id']}", "").strip()
-                upload = request.files.get(f"file_{item['item_id']}")
+                item_id = item["item_id"]
+                response = response_for(session, checklist, item_id)
+                response.status = request.form.get(f"status_{item_id}", "")
+                response.comment = request.form.get(f"comment_{item_id}", "").strip()
+                response.reviewer_note = request.form.get(f"reviewer_{item_id}", "").strip()
+                caption = request.form.get(f"caption_{item_id}", "").strip()
+                include = request.form.get(f"include_{item_id}") == "on"
+                for photo in request.files.getlist(f"photo_{item_id}"):
+                    if photo and photo.filename and not save_photo(session, assessment, item_id, photo, caption, include):
+                        rejected.append(photo.filename)
+                upload = request.files.get(f"file_{item_id}")
                 if upload and upload.filename:
-                    save_evidence_file(
-                        session, assessment, item["item_id"], upload,
-                        request.form.get(f"caption_{item['item_id']}", "").strip(),
-                    )
+                    save_evidence_file(session, assessment, item_id, upload, caption, include_in_report=include)
+            shown = {int(value) for value in request.form.getlist("evidence_on_page") if value.isdigit()}
+            for evidence in assessment.evidence:
+                if evidence.id in shown:
+                    evidence.include_in_report = request.form.get(f"report_{evidence.id}") == "on"
             session.commit()
+            if rejected:
+                flash(f"Not saved, not a JPEG, PNG, WebP or GIF photo: {', '.join(rejected)}", "error")
             if request.form.get("action") == "previous":
                 form_index, section_index = previous_location(checklists, catalog(), assessment, form_index, section_index)
             elif request.form.get("action") == "summary":
@@ -128,11 +145,15 @@ def review_form(assessment_id: int, form_index: int, section_index: int):
                 form_index, section_index = next_location(checklists, catalog(), assessment, form_index, section_index)
             return redirect(url_for("main.review_form", assessment_id=assessment.id, form_index=form_index, section_index=section_index))
         responses = {response.item_id: response for response in checklist.responses}
+        evidence_by_item: dict[str, list[Evidence]] = {}
+        for evidence in assessment.evidence:
+            evidence_by_item.setdefault(evidence.item_id, []).append(evidence)
         progress = summary(catalog(), assessment)["counters"]
         return render_template(
             "review.html", assessment=assessment, form=form, checklist=checklist, section=section,
             form_index=form_index, section_index=section_index, form_count=len(checklists),
             section_count=len(sections), responses=responses, progress=progress,
+            evidence_by_item=evidence_by_item, photo_accept=PHOTO_ACCEPT,
         )
 
 
@@ -195,7 +216,16 @@ def upload_evidence(assessment_id: int):
     return redirect(request.referrer or url_for("main.summary_view", assessment_id=assessment_id))
 
 
-def save_evidence_file(session, assessment, item_id: str, upload, caption: str) -> None:
+def save_photo(session, assessment, item_id: str, photo, caption: str, include_in_report: bool) -> bool:
+    mime_type = photo_mime_type(photo.read())
+    if mime_type is None:
+        return False
+    photo.stream.seek(0)
+    save_evidence_file(session, assessment, item_id, photo, caption, mime_type=mime_type, include_in_report=include_in_report)
+    return True
+
+
+def save_evidence_file(session, assessment, item_id: str, upload, caption: str, *, mime_type: str | None = None, include_in_report: bool = True) -> None:
     original_name = secure_filename(upload.filename) or "evidence"
     stored_name = f"{uuid.uuid4().hex}_{original_name}"
     upload_root = Path(current_app.config["UPLOAD_ROOT"]) / str(assessment.id)
@@ -208,9 +238,10 @@ def save_evidence_file(session, assessment, item_id: str, upload, caption: str) 
         item_id=item_id,
         stored_name=stored_name,
         original_name=original_name,
-        mime_type=upload.mimetype or mimetypes.guess_type(original_name)[0] or "application/octet-stream",
+        mime_type=mime_type or upload.mimetype or mimetypes.guess_type(original_name)[0] or "application/octet-stream",
         caption=caption,
         sha256=digest,
+        include_in_report=include_in_report,
     ))
 
 
@@ -237,6 +268,6 @@ def export_pdf(assessment_id: int):
         assessment = get_assessment(session, assessment_id)
         if assessment is None:
             return "Assessment not found", 404
-        payload = make_pdf(catalog(), assessment)
+        payload = make_pdf(catalog(), assessment, Path(current_app.config["UPLOAD_ROOT"]))
         from flask import Response
         return Response(payload, mimetype="application/pdf", headers={"Content-Disposition": f"attachment; filename=assessment-{assessment.id}.pdf"})

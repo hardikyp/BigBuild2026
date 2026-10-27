@@ -23,7 +23,8 @@ def create_app(test_config: dict | None = None) -> Flask:
         DATABASE_PATH=Path(app.instance_path) / "morgan.sqlite3",
         UPLOAD_ROOT=Path(app.instance_path) / "uploads",
         CATALOG_PATH=catalog_path,
-        MAX_CONTENT_LENGTH=16 * 1024 * 1024,
+        # Room for several full-resolution phone photos in one section save.
+        MAX_CONTENT_LENGTH=64 * 1024 * 1024,
     )
     if test_config:
         app.config.update(test_config)

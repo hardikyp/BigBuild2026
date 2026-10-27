@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from io import BytesIO
+from pathlib import Path
 from xml.sax.saxutils import escape
 
 from reportlab.lib import colors
@@ -8,12 +9,15 @@ from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from reportlab.platypus import Image, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 from app.services.assessment import summary
+from app.services.photos import report_image
 
 
-NOTICE = "Decision support only. This report does not certify a building, replace licensed professional judgment, or prescribe a retrofit."
+PHOTO_MAX_WIDTH = 3.3 * inch
+PHOTO_MAX_HEIGHT = 2.6 * inch
+NOTICE ="Decision support only. This report does not certify a building, replace licensed professional judgment, or prescribe a retrofit."
 
 
 def pdf_text(value: object) -> str:
@@ -24,7 +28,32 @@ def pdf_text(value: object) -> str:
     return escape(text)
 
 
-def make_pdf(catalog: dict, assessment) -> bytes:
+def photo_cell(upload_root: Path | None, evidence, style) -> list:
+    caption = Paragraph(pdf_text(evidence.caption or evidence.original_name), style)
+    path = upload_root / str(evidence.assessment_id) / evidence.stored_name if upload_root else None
+    try:
+        data, width, height = report_image(path)
+    except (OSError, TypeError, ValueError):
+        return [Paragraph(pdf_text(f"[Photo unavailable: {evidence.original_name}]"), style), caption]
+    scale = min(PHOTO_MAX_WIDTH / width, PHOTO_MAX_HEIGHT / height)
+    return [Image(data, width=width * scale, height=height * scale), caption]
+
+
+def photo_table(upload_root: Path | None, photos: list, style) -> Table | None:
+    if not photos:
+        return None
+    cells = [photo_cell(upload_root, evidence, style) for evidence in photos]
+    rows = [cells[index:index + 2] for index in range(0, len(cells), 2)]
+    if len(rows[-1]) == 1:
+        rows[-1].append("")
+    return Table(rows, colWidths=[PHOTO_MAX_WIDTH + 0.2 * inch] * 2, hAlign="LEFT", style=TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+
+
+def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> bytes:
     buffer = BytesIO()
     document = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=0.5 * inch, leftMargin=0.5 * inch, topMargin=0.5 * inch, bottomMargin=0.55 * inch)
     styles = getSampleStyleSheet()
@@ -93,6 +122,10 @@ def make_pdf(catalog: dict, assessment) -> bytes:
             if row["evidence"]:
                 body += "<br/><b>Evidence:</b> " + ", ".join(pdf_text(e.original_name) for e in row["evidence"])
             story.append(Paragraph(body, styles["Item"]))
+            photos = photo_table(upload_root, [e for e in row["evidence"] if e.is_image and e.include_in_report], styles["Small"])
+            if photos is not None:
+                story.append(Spacer(1, 0.05 * inch))
+                story.append(photos)
             story.append(Spacer(1, 0.07 * inch))
 
     def footer(canvas, doc):

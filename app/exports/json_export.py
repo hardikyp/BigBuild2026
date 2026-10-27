@@ -42,6 +42,7 @@ def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
                                 "mime_type": evidence.mime_type,
                                 "caption": evidence.caption,
                                 "sha256": evidence.sha256,
+                                "include_in_report": evidence.include_in_report,
                             }
                             for evidence in evidence_by_item.get(item["item_id"], [])
                         ],
@@ -74,6 +75,7 @@ def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
                 "mime_type": evidence.mime_type,
                 "caption": evidence.caption,
                 "sha256": evidence.sha256,
+                "include_in_report": evidence.include_in_report,
                 "created_at": evidence.created_at.isoformat() if evidence.created_at else None,
             }
             for evidence in assessment.evidence
