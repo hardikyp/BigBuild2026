@@ -1,0 +1,7 @@
+{# Deletes the whole assessment and returns to the Assessments page. Not boosted, so the native confirm always runs first. Hidden on the new-assessment form, which has no id yet. #}
+{% if assessment and assessment.id %}
+{% set confirm_text = "Delete assessment #%s (%s)?\n\nThis permanently removes its intake data, checklist answers, comments, photos and files, then returns to the Assessments page."|format(assessment.id, assessment.project_name or "Untitled project") %}
+<form class="inline-form" method="post" action="{{ url_for('main.delete_assessment', assessment_id=assessment.id) }}" hx-boost="false" onsubmit='return confirm({{ confirm_text|tojson }})'>
+  <button type="submit" class="button ghost danger">Delete assessment</button>
+</form>
+{% endif %}

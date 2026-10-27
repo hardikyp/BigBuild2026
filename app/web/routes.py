@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import mimetypes
+import shutil
 import uuid
 from pathlib import Path
 from types import SimpleNamespace
@@ -328,6 +329,43 @@ def evidence_thumbnail(assessment_id: int, stored_name: str):
     except OSError:
         abort(404)
     return send_from_directory(thumb.parent, thumb.name, as_attachment=False)
+
+
+@bp.post("/assessments/<int:assessment_id>/evidence/<int:evidence_id>/delete")
+def delete_evidence(assessment_id: int, evidence_id: int):
+    with db_session() as session:
+        evidence = session.get(Evidence, evidence_id)
+        # Drawings are referenced by intake interpretations, so they are not deleted from here.
+        if evidence is None or evidence.assessment_id != assessment_id or evidence.item_id.startswith("drawings:"):
+            abort(404)
+        remove_evidence_files(evidence)
+        session.delete(evidence)
+        session.commit()
+    if request.headers.get("HX-Request"):
+        return ""
+    flash("Photo deleted.", "success")
+    return redirect(request.referrer or url_for("main.review", assessment_id=assessment_id))
+
+
+@bp.post("/assessments/<int:assessment_id>/delete")
+def delete_assessment(assessment_id: int):
+    with db_session() as session:
+        assessment = get_assessment(session, assessment_id)
+        if assessment is None:
+            abort(404)
+        name = assessment.project_name or "Untitled project"
+        session.delete(assessment)
+        session.commit()
+    shutil.rmtree(Path(current_app.config["UPLOAD_ROOT"]) / str(assessment_id), ignore_errors=True)
+    flash(f"Deleted assessment #{assessment_id} ({name}).", "success")
+    return redirect(url_for("main.assessments"))
+
+
+def remove_evidence_files(evidence: Evidence) -> None:
+    folder = Path(current_app.config["UPLOAD_ROOT"]) / str(evidence.assessment_id)
+    original = folder / evidence.stored_name
+    (folder / "thumbs" / f"{original.stem}.jpg").unlink(missing_ok=True)
+    original.unlink(missing_ok=True)
 
 
 @bp.get("/assessments/<int:assessment_id>/export.json")

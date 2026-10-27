@@ -188,3 +188,53 @@ def test_thumbnail_endpoint_rejects_missing_and_escaping_paths(client):
     assessment_id = create_assessment(client)
     assert client.get(f"/assessments/{assessment_id}/evidence-thumb/nope.jpg").status_code == 404
     assert client.get(f"/assessments/{assessment_id}/evidence-thumb/../../secret.jpg").status_code == 404
+
+
+def test_delete_photo_removes_row_file_and_thumbnail(app, client):
+    assessment_id = create_assessment(client)
+    save_section(client, assessment_id, {f"photo_{ITEM_ID}": (BytesIO(image_bytes()), "delete-me.png")})
+    evidence = client.get(f"/assessments/{assessment_id}/export.json").get_json()["evidence"][0]
+    folder = app.config["UPLOAD_ROOT"] / str(assessment_id)
+    page = client.get(f"/assessments/{assessment_id}/review/0/0").data.decode()
+    assert f'id="thumb-{evidence["id"]}"' in page
+    assert f'/evidence/{evidence["id"]}/delete' in page
+    stored = next(path.name for path in folder.iterdir() if path.is_file())
+    assert client.get(f"/assessments/{assessment_id}/evidence-thumb/{stored}").status_code == 200
+
+    response = client.post(f"/assessments/{assessment_id}/evidence/{evidence['id']}/delete", headers={"HX-Request": "true"})
+    assert response.status_code == 200
+    assert response.data == b""
+    assert client.get(f"/assessments/{assessment_id}/export.json").get_json()["evidence"] == []
+    assert not (folder / stored).exists()
+    assert not any((folder / "thumbs").iterdir())
+
+
+def test_delete_photo_rejects_wrong_assessment(client):
+    first = create_assessment(client)
+    save_section(client, first, {f"photo_{ITEM_ID}": (BytesIO(image_bytes()), "keep.png")})
+    evidence_id = client.get(f"/assessments/{first}/export.json").get_json()["evidence"][0]["id"]
+    client.post("/assessments/new", data={"project_name": "Other"})
+    assert client.post(f"/assessments/2/evidence/{evidence_id}/delete").status_code == 404
+    assert client.post(f"/assessments/{first}/evidence/999/delete").status_code == 404
+    assert len(client.get(f"/assessments/{first}/export.json").get_json()["evidence"]) == 1
+
+
+def test_delete_assessment_removes_everything_and_returns_home(app, client):
+    assessment_id = create_assessment(client)
+    save_section(client, assessment_id, {
+        f"status_{ITEM_ID}": "NC",
+        f"photo_{ITEM_ID}": (BytesIO(image_bytes()), "gone.png"),
+    })
+    folder = app.config["UPLOAD_ROOT"] / str(assessment_id)
+    assert folder.exists()
+    for page in (f"/assessments/{assessment_id}/review/0/0", f"/assessments/{assessment_id}/summary", f"/assessments/{assessment_id}/intake"):
+        assert f"/assessments/{assessment_id}/delete".encode() in client.get(page).data
+
+    response = client.post(f"/assessments/{assessment_id}/delete")
+    assert response.status_code == 302
+    assert response.headers["Location"].endswith("/assessments")
+    assert not folder.exists()
+    assert client.get(f"/assessments/{assessment_id}/export.json").status_code == 404
+    listing = client.get("/assessments").data
+    assert f"/assessments/{assessment_id}/intake".encode() not in listing
+    assert f"Deleted assessment #{assessment_id}".encode() in listing

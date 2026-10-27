@@ -2,7 +2,7 @@
 {% block title %}{{ 'New assessment' if is_new else 'Assessment intake' }} - MORGAN{% endblock %}
 {% macro drawing_tag(field) %}{% set entry = drawing_fields.get(field) %}{% if entry %}<em class="drawing-tag confidence-{{ entry.confidence }}" title="{{ entry.basis }}">{% if entry.applied %}From drawings · {{ entry.confidence }}{% else %}Drawings show: {{ entry.value }} · {{ entry.confidence }}{% endif %}</em>{% endif %}{% endmacro %}
 {% block content %}
-<div class="page-heading compact"><div><p class="eyebrow">STEP 1 OF 3</p><h1>Assessment intake</h1><p class="lede">Capture the project context before selecting the applicable Tier-1 checklists.</p></div><a class="text-link" href="{{ url_for('main.assessments') }}">← All assessments</a></div>
+<div class="page-heading compact"><div><p class="eyebrow">STEP 1 OF 3</p><h1>Assessment intake</h1><p class="lede">Capture the project context before selecting the applicable Tier-1 checklists.</p></div><div class="review-actions"><a class="text-link" href="{{ url_for('main.assessments') }}">← All assessments</a>{% include "_delete_assessment.html" %}</div></div>
 <form method="post" class="form-layout" enctype="multipart/form-data">
   {# Pressing Enter submits with the first submit button; keep that the save, not the interpret button below. #}
   <button type="submit" class="default-submit" tabindex="-1" aria-hidden="true"></button>

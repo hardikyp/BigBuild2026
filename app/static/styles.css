@@ -62,3 +62,8 @@ form.htmx-request button[value=interpret]{opacity:.6;pointer-events:none}
 .lightbox-nav{width:46px;height:46px;font-size:32px;flex:none}
 .lightbox.single .lightbox-nav{visibility:hidden}
 @media(max-width:700px){.lightbox{gap:0}.lightbox-nav{position:fixed;bottom:18px}.lightbox-nav.prev{left:18px}.lightbox-nav.next{right:18px}.item-thumbs{padding-left:20px}}
+.button.danger{color:var(--bad);border-color:#e6c3bf}
+.button.danger:hover{background:#fbefed;border-color:var(--bad)}
+.button.small{padding:6px 10px;font-size:12px}
+.inline-form{display:inline-flex;margin:0}
+.evidence-entry .button.small{flex:none}
