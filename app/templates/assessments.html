@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Assessments - MORGAN{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div><p class="eyebrow">WORKSPACE</p><h1>Assessments</h1><p class="lede">Create and resume traceable ASCE 41-23 Tier-1 review packages.</p></div>
+  <a class="button primary" href="{{ url_for('main.new_assessment') }}">+ New assessment</a>
+</div>
+{% if assessments %}
+<div class="assessment-grid">
+  {% for assessment in assessments %}
+  <a class="assessment-card" href="{{ url_for('main.intake', assessment_id=assessment.id) }}">
+    <div class="card-top"><span class="status-pill {{ assessment.status }}">{{ assessment.status|capitalize }}</span><span>#{{ assessment.id }}</span></div>
+    <h2>{{ assessment.project_name or "Untitled project" }}</h2>
+    <p>{{ assessment.building_name or "Building name not entered" }}</p>
+    <div class="card-meta">{{ assessment.performance_level or "Objective not set" }} · {{ level_label(assessment.seismicity) or "Seismicity not set" }}</div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="empty-state"><div class="empty-icon">⌁</div><h2>No assessments yet</h2><p>Start with project and building information, then MORGAN will load the applicable checklist sections.</p><a class="button primary" href="{{ url_for('main.new_assessment') }}">Create your first assessment</a></div>
+{% endif %}
+{% endblock %}

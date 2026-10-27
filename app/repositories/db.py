@@ -1,0 +1,32 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import Session, sessionmaker
+
+from app.domain.models import Base
+
+
+def make_engine(database_url: str):
+    return create_engine(database_url, future=True)
+
+
+def make_session_factory(engine):
+    return sessionmaker(bind=engine, expire_on_commit=False)
+
+
+def initialize_database(engine) -> None:
+    # The first local migration is intentionally small and idempotent. Future
+    # schema changes can add numbered migrations without changing app startup.
+    with engine.begin() as connection:
+        connection.execute(text("CREATE TABLE IF NOT EXISTS schema_migrations (version VARCHAR(32) PRIMARY KEY)"))
+        applied = {row[0] for row in connection.execute(text("SELECT version FROM schema_migrations"))}
+        if "001_initial" not in applied:
+            Base.metadata.create_all(connection)
+            connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('001_initial')"))
+
+
+def database_url(path: Path) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return f"sqlite:///{path}"
