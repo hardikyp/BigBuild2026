@@ -1,6 +1,5 @@
 # TODO
 
-- add a dark and light mode button in top right corner.
 - Add an opt-in photo-analysis workflow to assessment evidence:
   - Reuse the existing evidence upload and storage flow; persist each photo before requesting analysis so an analysis failure never loses the evidence.
   - Let the engineer add a description of what the photo shows or what to inspect, and provide relevant assessment context such as building type, checklist item, and location.

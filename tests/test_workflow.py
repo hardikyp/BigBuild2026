@@ -97,3 +97,12 @@ def test_summary_reviewer_notes_form_places_save_control_after_full_textarea(cli
     assert b"/notes" in page.data
     styles = client.get("/static/styles.css")
     assert b'.summary-grid form[action*="/notes"]{display:flex' in styles.data
+
+
+def test_base_page_includes_theme_toggle(client):
+    page = client.get("/assessments")
+
+    assert b'data-theme-toggle' in page.data
+    assert b'theme.js' in page.data
+    styles = client.get("/static/styles.css")
+    assert b'[data-theme="dark"]' in styles.data

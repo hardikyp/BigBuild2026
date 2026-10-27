@@ -8,12 +8,14 @@
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   <script src="{{ url_for('static', filename='evidence.js') }}" defer></script>
   <script src="{{ url_for('static', filename='lightbox.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='theme.js') }}" defer></script>
   {% block head_extra %}{% endblock %}
 </head>
 <body hx-boost="true">
   <header class="site-header">
     <a class="brand" href="{{ url_for('main.assessments') }}"><span class="brand-mark">M</span><span>MORGAN</span></a>
     <span class="brand-subtitle">Tier-1 assessment navigator</span>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">◐ Dark</button>
   </header>
   <main class="page-shell">
     {% with messages = get_flashed_messages(with_categories=true) %}
