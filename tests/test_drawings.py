@@ -107,9 +107,10 @@ def test_interpret_drawings_fills_intake(app, client):
     assert b'value="3"' in page.data
     assert b'value="120 ft"' in page.data
     assert b'value="Engineer&#39;s name"' in page.data
-    assert b"Drawings show: North Annex" in page.data
     assert b'<option value="C2" selected' in page.data
-    assert b"Confirm wall reinforcing on site." in page.data
+    assert b"Plan drawings" not in page.data
+    assert b"Elevation drawings" not in page.data
+    assert b"Interpret drawings" not in page.data
 
     data = client.get("/assessments/1/export.json").get_json()
     record = data["drawing_interpretations"][0]
