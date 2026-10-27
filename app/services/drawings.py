@@ -193,11 +193,22 @@ def parse_interpretation(payload: dict[str, Any], model: str = MODEL) -> Interpr
     return Interpretation(list(fields.values()), str(payload.get("notes", "")).strip(), model, payload)
 
 
+MISSING_CREDENTIALS = "Drawing interpretation needs Claude API credentials. Set ANTHROPIC_API_KEY (or run `ant auth login`) and restart MORGAN."
+
+
+def has_credentials(client) -> bool:
+    # The SDK resolves an API key, auth token or `ant auth login` profile at
+    # construction and only fails, with a TypeError, once a request is built.
+    return bool(client.api_key or client.auth_token or getattr(client, "_token_cache", None))
+
+
 def claude_interpreter(drawings: list[Drawing]) -> Interpretation:
     import anthropic
 
     try:
         client = anthropic.Anthropic()
+        if not has_credentials(client):
+            raise DrawingError(MISSING_CREDENTIALS)
         response = client.beta.messages.create(
             model=MODEL,
             max_tokens=16000,
@@ -208,7 +219,7 @@ def claude_interpreter(drawings: list[Drawing]) -> Interpretation:
             messages=[{"role": "user", "content": content_blocks(drawings)}],
         )
     except anthropic.AuthenticationError as error:
-        raise DrawingError("Drawing interpretation needs Claude API credentials. Set ANTHROPIC_API_KEY and restart MORGAN.") from error
+        raise DrawingError(MISSING_CREDENTIALS) from error
     except anthropic.RateLimitError as error:
         raise DrawingError("Claude is rate limiting requests. Try the drawings again in a minute.") from error
     except anthropic.BadRequestError as error:
@@ -218,8 +229,7 @@ def claude_interpreter(drawings: list[Drawing]) -> Interpretation:
     except anthropic.APIConnectionError as error:
         raise DrawingError("Could not reach the Claude API. Check the network connection.") from error
     except anthropic.AnthropicError as error:
-        # Raised before any request when no credentials can be found.
-        raise DrawingError("Drawing interpretation needs Claude API credentials. Set ANTHROPIC_API_KEY and restart MORGAN.") from error
+        raise DrawingError(f"Drawing interpretation failed: {error}") from error
     if response.stop_reason == "refusal":
         raise DrawingError("Claude declined to interpret these drawings.")
     if response.stop_reason == "max_tokens":

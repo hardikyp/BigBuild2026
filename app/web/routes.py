@@ -7,15 +7,17 @@ import uuid
 from pathlib import Path
 from types import SimpleNamespace
 
-from flask import Blueprint, current_app, flash, jsonify, redirect, render_template, request, send_from_directory, url_for
+from flask import Blueprint, abort, current_app, flash, jsonify, redirect, render_template, request, send_from_directory, url_for
 from sqlalchemy import select
+from werkzeug.security import safe_join
 from werkzeug.utils import secure_filename
 
-from app.domain.models import Assessment, Evidence
+from app.domain.models import Assessment, DrawingInterpretation, Evidence
 from app.exports.json_export import assessment_json
 from app.exports.pdf_export import make_pdf
-from app.services.assessment import applicable_sections, get_catalog_form, response_for, summary, sync_checklists, update_assessment_from_form
-from app.services.photos import PHOTO_ACCEPT, photo_mime_type
+from app.services.assessment import FIELD_LABELS, applicable_sections, get_catalog_form, response_for, summary, sync_checklists, update_assessment_from_form
+from app.services.drawings import DRAWING_ROLES, DrawingError, apply_interpretation, claude_interpreter, interpretation_record, read_drawing
+from app.services.photos import PHOTO_ACCEPT, photo_mime_type, thumbnail_path
 
 
 bp = Blueprint("main", __name__)
@@ -68,8 +70,14 @@ def new_assessment():
             update_assessment_from_form(assessment, request.form)
             session.add(assessment)
             session.commit()
+            if request.form.get("action") == "interpret":
+                interpret_drawings(session, assessment)
+                session.commit()
             return redirect(url_for("main.intake", assessment_id=assessment.id))
-    return render_template("intake.html", assessment=Assessment(), is_new=True, catalog=catalog())
+    return render_template(
+        "intake.html", assessment=Assessment(), is_new=True, catalog=catalog(),
+        interpretation=None, drawing_fields={}, field_labels=FIELD_LABELS,
+    )
 
 
 @bp.route("/assessments/<int:assessment_id>/intake", methods=["GET", "POST"])
@@ -80,6 +88,10 @@ def intake(assessment_id: int):
             return "Assessment not found", 404
         if request.method == "POST":
             update_assessment_from_form(assessment, request.form)
+            if request.form.get("action") == "interpret":
+                interpret_drawings(session, assessment)
+                session.commit()
+                return redirect(url_for("main.intake", assessment_id=assessment.id))
             if not assessment.performance_level or not assessment.building_type or not assessment.seismicity:
                 flash("Choose performance objective, building type, and seismicity before beginning review.", "error")
             else:
@@ -88,7 +100,60 @@ def intake(assessment_id: int):
                 session.commit()
                 return redirect(url_for("main.review", assessment_id=assessment.id))
             session.commit()
-        return render_template("intake.html", assessment=assessment, is_new=False, catalog=catalog())
+        latest = assessment.drawing_interpretations[-1] if assessment.drawing_interpretations else None
+        return render_template(
+            "intake.html", assessment=assessment, is_new=False, catalog=catalog(),
+            interpretation=latest, drawing_fields=drawing_field_map(latest), field_labels=FIELD_LABELS,
+        )
+
+
+def drawing_field_map(interpretation: DrawingInterpretation | None) -> dict[str, dict]:
+    """Interpreted values keyed by field, marked with whether each was applied to the form."""
+    if interpretation is None:
+        return {}
+    applied = set(interpretation.applied)
+    return {entry["field"]: {**entry, "applied": entry["field"] in applied} for entry in interpretation.result.get("fields", [])}
+
+
+def interpret_drawings(session, assessment: Assessment) -> None:
+    """Read the uploaded plan and elevation drawings and fill intake fields from them.
+
+    Drawings are kept as evidence so the interpretation stays traceable to its sources.
+    """
+    uploads = [
+        (role, upload)
+        for role in DRAWING_ROLES
+        for upload in request.files.getlist(f"drawing_{role}")
+        if upload and upload.filename
+    ]
+    if not uploads:
+        flash("Choose at least one plan or elevation drawing to interpret.", "error")
+        return
+    try:
+        drawings = [read_drawing(role, upload.filename, upload.read()) for role, upload in uploads]
+        interpreter = current_app.config.get("DRAWING_INTERPRETER") or claude_interpreter
+        interpretation = interpreter(drawings)
+    except DrawingError as error:
+        flash(str(error), "error")
+        return
+    evidence_ids = []
+    for (role, upload), drawing in zip(uploads, drawings):
+        upload.stream.seek(0)
+        evidence = save_evidence_file(
+            session, assessment, f"drawings:{role}", upload, f"{DRAWING_ROLES[role]} used for intake interpretation",
+            mime_type=drawing.mime_type, include_in_report=False,
+        )
+        session.flush()
+        evidence_ids.append(evidence.id)
+    result = apply_interpretation(assessment, interpretation, overwrite=request.form.get("overwrite_fields") == "on")
+    session.add(DrawingInterpretation(assessment=assessment, **interpretation_record(interpretation, result, evidence_ids)))
+    if not interpretation.fields:
+        flash("No intake fields could be read from these drawings. Check that the sheets are legible.", "error")
+        return
+    message = f"Filled {len(result.applied)} field(s) from the drawings. Review each value before beginning the checklist."
+    if result.kept:
+        message += f" Kept your existing value for {len(result.kept)} field(s); the drawing values are listed below."
+    flash(message, "success")
 
 
 @bp.get("/assessments/<int:assessment_id>/review")
@@ -225,7 +290,7 @@ def save_photo(session, assessment, item_id: str, photo, caption: str, include_i
     return True
 
 
-def save_evidence_file(session, assessment, item_id: str, upload, caption: str, *, mime_type: str | None = None, include_in_report: bool = True) -> None:
+def save_evidence_file(session, assessment, item_id: str, upload, caption: str, *, mime_type: str | None = None, include_in_report: bool = True) -> Evidence:
     original_name = secure_filename(upload.filename) or "evidence"
     stored_name = f"{uuid.uuid4().hex}_{original_name}"
     upload_root = Path(current_app.config["UPLOAD_ROOT"]) / str(assessment.id)
@@ -233,7 +298,7 @@ def save_evidence_file(session, assessment, item_id: str, upload, caption: str, 
     path = upload_root / stored_name
     upload.save(path)
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
-    session.add(Evidence(
+    evidence = Evidence(
         assessment=assessment,
         item_id=item_id,
         stored_name=stored_name,
@@ -242,12 +307,27 @@ def save_evidence_file(session, assessment, item_id: str, upload, caption: str, 
         caption=caption,
         sha256=digest,
         include_in_report=include_in_report,
-    ))
+    )
+    session.add(evidence)
+    return evidence
 
 
 @bp.get("/assessments/<int:assessment_id>/evidence/<path:stored_name>")
 def download_evidence(assessment_id: int, stored_name: str):
     return send_from_directory(Path(current_app.config["UPLOAD_ROOT"]) / str(assessment_id), stored_name, as_attachment=False)
+
+
+@bp.get("/assessments/<int:assessment_id>/evidence-thumb/<path:stored_name>")
+def evidence_thumbnail(assessment_id: int, stored_name: str):
+    folder = Path(current_app.config["UPLOAD_ROOT"]) / str(assessment_id)
+    original = safe_join(str(folder), stored_name)
+    if original is None or not Path(original).is_file():
+        abort(404)
+    try:
+        thumb = thumbnail_path(Path(original))
+    except OSError:
+        abort(404)
+    return send_from_directory(thumb.parent, thumb.name, as_attachment=False)
 
 
 @bp.get("/assessments/<int:assessment_id>/export.json")

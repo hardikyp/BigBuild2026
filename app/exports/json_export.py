@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from app.services.assessment import applicable_sections, get_catalog_form, summary
@@ -79,5 +80,17 @@ def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
                 "created_at": evidence.created_at.isoformat() if evidence.created_at else None,
             }
             for evidence in assessment.evidence
+        ],
+        "drawing_interpretations": [
+            {
+                "id": record.id,
+                "created_at": record.created_at.isoformat() if record.created_at else None,
+                "model": record.model,
+                "evidence_ids": json.loads(record.evidence_ids or "[]"),
+                "applied_fields": record.applied,
+                "kept_fields": record.kept,
+                **record.result,
+            }
+            for record in assessment.drawing_interpretations
         ],
     }

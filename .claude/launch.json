@@ -4,8 +4,24 @@
     {
       "name": "morgan",
       "runtimeExecutable": ".venv/Scripts/python.exe",
-      "runtimeArgs": ["run.py"],
+      "runtimeArgs": [
+        "run.py"
+      ],
       "port": 5000
+    },
+    {
+      "name": "morgan-5001",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": [
+        "-m",
+        "flask",
+        "--app",
+        "run",
+        "run",
+        "--port",
+        "5001"
+      ],
+      "port": 5001
     }
   ]
 }

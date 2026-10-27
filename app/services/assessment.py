@@ -21,6 +21,23 @@ ASSESSMENT_FIELDS = [
 ]
 
 
+FIELD_LABELS = {
+    "firm": "Firm", "project_name": "Project name", "project_number": "Project number",
+    "building_name": "Building name", "address": "Building address", "latitude": "Latitude",
+    "longitude": "Longitude", "year_built": "Year built", "years_remodeled": "Year(s) remodeled",
+    "original_design_code": "Original design code", "area": "Area", "length": "Length", "width": "Width",
+    "stories": "Number of stories", "story_height": "Story height", "total_height": "Total height",
+    "use": "Use", "gravity_system": "Gravity load system", "transverse_walls": "Exterior transverse walls",
+    "longitudinal_walls": "Exterior longitudinal walls", "roof_framing": "Roof materials / framing",
+    "floor_framing": "Intermediate floors / framing", "ground_floor": "Ground floor", "columns": "Columns",
+    "foundation": "Foundation", "general_condition": "General condition",
+    "levels_below_grade": "Levels below grade", "special_features": "Special features and comments",
+    "longitudinal_lateral_system": "Longitudinal lateral-force-resisting system",
+    "transverse_lateral_system": "Transverse lateral-force-resisting system",
+    "evaluation_data": "Evaluation data and notes", "building_type": "Building type",
+}
+
+
 def update_assessment_from_form(assessment: Assessment, form: Any) -> None:
     for field in ASSESSMENT_FIELDS:
         if field in form:

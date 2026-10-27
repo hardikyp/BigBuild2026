@@ -9,6 +9,7 @@ from PIL import Image, ImageOps, UnidentifiedImageError
 PHOTO_MIME_TYPES = {"JPEG": "image/jpeg", "PNG": "image/png", "WEBP": "image/webp", "GIF": "image/gif"}
 PHOTO_ACCEPT = ",".join(PHOTO_MIME_TYPES.values())
 REPORT_MAX_PIXELS = 1600
+THUMBNAIL_PIXELS = 320
 
 
 def photo_mime_type(data: bytes) -> str | None:
@@ -22,6 +23,20 @@ def photo_mime_type(data: bytes) -> str | None:
             return PHOTO_MIME_TYPES.get(image.format)
     except (UnidentifiedImageError, Image.DecompressionBombError, OSError, SyntaxError, ValueError):
         return None
+
+
+def thumbnail_path(path: Path, size: int = THUMBNAIL_PIXELS) -> Path:
+    """Return a cached, upright JPEG thumbnail beside the stored photo, creating it if needed."""
+    thumb = path.parent / "thumbs" / f"{path.stem}.jpg"
+    if not thumb.exists() or thumb.stat().st_mtime < path.stat().st_mtime:
+        thumb.parent.mkdir(parents=True, exist_ok=True)
+        with Image.open(path) as source:
+            image = ImageOps.exif_transpose(source)
+            image.thumbnail((size, size))
+            if image.mode not in ("RGB", "L"):
+                image = image.convert("RGB")
+            image.save(thumb, format="JPEG", quality=80)
+    return thumb
 
 
 def report_image(path: Path) -> tuple[BytesIO, int, int]:

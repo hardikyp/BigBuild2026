@@ -130,3 +130,61 @@ def test_migration_adds_report_flag_to_existing_database(tmp_path):
     initialize_database(engine)
     with engine.connect() as connection:
         assert connection.execute(text("SELECT include_in_report FROM evidence WHERE id = 1")).scalar() == 1
+
+
+def test_photo_thumbnails_open_in_lightbox_on_each_page(client):
+    assessment_id = create_assessment(client)
+    save_section(client, assessment_id, {
+        f"photo_{ITEM_ID}": (BytesIO(image_bytes()), "beam.png"),
+        f"caption_{ITEM_ID}": "Beam seat at grid C",
+    })
+    review = client.get(f"/assessments/{assessment_id}/review/0/0").data
+    assert b'class="thumb-strip item-thumbs"' in review
+    assert f'data-lightbox="item-{ITEM_ID}"'.encode() in review
+    listing = client.get("/assessments").data
+    assert f'data-lightbox="assessment-{assessment_id}"'.encode() in listing
+    assert b'data-caption="Beam seat at grid C"' in listing
+    summary = client.get(f"/assessments/{assessment_id}/summary").data
+    assert b'data-lightbox="summary"' in summary
+
+
+def test_assessment_card_hides_extra_photos_behind_more_link(client):
+    assessment_id = create_assessment(client)
+    photos = [(BytesIO(image_bytes()), f"photo-{n}.png") for n in range(8)]
+    save_section(client, assessment_id, {f"photo_{ITEM_ID}": photos})
+    listing = client.get("/assessments").data.decode()
+    assert listing.count(f'data-lightbox="assessment-{assessment_id}"') == 8
+    assert listing.count(" hidden><img") == 2
+    assert "+2 more" in listing
+
+
+def test_non_image_evidence_has_no_thumbnail(client):
+    assessment_id = create_assessment(client)
+    save_section(client, assessment_id, {f"file_{ITEM_ID}": (BytesIO(b"calc notes"), "calcs.txt")})
+    assert b"data-lightbox" not in client.get("/assessments").data
+    assert b"item-thumbs" not in client.get(f"/assessments/{assessment_id}/review/0/0").data
+
+
+def test_thumbnail_endpoint_serves_small_upright_jpeg(client):
+    assessment_id = create_assessment(client)
+    exif = Image.Exif()
+    exif[0x0112] = 6
+    save_section(client, assessment_id, {
+        f"photo_{ITEM_ID}": (BytesIO(image_bytes("JPEG", size=(3000, 1500), exif=exif)), "phone.jpg"),
+    })
+    evidence = client.get(f"/assessments/{assessment_id}/export.json").get_json()["evidence"][0]
+    page = client.get(f"/assessments/{assessment_id}/review/0/0").data.decode()
+    assert f"/assessments/{assessment_id}/evidence-thumb/" in page
+    thumb_url = page.split(f'src="/assessments/{assessment_id}/evidence-thumb/', 1)[1].split('"', 1)[0]
+    response = client.get(f"/assessments/{assessment_id}/evidence-thumb/{thumb_url}")
+    assert response.status_code == 200
+    thumb = Image.open(BytesIO(response.data))
+    assert thumb.format == "JPEG"
+    assert thumb.size == (160, 320)
+    assert evidence["original_name"] == "phone.jpg"
+
+
+def test_thumbnail_endpoint_rejects_missing_and_escaping_paths(client):
+    assessment_id = create_assessment(client)
+    assert client.get(f"/assessments/{assessment_id}/evidence-thumb/nope.jpg").status_code == 404
+    assert client.get(f"/assessments/{assessment_id}/evidence-thumb/../../secret.jpg").status_code == 404

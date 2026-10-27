@@ -8,12 +8,24 @@
 {% if assessments %}
 <div class="assessment-grid">
   {% for assessment in assessments %}
-  <a class="assessment-card" href="{{ url_for('main.intake', assessment_id=assessment.id) }}">
-    <div class="card-top"><span class="status-pill {{ assessment.status }}">{{ assessment.status|capitalize }}</span><span>#{{ assessment.id }}</span></div>
-    <h2>{{ assessment.project_name or "Untitled project" }}</h2>
-    <p>{{ assessment.building_name or "Building name not entered" }}</p>
-    <div class="card-meta">{{ assessment.performance_level or "Objective not set" }} · {{ level_label(assessment.seismicity) or "Seismicity not set" }}</div>
-  </a>
+  {# Checklist photos only; uploaded drawings are shown on the intake page. #}
+  {% set photos = [] %}{% for evidence in assessment.evidence if evidence.is_image and not evidence.item_id.startswith('drawings:') %}{% set _ = photos.append(evidence) %}{% endfor %}
+  <article class="assessment-card has-thumbs">
+    <a class="card-link" href="{{ url_for('main.intake', assessment_id=assessment.id) }}">
+      <div class="card-top"><span class="status-pill {{ assessment.status }}">{{ assessment.status|capitalize }}</span><span>#{{ assessment.id }}</span></div>
+      <h2>{{ assessment.project_name or "Untitled project" }}</h2>
+      <p>{{ assessment.building_name or "Building name not entered" }}</p>
+      <div class="card-meta">{{ assessment.performance_level or "Objective not set" }} · {{ level_label(assessment.seismicity) or "Seismicity not set" }}</div>
+    </a>
+    {% if photos %}
+    <div class="thumb-strip" aria-label="Evidence photos">
+      {% for evidence in photos %}{% set href = url_for('main.download_evidence', assessment_id=assessment.id, stored_name=evidence.stored_name) %}
+      <a href="{{ href }}" data-lightbox="assessment-{{ assessment.id }}" data-caption="{{ evidence.caption or evidence.original_name }}" target="_blank" rel="noopener"{% if loop.index > 6 %} hidden{% endif %}><img src="{{ url_for('main.evidence_thumbnail', assessment_id=assessment.id, stored_name=evidence.stored_name) }}" alt="{{ evidence.caption or evidence.original_name }}" loading="lazy"></a>
+      {% endfor %}
+      {% if photos|length > 6 %}<a class="thumb-more" href="{{ url_for('main.summary_view', assessment_id=assessment.id) }}">+{{ photos|length - 6 }} more</a>{% endif %}
+    </div>
+    {% endif %}
+  </article>
   {% endfor %}
 </div>
 {% else %}
