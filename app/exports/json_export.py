@@ -5,6 +5,7 @@ from typing import Any
 
 from app.services.assessment import applicable_sections, get_catalog_form, summary
 from app.services.calculations import calculation_to_dict
+from app.services.photo_analysis import analysis_to_dict, build_ongoing_considerations
 
 
 def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
@@ -95,4 +96,6 @@ def assessment_json(catalog: dict[str, Any], assessment) -> dict[str, Any]:
             for record in assessment.drawing_interpretations
         ],
         "calculations": [calculation_to_dict(record) for record in assessment.calculations],
+        "photo_analyses": [analysis_to_dict(record) for record in assessment.photo_analyses],
+        "ongoing_considerations": build_ongoing_considerations(assessment.photo_analyses),
     }

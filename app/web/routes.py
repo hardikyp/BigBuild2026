@@ -14,13 +14,20 @@ from sqlalchemy import select
 from werkzeug.security import safe_join
 from werkzeug.utils import secure_filename
 
-from app.domain.models import Assessment, CalculationRecord, DrawingInterpretation, Evidence
+from app.domain.models import Assessment, CalculationRecord, DrawingInterpretation, Evidence, PhotoAnalysis, utcnow
 from app.exports.json_export import assessment_json
 from app.exports.pdf_export import make_pdf
 from app.services.assessment import FIELD_LABELS, applicable_sections, get_catalog_form, response_for, summary, sync_checklists, update_assessment_from_form
 from app.services.drawings import DRAWING_ROLES, DrawingError, apply_interpretation, claude_interpreter, interpretation_record, read_drawing
 from app.services.photos import PHOTO_ACCEPT, photo_mime_type, thumbnail_path
-from app.services.calculations import calculation_to_dict, checklist_item_context, calculations_for_item
+from app.services.photo_analysis import (
+    PHOTO_ANALYSIS_MODEL,
+    PhotoAnalysisError,
+    build_ongoing_considerations,
+    claude_analyzer,
+    make_analysis_context,
+)
+from app.services.calculations import checklist_item_context, calculations_for_item
 from app.services.shear_wall_calculation import (
     C_TABLE,
     MATERIALS,
@@ -273,7 +280,69 @@ def summary_view(assessment_id: int):
         if assessment is None:
             return "Assessment not found", 404
         data = summary(catalog(), assessment)
-        return render_template("summary.html", assessment=assessment, data=data)
+        considerations = build_ongoing_considerations(assessment.photo_analyses)
+        return render_template("summary.html", assessment=assessment, data=data, considerations=considerations)
+
+
+@bp.route("/assessments/<int:assessment_id>/evidence/<int:evidence_id>/analysis", methods=["GET", "POST"])
+def photo_analysis(assessment_id: int, evidence_id: int):
+    """Run or retry an explicitly requested analysis for an existing photo."""
+
+    with db_session() as session:
+        assessment = get_assessment(session, assessment_id)
+        evidence = session.get(Evidence, evidence_id)
+        if assessment is None or evidence is None or evidence.assessment_id != assessment_id:
+            abort(404)
+        if not evidence.is_image:
+            return "Photo analysis is available only for image evidence.", 400
+        item_context = checklist_item_context(session, assessment, catalog(), evidence.item_id)
+        item = None
+        if item_context:
+            item = {**item_context["item"], "section_title": item_context["section"]["title"]}
+        error = None
+        if request.method == "POST":
+            context = make_analysis_context(
+                assessment,
+                item=item,
+                location=request.form.get("location_in_building", ""),
+                photo_description=request.form.get("photo_description", ""),
+                user_note=request.form.get("user_note", ""),
+            )
+            attempts = [analysis.attempt_number for analysis in evidence.photo_analyses]
+            attempt = PhotoAnalysis(
+                assessment=assessment,
+                evidence=evidence,
+                attempt_number=max(attempts, default=0) + 1,
+                status="pending",
+                model=current_app.config.get("PHOTO_ANALYSIS_MODEL", PHOTO_ANALYSIS_MODEL),
+                context_json=json.dumps(context),
+            )
+            session.add(attempt)
+            session.commit()  # Evidence and the opt-in attempt survive any model failure.
+            analyzer = current_app.config.get("PHOTO_ANALYZER") or claude_analyzer
+            try:
+                result = analyzer(evidence, context, Path(current_app.config["UPLOAD_ROOT"]))
+                attempt.status = "succeeded"
+                attempt.model = result.get("model", attempt.model)
+                attempt.result_json = json.dumps(result)
+                attempt.completed_at = utcnow()
+            except PhotoAnalysisError as analysis_error:
+                attempt.status = "failed"
+                attempt.error_message = str(analysis_error)
+                attempt.completed_at = utcnow()
+            except Exception:
+                attempt.status = "failed"
+                attempt.error_message = "Photo analysis failed unexpectedly. The photo is safe; retry when ready."
+                attempt.completed_at = utcnow()
+            session.commit()
+            return redirect(url_for("main.photo_analysis", assessment_id=assessment_id, evidence_id=evidence_id, attempt=attempt.id))
+        attempts = list(reversed(evidence.photo_analyses))
+        latest = attempts[0] if attempts else None
+        context = latest.context if latest else make_analysis_context(assessment, item=item, location="", photo_description=evidence.caption or "", user_note="")
+        return render_template(
+            "photo_analysis.html", assessment=assessment, evidence=evidence, item=item,
+            attempts=attempts, latest=latest, context=context, error=error,
+        )
 
 
 def calculation_inputs_from_form(form) -> dict:

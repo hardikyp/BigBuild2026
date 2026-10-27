@@ -12,6 +12,7 @@ from reportlab.lib.units import inch
 from reportlab.platypus import Image, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 from app.services.assessment import summary
+from app.services.photo_analysis import build_ongoing_considerations
 from app.services.photos import report_image
 
 
@@ -125,6 +126,42 @@ def make_pdf(catalog: dict, assessment, upload_root: Path | None = None) -> byte
             if calculation.notes:
                 story.append(Paragraph(pdf_text(f"Notes: {calculation.notes}"), styles["Small"]))
             story.append(Spacer(1, 0.1 * inch))
+    if assessment.photo_analyses:
+        story.append(Paragraph("Advisory photo analysis", styles["SectionTitle"]))
+        story.append(Paragraph(pdf_text("Photo analysis is optional decision support. Model output describes visible conditions only; it does not determine checklist status, certify the building, or replace professional judgment."), styles["BodyText"]))
+        for analysis in assessment.photo_analyses:
+            if analysis.status != "succeeded":
+                continue
+            result = analysis.result
+            body = f"<b>{pdf_text(analysis.evidence.original_name)} · Attempt {analysis.attempt_number}</b>"
+            if result.get("summary"):
+                body += f"<br/>{pdf_text(result['summary'])}"
+            if result.get("suggestedStatus"):
+                body += f"<br/><b>Advisory suggested status:</b> {pdf_text(result['suggestedStatus'])} (not applied automatically)"
+            if result.get("observations"):
+                body += "<br/><b>Observations:</b> " + "; ".join(pdf_text(item.get("description")) for item in result["observations"])
+            if result.get("possibleDeficiencies"):
+                body += "<br/><b>Potential deficiencies:</b> " + "; ".join(pdf_text(item.get("description")) for item in result["possibleDeficiencies"])
+            if result.get("followUp"):
+                body += "<br/><b>Follow-up:</b> " + "; ".join(pdf_text(item) for item in result["followUp"])
+            story.append(Paragraph(body, styles["Item"]))
+            story.append(Spacer(1, 0.08 * inch))
+        considerations = build_ongoing_considerations(assessment.photo_analyses)
+        if considerations:
+            story.append(Paragraph("Ongoing considerations", styles["Heading3"]))
+            rows = [["Priority", "Consideration", "Severity / confidence", "Photos"]]
+            rows.extend([
+                [pdf_text(f"{item['priority']} ({item['priority_score']})"), pdf_text(item["description"]), pdf_text(f"{item['severity']} / {item['confidence']}"), str(item["supporting_photos"])]
+                for item in considerations
+            ])
+            story.append(Table(rows, colWidths=[1.15 * inch, 3.55 * inch, 1.45 * inch, 0.6 * inch], repeatRows=1, style=TableStyle([
+                ("GRID", (0, 0), (-1, -1), 0.35, colors.HexColor("#b6c7cd")),
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#123a4a")),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("FONTSIZE", (0, 0), (-1, -1), 8),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ])))
     for form in sorted({row["form"]["form_id"]: row["form"] for row in rollup["rows"]}.values(), key=lambda item: item["form_id"]):
         story.append(PageBreak())
         story.append(Paragraph(pdf_text(form["title"]), styles["SectionTitle"]))

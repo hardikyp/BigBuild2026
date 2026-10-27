@@ -39,6 +39,9 @@ def initialize_database(engine) -> None:
         if "004_calculation_records" not in applied:
             Base.metadata.create_all(connection)
             connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('004_calculation_records')"))
+        if "005_photo_analyses" not in applied:
+            Base.metadata.create_all(connection)
+            connection.execute(text("INSERT INTO schema_migrations(version) VALUES ('005_photo_analyses')"))
 
 
 def database_url(path: Path) -> str:

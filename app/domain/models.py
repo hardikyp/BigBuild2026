@@ -74,6 +74,9 @@ class Assessment(Base):
     calculations: Mapped[list["CalculationRecord"]] = relationship(
         back_populates="assessment", cascade="all, delete-orphan", order_by="CalculationRecord.created_at"
     )
+    photo_analyses: Mapped[list["PhotoAnalysis"]] = relationship(
+        back_populates="assessment", cascade="all, delete-orphan", order_by="PhotoAnalysis.id"
+    )
 
 
 class AssessmentChecklist(Base):
@@ -121,6 +124,9 @@ class Evidence(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
     assessment: Mapped[Assessment] = relationship(back_populates="evidence")
+    photo_analyses: Mapped[list["PhotoAnalysis"]] = relationship(
+        back_populates="evidence", cascade="all, delete-orphan", order_by="PhotoAnalysis.id"
+    )
 
     @property
     def is_image(self) -> bool:
@@ -177,6 +183,35 @@ class CalculationRecord(Base):
     @property
     def inputs(self) -> dict[str, Any]:
         return json.loads(self.inputs_json or "{}")
+
+    @property
+    def result(self) -> dict[str, Any]:
+        return json.loads(self.result_json or "{}")
+
+
+class PhotoAnalysis(Base):
+    """One opt-in photo-analysis attempt, including failed and retried runs."""
+
+    __tablename__ = "photo_analyses"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    assessment_id: Mapped[int] = mapped_column(ForeignKey("assessments.id"), index=True)
+    evidence_id: Mapped[int] = mapped_column(ForeignKey("evidence.id"), index=True)
+    attempt_number: Mapped[int] = mapped_column(Integer, default=1)
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    model: Mapped[str] = mapped_column(String(100), default="")
+    context_json: Mapped[str] = mapped_column(Text, default="{}")
+    result_json: Mapped[str] = mapped_column(Text, default="{}")
+    error_message: Mapped[str] = mapped_column(Text, default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    assessment: Mapped[Assessment] = relationship(back_populates="photo_analyses")
+    evidence: Mapped[Evidence] = relationship(back_populates="photo_analyses")
+
+    @property
+    def context(self) -> dict[str, Any]:
+        return json.loads(self.context_json or "{}")
 
     @property
     def result(self) -> dict[str, Any]:
