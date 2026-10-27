@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block title %}{{ 'New assessment' if is_new else 'Assessment intake' }} - MORGAN{% endblock %}
+{% block head_extra %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3w3R5b1K1Q4Q5h6sX0y5v4w5l4kM=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{{ url_for('static', filename='site-map.js') }}" defer></script>
+{% endblock %}
 {% block content %}
 <div class="page-heading compact"><div><p class="eyebrow">STEP 1 OF 3</p><h1>Assessment intake</h1><p class="lede">Capture the project context before selecting the applicable Tier-1 checklists.</p></div><div class="review-actions"><a class="text-link" href="{{ url_for('main.assessments') }}">← All assessments</a>{% include "_delete_assessment.html" %}</div></div>
 <form method="post" class="form-layout" enctype="multipart/form-data">
   <button type="submit" class="default-submit" tabindex="-1" aria-hidden="true"></button>
   <section class="panel form-section"><div class="section-heading"><div><p class="eyebrow">PROJECT</p><h2>Project and building identity</h2></div><span class="section-number">01</span></div><div class="form-grid two">
     {% for field in ['firm','project_name','project_number','building_name','address','latitude','longitude','year_built','years_remodeled','original_design_code'] %}
-    <label class="field {% if field == 'address' %}wide{% endif %}"><span>{{ field_labels[field] }}</span>{% if field == 'address' %}<textarea name="{{ field }}" rows="2">{{ getattr(assessment, field, '') or '' }}</textarea>{% else %}<input name="{{ field }}" value="{{ getattr(assessment, field, '') or '' }}">{% endif %}</label>
+    <label class="field {% if field == 'address' %}wide{% endif %}"><span>{{ field_labels[field] }}</span>{% if field == 'address' %}<textarea id="{{ field }}" name="{{ field }}" rows="2">{{ getattr(assessment, field, '') or '' }}</textarea>{% else %}<input id="{{ field }}" name="{{ field }}" value="{{ getattr(assessment, field, '') or '' }}">{% endif %}</label>
     {% endfor %}
-  </div></section>
+  </div><div class="site-location-widget"><div class="section-heading location-heading"><div><p class="eyebrow">SITE LOCATION</p><h2>Place the building on a map</h2><p class="muted">Enter an address and search, or click the map to set the site coordinates. Review the pin before saving.</p></div></div><div id="site-map" class="site-map" data-latitude="{{ assessment.latitude or '' }}" data-longitude="{{ assessment.longitude or '' }}"></div><div class="map-controls"><button class="button secondary" type="button" id="find-address">Find address</button><span id="site-map-status" class="muted" role="status">Click the map to set latitude and longitude.</span></div></div></section>
   {% set wide_fields = ['gravity_system','transverse_walls','longitudinal_walls','roof_framing','floor_framing','ground_floor','columns','foundation','general_condition','special_features','longitudinal_lateral_system','transverse_lateral_system','evaluation_data'] %}
   <section class="panel form-section"><div class="section-heading"><div><p class="eyebrow">BUILDING DATA</p><h2>Construction and use</h2></div><span class="section-number">02</span></div><div class="form-grid two">
     {% for field in ['area','length','width','stories','story_height','total_height','use','gravity_system','transverse_walls','longitudinal_walls','roof_framing','floor_framing','ground_floor','columns','foundation','general_condition','levels_below_grade','special_features','longitudinal_lateral_system','transverse_lateral_system','evaluation_data'] %}

@@ -67,3 +67,4 @@ form.htmx-request button[value=interpret]{opacity:.6;pointer-events:none}
 .button.small{padding:6px 10px;font-size:12px}
 .inline-form{display:inline-flex;margin:0}
 .evidence-entry .button.small{flex:none}
+.site-location-widget{border-top:1px solid var(--line);margin-top:22px;padding-top:20px}.location-heading{margin-bottom:13px}.site-map{height:320px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--soft)}.map-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:12px}.map-controls .button{font-size:13px}.leaflet-control-attribution{font-size:10px}@media(max-width:700px){.site-map{height:260px}}

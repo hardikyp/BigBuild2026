@@ -67,3 +67,12 @@ def test_last_checklist_page_uses_review_summary_action(client):
     assert last_page.status_code == 200
     assert b">Review Summary<" in last_page.data
     assert b"Save and continue" not in last_page.data
+
+
+def test_intake_includes_open_map_site_picker(client):
+    page = client.get("/assessments/new")
+    assert page.status_code == 200
+    assert b'id="site-map"' in page.data
+    assert b'id="find-address"' in page.data
+    assert b"leaflet@1.9.4" in page.data
+    assert b"site-map.js" in page.data
