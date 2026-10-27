@@ -132,29 +132,45 @@ with setup:
 
 with review:
     if app.empty: st.warning('No statements match. Import a verified checklist CSV or adjust applicability inputs.')
-    sections=list(dict.fromkeys(app.section.tolist()))
-    sec=st.selectbox('Section',sections) if sections else None
-    rows=app[app.section==sec] if sec else app
-    done=0
-    for _,r in rows.iterrows():
-        key=r.id
-        old=st.session_state.responses.get(key,{})
-        with st.container(border=True):
-            st.markdown(f'### {r.id} | {r.topic}')
-            st.write(r.statement)
-            a,b=st.columns([3,1])
-            with a:
-                status=st.radio('Status',['Not reviewed','Compliant','Noncompliant','Not applicable','Unknown'],index=['Not reviewed','Compliant','Noncompliant','Not applicable','Unknown'].index(old.get('status','Not reviewed')),horizontal=True,key='s_'+key)
-                basis=st.text_area('Basis / observations / calculation reference',old.get('basis',''),key='b_'+key)
-                action=st.text_area('Follow-up / Tier 2 action',old.get('action',''),key='a_'+key)
-            with b:
-                st.markdown(f'**Tier 2:** {r.tier2_ref}')
-                st.markdown(f'**Commentary:** {r.commentary_ref}')
-                evidence=st.text_input('Evidence link / filename',old.get('evidence',''),key='e_'+key)
-            photo_panel(r)
-            st.session_state.responses[key]={'status':status,'basis':basis,'action':action,'evidence':evidence}
-            done += status!='Not reviewed'
-    st.progress(done/max(len(rows),1),text=f'{done} of {len(rows)} reviewed in this section')
+    else:
+        review_app=app.copy()
+        review_app['_checklist_name']=review_app.checklist.fillna('').astype(str).map(lambda value:value.strip() or 'Uncategorized')
+        checklists=list(dict.fromkeys(review_app['_checklist_name'].tolist()))
+        if 'current_checklist_index' not in st.session_state or st.session_state.current_checklist_index >= len(checklists):
+            st.session_state.current_checklist_index=0
+        previous,next_col=st.columns(2)
+        with previous:
+            if st.button('Previous checklist',disabled=st.session_state.current_checklist_index==0):
+                st.session_state.current_checklist_index-=1
+        with next_col:
+            if st.button('Next checklist',disabled=st.session_state.current_checklist_index>=len(checklists)-1):
+                st.session_state.current_checklist_index+=1
+        checklist_name=checklists[st.session_state.current_checklist_index]
+        st.subheader(f'Checklist {st.session_state.current_checklist_index+1} of {len(checklists)}: {checklist_name}')
+        checklist_rows=review_app[review_app['_checklist_name']==checklist_name]
+        sections=list(dict.fromkeys(checklist_rows.section.tolist()))
+        sec=st.selectbox('Section',sections,key='review_section') if sections else None
+        rows=checklist_rows[checklist_rows.section==sec] if sec else checklist_rows
+        done=0
+        for _,r in rows.iterrows():
+            key=r.id
+            old=st.session_state.responses.get(key,{})
+            with st.container(border=True):
+                st.markdown(f'### {r.id} | {r.topic}')
+                st.write(r.statement)
+                a,b=st.columns([3,1])
+                with a:
+                    status=st.radio('Status',['Not reviewed','Compliant','Noncompliant','Not applicable','Unknown'],index=['Not reviewed','Compliant','Noncompliant','Not applicable','Unknown'].index(old.get('status','Not reviewed')),horizontal=True,key='s_'+key)
+                    basis=st.text_area('Basis / observations / calculation reference',old.get('basis',''),key='b_'+key)
+                    action=st.text_area('Follow-up / Tier 2 action',old.get('action',''),key='a_'+key)
+                with b:
+                    st.markdown(f'**Tier 2:** {r.tier2_ref}')
+                    st.markdown(f'**Commentary:** {r.commentary_ref}')
+                    evidence=st.text_input('Evidence link / filename',old.get('evidence',''),key='e_'+key)
+                photo_panel(r)
+                st.session_state.responses[key]={'status':status,'basis':basis,'action':action,'evidence':evidence}
+                done += status!='Not reviewed'
+        st.progress(done/max(len(rows),1),text=f'{done} of {len(rows)} reviewed in this section')
 
 with summary:
     records=[]
