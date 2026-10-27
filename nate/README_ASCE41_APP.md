@@ -17,6 +17,8 @@ Without `ANTHROPIC_API_KEY`, the app still runs and keeps photos, but photo inte
 - Highlights unresolved items and exports CSV and JSON.
 - Accepts a verified checklist CSV so the licensed standard content is separated from application code.
 - Site photos per checklist item (camera or upload). Claude interprets each photo in the context of the building and item, and suggests an **advisory** status the engineer can apply with "Use this status". Photos export as a ZIP, and interpretations go into the CSV and JSON exports.
+- Loads checklist items from the team's checklist file `src/ASCE 41.txt` at startup (`checklist_text.py`); falls back to the starter rows if it's missing. Set `MORGAN_CHECKLIST_TXT` to use another file.
+- **End site visit** (sidebar): Claude reviews all responses and photo interpretations and proposes what is still to check, split into "before leaving site" and "office follow-up". The engineer ticks off checks, then confirms to close the project (read-only, reopenable) and downloads a self-contained HTML report with the findings, checks and photo log. Without an API key, the list comes from unresolved items and photo follow-ups.
 
 ## Field capture (`field_capture.py`)
 Pure Python, no Node.js needed. It resizes photos to 1568 px JPEG, applies EXIF orientation and strips metadata, then asks Claude for a structured interpretation via a forced tool call.
