@@ -1,6 +1,5 @@
 # TODO
 
-- add units for the input field eyebrow titles in parenthesis. Eg. Area (sq. ft.). Use relevant units used in the app
 - assessment summary: fix the input field for Reviewer notes such that the save note button is under the input text field and not adjacent
 - add a dark and light mode button in top right corner.
 - Add an opt-in photo-analysis workflow to assessment evidence:

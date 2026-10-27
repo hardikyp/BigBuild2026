@@ -76,3 +76,12 @@ def test_intake_includes_open_map_site_picker(client):
     assert b'id="find-address"' in page.data
     assert b"leaflet@1.9.4" in page.data
     assert b"site-map.js" in page.data
+
+
+def test_intake_labels_include_relevant_units(client):
+    page = client.get("/assessments/new")
+
+    assert b"Area (sq. ft.)" in page.data
+    assert b"Length (ft.)" in page.data
+    assert b"Story height (ft.)" in page.data
+    assert b"Latitude (decimal degrees)" in page.data
